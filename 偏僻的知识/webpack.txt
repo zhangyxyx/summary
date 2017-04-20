@@ -1,0 +1,181 @@
+资料地址：http://www.open-open.com/lib/view/open1450681593198.html
+
+1.webpack需要编写一个config的文件，根据这个文件来执行需要的打包功能
+var webpack=require('webpack');
+var path=require('path');
+var buildPath=require(_dirname,'build');
+var nodemodulesPath=path.resolve(_dirname,'node_modules');
+
+var config={
+	//入口文件配置
+	entry:path.resolve(_dirname,'src/main.js');
+	//配置文件后缀名
+	resolve:{
+		extentions:["","js"]//当require的模块找不到的时候，添加这些后缀
+	},
+	//文件导出配置
+	output:{
+		path:buildPath,
+		filename:'app.js'
+	},
+	module:{
+		preLoaders:[
+			{
+				text:/\.(js|jsx)$/,
+				loader:'eslint-loader',
+				include:[path.reslove(_dirname,'src/app')],
+				exclude:[nodeModulesPath]
+			},
+		],
+		loaders:[
+			{
+				test:/\.(js|jsx)$/,//正则匹配js和jsx文件
+				//对匹配的文件进行处理的loader
+				loader:'babel-loader?optional=runtime&stage=0',
+				//排除nodemodules中的文件
+				exclude:[nodeModulesPath]//
+			}
+		]
+	},
+	plugins:[
+		//压缩打包的文件
+		new webpack.optimize.UglifyjsPlugin({
+			compress:{
+				warnings:false
+			}
+		}),
+		//允许错误不打断程序
+		new webpack.NoErrorsPlugin(),
+		//把指定文件夹xia的文件复制到指定的目录
+		new TransferWebpackPlugin([
+			{from:'www'}
+		],path.reslove(_dirname,"src"))
+	]
+
+}
+
+modules.exports=config
+
+module(loader)配置要使用的loader
+loader配置项：
+
+plugins配置要使用的插件
+
+现在有个例子 作用是打包es模块的配置文件
+//引入文件
+var webpack=require('webpack');
+var path=require('path');
+var buildpath=path.resolve(_dirname,'node_modules');
+var nodemodulesPath=path.resolve(_dirname,'node_modules');
+var TransferWebpackPlugin=require('transfer-webpack-plugin');
+
+//配置文件
+var config={
+	//入口文件
+	entry:[path.join(_dirname,'src/main.js')],
+	//文件限制的
+	resolve:{
+		extensions:["",".js",".jsx"]
+	},
+	//输出文件
+	output:{
+		path:buildPath,
+		dilename:'app.js'
+	},
+	//配置插件
+	plugins:[
+		new webpack.optimize.UglifyJsPlugin({
+			compress:{
+				warnings:false
+			}
+		}),
+		new webpack.NoErrorPlugin(),
+		new TransferWebpackPlugin([
+			{form:'www'}
+		],path.resolve(_dirname,"src"))
+	],
+	//配置操作
+	module:{
+		preLoaders:[
+			{
+				test:/\.(js|jsx)$/,
+				loader:'eslint-loader',
+				include:[path.reslove(_dirname,'src/app')],
+				sxclude:[nodeModulesPath]
+			},
+		],
+		loaders:[
+			{
+				//正则
+				test:/\.js$/,
+				//对匹配的文件进行配置
+				loader:'babel-loader?optional=runtime&stage=0',
+				//排除nodemodules中的文件
+				exclude:[nodeModulesPath]
+			}
+		]
+	},
+	exlint:{
+		configFile:'.eslintrc'
+	},
+};
+modules.exports=config
+
+打包静态资源
+npm css-loader
+npm style-loader
+var config={
+	entry:path.resolve(_dirname,'src/main.js'),
+	resolve:{
+		extentions:["","js"]
+	},
+	output:{
+		path:buildPath,
+		filename:'app.js'
+	},
+	module:{
+		loaders:[
+			{
+				test:/\.css$/,
+				loader:'style!css',
+				exclude:'nodemodulesPath'
+			}
+		]
+	}
+}
+
+
+图片
+通过utl-loader把较小的图片转换为base64的字符串内嵌在生成的文件里
+var config={
+	entry:path.resolve(_dirname,'src/main.js'),
+	resolve:{
+		extentions:["","js"]
+	},
+	output:{
+		path:buildPath,
+		filename:'app.js'
+	},
+	module:{
+		loaders:[{
+			test:/\.css$/,
+			loader:'style!css',
+			exclude:nodemodulesPath
+		},
+		{test:/\.png$/,loader:'url-loader?limit=10000'}
+		]
+	}
+}
+
+注意：
+{test:/\.css$/,loader:"style!css"}
+相当于 "style" 和 "css" loader 用于 ".css" 文件
+
+
+
+
+
+
+
+
+
