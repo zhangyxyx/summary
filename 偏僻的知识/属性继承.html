@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+function person(){
+	this.name;
+	this.age;
+}
+person.prototype.eat=function(eat){
+	console.log('正在吃'+eat)
+}
+function child(cname){
+	person.call(this);
+	this.cname=cname;
+	this.cage=12;
+}
+child.prototype=new person();
+var child=new child('zhanh');
+child.eat('饭');
+</script>	
+</body>
+</html>
