@@ -1,0 +1,102 @@
+模块化：就是利用requirejs
+一.为什么使用webpack:
+为了简化开发的复杂度
+webpack是模块打包机：他做的事情就是分析你的项目结构，找出javascript模块以及其他浏览器不能直接运行的语言，并将其打包成合适的语言；
+二 使用webpack:
+1.安装：npm install --save-dev webpack
+2.在当前的文件夹中，执行npm init 命令
+3.在本项目中安装webpack作为依赖包
+4.在项目夹中添加两个文件夹app(存放原始数据和我们写的js模块)，public(存放给浏览器读取的数据。打包之后的js文件和index.html文件)，还需要在app中放置一个Greeter.js
+5.编写代码
+6.执行代码 执行代码有三种方法
+（1）前提是在全局安装了webpack然后再当前文件夹上执行webpack app/main.js public/bundle.js
+(2)在根目录上创建一个文件是webpack.config.js在里面写上：
+module.exports = {
+  entry:  __dirname + "/app/main.js",//已多次提及的唯一入口文件
+  output: {
+    path: __dirname + "/public",//打包后的文件存放的地方
+    filename: "bundle.js"//打包后输出文件的文件名
+  }
+}
+然后执行webpack就可以了
+注意：有时候用__dirname这个的时候会出现这种错误_dirname is not defined是因为你的_是短的而正确的是__dirname这种
+（3）在之前创建的package.json中
+{
+  "name": "webpack-sample-project",
+  "version": "1.0.0",
+  "description": "Sample webpack project",
+  "scripts": {
+    "start": "webpack" //配置的地方就是这里啦，相当于把npm的start命令指向webpack命令
+  },
+  "author": "zhang",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^1.12.9"
+  }
+}
+然后直接输入npm start
+三 一些其他的
+构建本地的服务器
+命令：npm install --save-dev webpack-dev-server
+devserver的配置选项：
+contentBase 默认webpack-dev-server为根目录提供本地服务器，如果想为另外一个目录下的文件提供本地服务器，应该设置其所在目录
+port 默认监听端口
+inline 设置为true的时候，源文件改变的时候 页面自动刷新
+colors 设置为true的时候，终端输出的文件为彩色的
+historyApiFailback 在开发单页面的时候，很有用他利用的是html5 history api 如果设置为true 所有的跳转将指向index.html
+
+四 .loaders
+通过不同的loader,webpack通过调用外部额脚本或者工具可以对各种各样的文件进行处理。
+loaders需要单独安装，并且需要在webpack.config.js下的modules关键字下进行配置，这个的配置选项包括：
+test:一个匹配所处理文件的扩展名的正则表达式
+loader:loader的名字
+include/exclude：手动添加必须处理的文件或者屏蔽不需要处理的文件
+query:为loaders提供额外的设置选项
+
+五 babel
+可以通过编译帮助你达到以下的目的：
+可以实现es6被当前全部的浏览器支持
+基于js进行扩展语言
+安装：
+npm install --save-dev babel-core-lader babel-preset-es2015 babel-perset-react
+
+注意：
+1.__dirname”是node.js中的一个全局变量，它指向当前执行脚本所在的目录
+2.
+ {
+        test: /\.css$/,
+        loader: 'style!css'//添加对样式表的处理
+  }
+感叹号的作用在于使同一文件能够使用不同类型的loader
+3.通常情况下，css会和js打包到同一个文件中，并不会打包为一个单独的css文件，不过通过合适的配置webpack也可以把css打包为单独的文件的。
+不过这也只是webpack把css当做模块而已，咱们继续看看一个真的CSS模块的实践。
+
+4.webpack只有单一的入口，其它的模块需要通过 import, require, url等导入相关位置，
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

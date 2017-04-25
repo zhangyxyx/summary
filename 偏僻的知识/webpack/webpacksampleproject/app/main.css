@@ -1,0 +1,13 @@
+html{
+	box-sizeing:border-box;
+	-ms-text-size-adjust:100%;
+	-webkit-text-size-adjuct:100%;
+}
+body{
+	margin:0px;
+	fonr-family:'微软雅黑';
+}
+h1,h2,h3,h4{
+	margin:0px;
+	padding:0px;
+}

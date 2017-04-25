@@ -1,0 +1,32 @@
+module.exports={
+	devtool:"eval-source-map",//打包
+	entry:__dirname+"/app/main.js",//入口文件
+	output:{
+		path:__dirname+'/public',//输出文件的位置
+		filename:'bundle.js'//输出文件的名字
+	},
+	module:{
+		loaders:[
+			{
+				test:/\.json$/,
+				loader:"json-loader"
+			},
+			{
+				test:/\.js$/,
+				exclude:/node_modules/,
+				loader:'babel-loader',
+
+			},
+			{
+				test:/\.css$/,
+				loader:'style!css'
+			}
+		]
+	},
+	devServer:{//构建本地的服务器
+		contentBase:'./public',
+		colors:true,
+		historyApiFailback:true,
+		inline:true
+	}
+}
