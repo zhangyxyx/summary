@@ -1,0 +1,39 @@
+1.引入文件require.js
+在index.html中<script src="./require.js" data-main="index"></script>
+
+2.如果目前由a.js b.js c.js三个文件 那么在index.js中引入这三个
+require(['a.js','b.js','c.js'],function(a,b,c){});
+
+3.在index.js可以有几个需要配置的
+require.config({
+	shim:{
+		'underscore':{
+			exports:'_'//表示这个模块外部调用时的名称
+		},
+		'backbone':{
+			deps:['underscore','jquery'],//表明模块的依赖性
+			exports:'Backbone'
+		}
+	}
+	//这是自定义要引入的文件的
+	path:{
+		"jquery":"jquery"
+	}
+})
+这基本就是requirejs中index.js的主要配置
+
+4.在a.js中没有调用任何模块的函数或者变量
+define(function(){
+	//代码
+})
+在b.js中调用到了a.js中的一个函数
+defined([''],function(){})
+
+5.requirejs还有一些插件
+domready插件 可以让页面DOM结构加载完成之后在运行
+
+
+
+
+
+
