@@ -6,7 +6,8 @@ webpack是模块打包机：他做的事情就是分析你的项目结构，找�
 1.安装：npm install --save-dev webpack
 2.在当前的文件夹中，执行npm init 命令
 3.在本项目中安装webpack作为依赖包
-4.在项目夹中添加两个文件夹app(存放原始数据和我们写的js模块)，public(存放给浏览器读取的数据。打包之后的js文件和index.html文件)，还需要在app中放置一个Greeter.js
+4.在项目夹中添加两个文件夹app(存放原始数据和我们写的js模块)，public(存放给浏览器读取的数据。打包之后的js文件和index.html文件)，
+还需要在app中放置一个Greeter.js
 5.编写代码
 6.执行代码 执行代码有三种方法
 （1）前提是在全局安装了webpack然后再当前文件夹上执行webpack app/main.js public/bundle.js
