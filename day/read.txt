@@ -11,3 +11,51 @@ http://www.tuicool.com/articles/fqUby26
 
 4.什么是模块化和组件化？
 http://www.cnblogs.com/mfc-itblog/p/5385773.html
+
+5.js模块化中的require.js？ 
+解决的是几个js文件之间需要按照确定的依赖关系 采用的是AMD
+1.引入require.js
+<script src="js/require.js" defer async="true"></script>
+2.在主页面中 就是所有文件的入口 main.js
+<script src="js/require.js" data-main="js.main"></script>
+3.main.js中
+require(['moduleA','moduleB','moduleC'],function(modulea,moduleb,modulec){
+	//
+})
+4.在main.js中
+require.config({
+	paths:{
+	"jquery":"lib/jquery.min",
+	"underscore":"lib/underscore.min",
+	"backbone":"lib/backbone.min"
+	}
+});
+另一种
+require.config({
+	baseUrl:"lib"
+	paths:{
+	"jquery":"jquery.min",
+	"underscore":"underscore.min",
+	"backbone":"backbone.min"
+	}
+});
+5.各个模块的编写：
+define(['modle'],function(model){
+	/////
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
