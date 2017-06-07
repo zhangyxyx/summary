@@ -1,0 +1,13 @@
+平时想到的一些知识点：
+1.浏览器输入一个网址到显示出这个页面的过程：
+http://blog.csdn.net/c_liyun/article/details/45273987、
+
+2.浏览器显示一个网页的过程：
+http://blog.csdn.net/longeremmy/article/details/8030736
+
+3.什么是前端自动化？
+http://www.tuicool.com/articles/fqUby26
+比较好的前端自动化的工具是webpack 所以主要还是看这个
+
+4.什么是模块化和组件化？
+http://www.cnblogs.com/mfc-itblog/p/5385773.html
