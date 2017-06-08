@@ -47,6 +47,8 @@ define(['modle'],function(model){
 上下文与作用域（scope）是不同的概念。Js本身是单线程的，每当有function被执行时，就会产生一个新的上下文，这一上下文会被压入Js的上下文堆栈（context stack）中，function执行结束后则被弹出，因此Js解释器总是在栈顶上下文中执行。
 http://blog.rainy.im/2015/07/04/scope-chain-and-prototype-chain-in-js/
 
+七.单页面SPA?
+http://www.tuicool.com/articles/BneeAvB
 
 
 
