@@ -50,6 +50,10 @@ http://blog.rainy.im/2015/07/04/scope-chain-and-prototype-chain-in-js/
 七.单页面SPA?
 http://www.tuicool.com/articles/BneeAvB
 
+八.JSONP的工作原理？
+利用<script>没有跨域限制的“漏洞”（历史遗留问题）来达到与第三方通信的目的。当需要通信的时候。本站脚本创建一个<script>元素，地址指向第三方的API我那网址，刑如：
+<script src="http://www.example.net/"></script>
+并提供一个回调函数来接收函数（函数名可约定，或者通过地址参数传递）。第三方产生的相应为json数据的包装(jsonp)刑如：callback({"name":"123","gender":"male"})
 
 
 
