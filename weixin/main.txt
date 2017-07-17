@@ -1,0 +1,152 @@
+本来用的是这个插件http://overtrue.me/share.js/和百度分享
+
+相同之处：在微信分享的时候，分享的链接都不能获取到缩略图。。。
+
+不同之处：百度分享在微信低版本是可以看到缩略图的（但是一点用都没有，不过还是要说一下）
+
+这两个在分享带图片的文章的时候，都是不符合要求的（在这上面耗费了我好多时间，一度让我怀疑人生了。。。）
+
+最后得出的你想要带标题 描述 图片都是完整的，就需要用微信的jssdk这是必须的吗，没啥其他好的方法
+
+现在说一下jssdk实现微信分享的步骤：
+
+1.打开微信开发者平台。输入你的微信公众号账号和密码，进入到这个页面 
+
+可以看到我的账号是订阅号而且是未认证的 因为我项目中用的账号是公司的号，我现在只是以我自己的号 简单说一下。
+
+你自己需要的账号是已经认证的（据说要花300元，好贵。。。）然后看一下左边菜单的接口权限里面的分享接口是否已经授权了（同样的我的是未获得的 因为我是以我的为例子的 我实际上用的是公司的号不是我自己的号）
+
+2.设置js安全域名接口
+
+打开公众号设置里面的功能设置，然后看到js接口安全域名，开始设置
+打开设置之后页面是这样的 。我就说一下注意的点吧
+
+（1）在下面填写的时候填域名就可以了，然后将需要下载的这个txt下载下来，放到你的域名的根域名下面，怎样检测自己是否放置正确 在浏览器中输入你的域名/txt的名字 能看内容就是对的，看不到就看看是否放置错误
+以上是准备工作做好了 下面是比较正式的步骤
+
+1.打开左侧菜单的基本配置
+
+在里面已经知道的是你的appID 然后自己设置一下开发者密码，并且在设置的时候需要将密码保存一下，如果你一直进行完成没有保存，那么你的密码是不会显示在页面中
+现在就可以知道 appId 和secret
+
+2.打开开发者文档中的jssdk
+
+可以看到具体步骤，前1步已经完成了，现在需要的是
+
+将微信官方的文件放到你的项目中，然后再页面中引入 就可以了
+
+3.基本的都可以了，现在是开始写代码，我先贴一下我的代码
+
+share:function(){
+    var _this=this;
+    //标题 描述
+    var t=document.title;
+    //获取第一张图片
+    var src=_this.$("img").eq(0).attr("src");
+    var img=location.origin+'/home'+src.split('/home')[1];
+    console.log(img);
+    //要传给后台的url
+    var strUrl = encodeURIComponent(location.href.split('#')[0]);
+    var url=location.href;
+     
+   $request({
+    type: "Post",
+    url : 'xxx?url='+strUrl,
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    success : function(result) {
+        console.log(result)
+        WXDate=result;
+         wxconifg(WXDate);
+    }
+    });
+     
+    function wxconifg(WXDate) {
+        wx.config({
+            debug: false,
+            appId: '',
+            timestamp: WXDate.timestamp,
+            nonceStr: WXDate.nonceStr,
+            signature: WXDate.signature,
+            jsApiList: ['checkJsApi','onMenuShareTimeline','onMenuShareAppMessage']
+        });
+        wx.ready(function () {
+            wx.checkJsApi({ 
+                jsApiList: [ 
+                  'getLocation', 
+                  'onMenuShareTimeline', 
+                  'onMenuShareAppMessage' 
+                ], 
+                success: function (res) { 
+                  console.log(res.errMsg) 
+                }
+ 
+              });
+            wx.onMenuShareAppMessage({
+                title: t,
+                desc: t,
+                link: url,
+                imgUrl: img,
+                trigger: function (res) {
+                },
+                success: function (res) {
+                },
+                cancel: function (res) {
+                },
+                fail: function (res) {
+                    alert(JSON.stringify(res));
+                }
+          });
+          //分享到朋友圈
+            wx.onMenuShareTimeline({
+            title: t,
+                desc: t,
+                link: url,
+                imgUrl: img,
+                type: 'link',
+               
+                trigger: function (res) {
+                },
+                success: function (res) {
+                },
+                cancel: function (res) {
+                },
+                fail: function (res) {
+                    alert(JSON.stringify(res));
+                }
+            });
+            wx.error(function(res){
+            console.log(res);
+            });
+        });
+    }
+},   
+这是前端的代码，很简单，前端需要做的就是将当前这个页面的url的去掉#后面的东西之后的部分 传给后台 然后从后台获取到随机数 时间戳 签名就可以了
+
+4.至于后台的代码 我不是很懂 我看官方应该有给后台代码（在最后面）
+
+说一下在整个过程中遇到比较坑的地方：
+
+1.第一次解除微信jssdk这种东西，刚一开始没明白jssdk的本质，我直接在pc端打开的时候，什么都没有显示。直接蒙圈了。然后看了半天才明白，jssdk本质上是给你需要分享的页面配置好标题 描述 图片等信息，而不是引导客户去操作这个怎样分享
+
+2.关于config出现invalid signature这种错的话：
+
+官网有提供解决的思路，可以照着一步一步进行。
+
+几点需要注意的：
+
+1.需要提的一句是，我当时遇到了微信签名验证工具和后台给我的是一样的，其他也都对，但还是出现这个错误，我的原因是在生成签名的时候url不对，url必须是完整的，不能只是填写一个域名。你可以直接alert(location.href.split('#')[0])必须是这个！！！（在这个问题上我直接耗了一天时间。。。）
+
+2.如果是在初始化配置的时候出现这种错误url main，估计就是微信公众平台上账号下绑定的域名错了，一定要看看，除非账号和密码只有你知道，你不保准没有人改这个东西（我就吃了这个亏）
+
+3.出现签名错误，就看看你传给后台的url是不是对的，然后看那一下后台传给你的数据是不是对的。
+
+4.可能出现这种第一次分享是对的，但是第二次就是错的，是因为你分享之后的页面，微信会给你添加一些东西，你需要在传给后台url的时候将url放在encodeURIComponent这个里面，再传给后台
+
+其他的应该没啥了。。。
+
+
+
+
+
+
