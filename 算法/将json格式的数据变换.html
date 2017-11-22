@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+var json={
+    name:'123',
+    age:23,
+    child:{
+        name:'333',
+        age:33,
+        parentChild:{
+            name:'444',
+            age:44
+        }
+    }
+}
+var json2={};
+function show(str,json){
+    for(var i in json){
+        if(typeof json[i]==="object"){
+            show(i,json[i])
+        }else{
+            if(str==''){
+            json2[i]=json[i]
+            }else{
+                json2[str+"."+i]=json[i]
+            }
+        }
+    }
+    return json2
+}
+
+console.log(show('',json))
+</script>
+</body>
+</html>
