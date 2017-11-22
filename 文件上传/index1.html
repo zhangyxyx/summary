@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .main {
+            max-width: 800px;
+            margin: 20px auto;
+        }
+
+        .title {
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            border-bottom: 1px solid #ccc;
+            color: #535659;
+            margin-bottom: 10px;
+        }
+
+        .top {
+            height: 95px;
+        }
+
+        .update {
+            width: 80px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            background: #1c8ac7;
+            color: #fff;
+            border: 1px solid #1c8ac7;
+            border-radius: 3px;
+            box-shadow: 0px 0px 5px rgba(117, 120, 122, .4);
+            float: right;
+            display:none;
+        }
+        #clickfile {
+            width: 80px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            background: #1c8ac7;
+            color: #fff;
+            border: 1px solid #1c8ac7;
+            border-radius: 3px;
+            box-shadow: 0px 0px 5px rgba(117, 120, 122, .4);
+            float: right;
+        }
+        .content{
+            width:900px;
+            display:inline-block;
+        }
+        /*图片展示模板*/
+        .every {
+            width:175px;
+            height:200px;
+            border: 1px solid #f1f1f1;
+            box-shadow: 0px 0px 5px rgba(117, 120, 122, .4);
+            float: left;
+            margin:0px 10px 10px 10px;
+        }
+        .every p:first-child {
+            height:160px;
+        }
+        .every p:first-child img {
+            width: 100%;
+            height: 100%
+        }
+
+        .every p:last-child {
+            height: 40px;
+            line-height:40px;
+            text-align: center;
+            cursor: pointer;
+            background: #f1f1f1
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <p class="title">图片管理</p>
+        <div class="top">
+            <div>
+                <button id="clickfile">上传图片</button>
+                <input type="file" name="file" id="myfiles" accept="image/png, image/jpeg" style="display:none" onchange="mychange(this)" />
+            </div>
+            <!-- <div class="tip"></div> -->
+            <button class="update">上传到后台</button>
+        </div>
+        <div class="content"></div>
+    </div>
+    <script src="./jquery.js"></script>
+    <script>
+        $(function () {
+            $("#clickfile").click(function () {
+                $("#myfiles").click();
+            })
+        })
+        //需要上传的文件的数组
+        var arr = [];
+        function mychange(e) {
+            var file = e.files[0];
+            var size = file.size;
+            var type = file.type;
+            //获取图片的base64格式
+            var reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = function () {
+                if (size > 204800) {
+                    $(".tip").html('当前大小超出200kb');
+                } else {
+                    var everyHtml = '<div class="every" data-name="' + file.name + '">' +
+                        '<p><img src="' + this.result + '"></p>' +
+                        '<p class="delete">删除</p>' +
+                        '</div>';
+                    $(".content").append(everyHtml);
+                    arr.push(file);
+                    //循环图片 点击移除图片
+                    for (var i = 0; i < arr.length; i++) {
+                        $(".delete").eq(i).click(function () {
+                            var name = $(this).parent().attr('data-name');
+                            //在数据中移出删除的元素
+                            for (var i = 0; i < arr.length; i++) {
+                                if (arr[i].name === name) {
+                                    arr.splice(i, 1)
+                                }
+                            }
+                            $(this).parent().parent().find(".every[data-name='" + name + "']").remove();
+                        })
+                    }
+                   
+                    var w=$(".every").width();
+                    //$(".content").css({width:(w+20)*4+"px"});
+                }
+            }
+                
+                
+            //上传图片
+            $(".update").click(function () {
+                console.log(arr)
+                var myfile = new FormData(arr);
+                console.log(myfile)
+            });
+        }
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .main {
+            width: 800px;
+            margin: 20px auto;
+        }
+
+        .title {
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            border-bottom: 1px solid #ccc;
+            color: #535659;
+            margin-bottom: 10px;
+        }
+
+        .tip {
+            width: 100%;
+            padding: 0px 15px;
+            color: #818385;
+            box-sizing: border-box
+        }
+
+        .content {
+            width: 100%;
+            display: inline-block;
+            height: auto;
+            padding: 15px 10px;
+            color: #818385;
+            border: 1px solid rgba(241, 241, 241, .5);
+            margin-bottom: 10px;
+            box-sizing: border-box
+        }
+
+        .update_now {
+            text-align: center;
+        }
+
+        #clickfile {
+            width: 80px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            color:#1c8ac7;
+            background: #fff;
+            border: 1px solid #f1f1f1;
+            border-radius: 3px;
+            box-shadow: 0px 0px 5px rgba(117, 120, 122, .4);
+            display: inline-block
+        }
+
+        .update_img {
+            display: inline-block
+        }
+        .update_success{
+            display:none;
+        }
+        .update_success p:first-child{
+            background:#f1f1f1;
+            padding:15px 0px;
+            text-align:center;
+            color:#909090
+        }
+        .update_success p:last-child{
+            padding:10px 0px;
+            text-align:center;
+            color:#1c8ac7
+        }
+        .update_btn {
+            width: 80px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            background: #1c8ac7;
+            color:#fff;
+            border: 1px solid #1c8ac7;
+            border-radius: 3px;
+            box-shadow: 0px 0px 5px rgba(117, 120, 122, .4);
+            display: inline-block;
+            margin-left:20px;
+        }
+
+        .update {
+            width: 80px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            background: #1c8ac7;
+            color: #fff;
+            border: 1px solid #1c8ac7;
+            border-radius: 3px;
+            box-shadow: 0px 0px 5px rgba(117, 120, 122, .4);
+            display: inline-block
+        }
+
+        /*图片展示模板*/
+
+        .every {
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            border: 1px solid #f1f1f1;
+            border-top:none;
+            box-shadow: 0px 0px 5px rgba(117, 120, 122, .4);
+            float: left;
+            margin-right: 10px;
+            box-sizing: border-box
+        }
+
+        .every p:first-child {
+            float: left;
+            margin-left: 10px;
+        }
+
+        .every p:last-child {
+            float: right;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <p class="title">上传图片</p>
+        <p class="tip">请选择要上传的图片（上传图片须小于200kb,限png,jpg格式）</p>
+        <div class="content">
+            <div style="padding:15px 10px;background:#f1f1f1">要上传的图片(
+                <span>0</span>/10)</div>
+        </div>
+        <div class="update_now">
+            <div class="update_img">
+                <button id="clickfile">添加图片</button>
+                <input type="file" name="file" id="myfiles" accept="image/png, image/jpeg" style="display:none" onchange="mychange(this)" />
+            </div>
+            <button class="update_btn">上传图片</button>
+        </div>
+        <div class="update_success">
+            <p>正在上传1/<span>3</span></p>
+            <p>上传成功，成功<span>1</span>个，失败<span>1</span>个</p>
+        </div>
+
+    </div>
+    <script src="./jquery.js"></script>
+    <script>
+        $(function () {
+            //获取文件
+            $("#clickfile").click(function () {
+                $("#myfiles").click();
+            })
+        })
+        var arr = [];//可以上传的图片
+        function mychange(e) {
+            //每次选择文件之后获取到文件信息
+            var file = e.files[0];
+            var size = file.size;
+            var type = file.type;
+            var name =file.name;
+            var everyHtml = '<div class="every" data-name="' + file.name + '">' +
+                '<p>' + file.name + '</p>' +
+                '<p class="every_update">待上传</p>' +
+                '</div>';
+            $(".content").append(everyHtml);
+            if (size > 204800) {
+                $(".every[data-name='" + name + "']").find(".every_update").html('超出大小，无法上传');
+                $(".every[data-name='" + name + "']").find(".every_update").attr("data-mark","no");
+            }else{
+                $(".every[data-name='" + name + "']").find(".every_update").html('待上传');
+                $(".every[data-name='" + name + "']").find(".every_update").attr("data-mark","yes");
+                arr.push(file);
+            }
+            //循环图片 点击移除图片
+            for (var i = 0; i < arr.length; i++) {
+                $(".delete").eq(i).click(function () {
+                    var name = $(this).parent().attr('data-name');
+                    //在数据中移出删除的元素
+                    for (var i = 0; i < arr.length; i++) {
+                        if (arr[i].name === name) {
+                            arr.splice(i, 1)
+                        }
+                    }
+                    $(this).parent().parent().find(".every[data-name='" + name + "']").remove();
+                })
+            }
+            $(".content").find("span").html(arr.length)
+            //上传图片
+            $(".update_btn").click(function () {
+                console.log(arr)
+                var myfile = new FormData(arr);
+            
+                $(this).parent().css("display","none");
+                $(".update_success").css("display","block");
+                var num=$(".every_update[data-mark=no]").length;
+                $(".update_success").find("span").eq(0).html(arr.length+num);
+                $(".update_success").find("span").eq(1).html(arr.length);
+                $(".update_success").find("span").eq(2).html(num);
+            });
+        }
+
+
+    </script>
+</body>
+
+</html>
