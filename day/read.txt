@@ -71,6 +71,15 @@ http://blog.rainy.im/2015/07/04/scope-chain-and-prototype-chain-in-js/
 <script src="http://www.example.net/"></script>
 并提供一个回调函数来接收函数（函数名可约定，或者通过地址参数传递）。第三方产生的相应为json数据的包装(jsonp)刑如：callback({"name":"123","gender":"male"})
 
+=====================================
+javascript
+1.几个比较混乱
+'2'+2=>'22'
+'2'+'2'=>'22'
+'2'-'1'=>1
+'2'-1=>1
+[2]==[2]=>false
+[2]===[2]=>false
 
 
 
