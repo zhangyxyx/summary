@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="../../../"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+  <meta http-equiv='Content-type' content='text/html; charset=utf-8'>
+  <link rel="stylesheet" href="assets/lib/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="assets/lib/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css">
+  <title>端到端综合测试</title>
+  <!-- color:#03f5f9; -->
+</head>
+<style>
+</style>
+<body>
+  <div style="width:400px;height:40px">
+    <select class="clickSelect" style="float:left;width:55px;height:27px;margin:2px 5px 0px 0px;border-radius:2px;">
+      <option val="day">日</option>
+      <option val="month">月</option>
+      <option val="hours">小时</option>
+      <option val="min">分钟</option>
+    </select>
+    <a class='input-group date' id='datetimepicker1' style="width:calc(100% - 48)"></a>
+  </div>
+
+  <script type="text/javascript" src="assets/lib/jquery/jquery-1.9.1.min.js"></script>
+  <!--引入bootstrap公共文件-->
+  <script type="text/javascript" src="assets/lib/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/lib/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+  <script src="assets/lib/bootstrap-datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+  <!--自己封装文件-->
+  <script type="text/javascript" src="assets/module/time/js/time.js"></script>
+
+</body>
+</html>
