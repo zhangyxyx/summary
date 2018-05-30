@@ -9,3 +9,5 @@
 地址：https://speech-to-text-demo.ng.bluemix.net/
 ### baidumap2.0.3
 下载百度地图瓦片
+### time
+依赖bootstrap-datetimepicker扩展的日期插件，实现一开始展示一个时间和选择月日小时分钟选择显示时间的区间
