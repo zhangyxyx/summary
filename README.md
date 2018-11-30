@@ -8,7 +8,7 @@
    2. baidumap2.0.3可以实现离线地图
 ### dataVisualization
   * 是关于数据可视化做的一些demo或者了解的知识
-    1. raphael 这是一个可以画拓扑的插件
+   1. raphael 这是一个可以画拓扑的插件
 ### echarts
   * 这是所有关于echarts的一些操作demo
 ### jsPlugin
