@@ -22,6 +22,5 @@
   * 对微信的相关的开发
 # Tip
  * 录音、音频转文字
-  * 这个是IBM开发的，转的质量一般，但是人家是免费的不要要求太多,注意选择语言的时候选Mandarin broadband model (16KHz)（这是普通话） 
-  * 地址：https://speech-to-text-demo.ng.bluemix.net/
+  * 这个是IBM开发的，转的质量一般，但是人家是免费的不要要求太多,注意选择语言的时候选Mandarin broadband model (16KHz)（这是普通话） 地址：https://speech-to-text-demo.ng.bluemix.net/
 
