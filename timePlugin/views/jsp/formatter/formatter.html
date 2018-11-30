@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>插件</title>
+    <style>
+        thead td{text-align:center}
+    td{background:#72b3e5;color:#fff;padding:10px;border:1px solid blue}
+    </style>
+</head>
+<body>
+<h4>对时间的操作</h4>
+<p></p>
+<table>
+    <thead>
+        <tr>
+            <td>要求</td>
+            <td>入参</td>
+            <td>出参</td>
+            <td>函数</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>当前开始时间，设置一个时间往后推20分钟</td>
+            <td>开始时间'20181106085500':设置时间：2秒(最小单位是1秒)</td>
+            <td class="s1"></td>
+            <td>startDixEnd</td>
+        </tr>
+        <tr>
+            <td>开始时间和结束时间相差多少秒</td>
+            <td>开始时间：'20181106085500' 结束时间：'20181106085600'</td>
+            <td class="s2"></td>
+            <td>startTimeEnd</td>
+        </tr>
+        <tr>
+            <td>对时间取整，比如10:45=>11:00 11:22=>12:00 (对分钟取整，当前秒也是可以的，对函数适当调整就可以了)</td>
+            <td>开始时间：'20181106082345'</td>
+            <td class="s3"></td>
+            <td>timeFormatterCeil</td>
+        </tr>
+        <tr>
+            <td>获取当前地址</td>
+            <td>当前地址</td>
+            <td class="s4"></td>
+            <td>getUrlRequest</td>
+        </tr>
+    </tbody>
+</table>
+
+<script src='./jquery.js'></script>
+<script>
+//改变时间的格式
+function formatterTime(time){
+    var y=time.substring(0,4)
+    var m=time.substring(4,6)
+    var d=time.substring(6,8)
+    var h=time.substring(8,10)
+    var mi=time.substring(10,12)
+    var s=time.substring(12,14)
+    var tt=y+'/'+m+'/'+d+' '+h+':'+mi+':'+s
+    return tt;
+}
+
+startDixEnd('20181106085500',2)
+function startDixEnd(date,dix){
+    if(date!=''){
+        var time='';
+        var ss=new Date(formatterTime(date)).getTime()+(dix*1000);//目标时间的毫秒
+        var y=new Date(ss).getFullYear ()
+        var m=new Date(ss).getMonth ()+1<10?0+''+new Date(ss).getMonth ()+1:new Date(ss).getMonth ()+1
+        var d=new Date(ss).getDate ()<10?0+''+new Date(ss).getDate ():new Date(ss).getDate ()
+        var h=new Date(ss).getHours ()<10?0+''+new Date(ss).getHours ():new Date(ss).getHours ()
+        var min=new Date(ss).getMinutes ()<10?0+''+new Date(ss).getMinutes ():new Date(ss).getMinutes ()        
+        var ss=new Date(ss).getSeconds ()<10?0+''+new Date(ss).getSeconds ():new Date(ss).getSeconds ()        
+        time=y+''+m+''+d+''+h+''+min+''+ss//+''+sec
+        console.log(time)
+        $(".s1").html(time)
+        return time
+    }
+}
+startTimeEnd('20181106085500','20181106085600')
+function startTimeEnd(begin,end){
+    //需要显示多少数据
+    var startT=formatterTime(begin)
+    var endT=formatterTime(end)
+    var date1 = new Date(startT)
+    var date2 = new Date(endT)
+    var s1 = date1.getTime(),s2 = date2.getTime();
+    var total = (s2 - s1); 
+    $(".s2").html(total/1000)
+    return total
+}
+timeFormatterCeil('20181106082345')
+function timeFormatterCeil(date){
+    if(date!=''){
+        var time='';
+        var dixMis=(60-parseInt(date.substring(10,12)))//距离满点还有多少分 
+        time=startDixEnd(date+'00',dixMis*60)
+        $(".s3").html(time)
+        return time
+    }
+}
+getUrlRequest()
+function getUrlRequest() {
+    var urlRequest = {};
+    var name, value;
+    var str = location.href; //取得整个地址
+    var num = str.indexOf("?");
+    str = str.substr(num + 1); //取得所有参  stringvar.substr(start [, length ]
+
+    var arr = str.split("&"); //各个参数放到数组
+    for (var i = 0; i < arr.length; i++) {
+        num = arr[i].indexOf("=");
+        if (num > 0) {
+            name = arr[i].substring(0, num);
+            value = arr[i].substr(num + 1);
+            urlRequest[name] = decodeURI(value);
+        }
+    }
+    $(".s4").html(urlRequest)
+    return urlRequest;
+}
+</script>
+</body>
+</html>
