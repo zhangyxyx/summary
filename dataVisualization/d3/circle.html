@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body id="lizi">
+<script src="./js/d3.js"></script>
+<script>
+document.getElementById('lizi').innerHTML = "";
+setInterval(function(){
+    document.getElementById('lizi').innerHTML = "";
+    lizi()
+},5000)
+function lizi(){
+    var width=900,height=500;
+    var svg=d3.select('body').append('svg').attr("width",width).attr("height",height).attr('viewBox',"-480 -250 960 500")
+    svg.append('circle').attr('r',100).attr('stroke','blue').attr('fill','none')
+    svg.append('circle').attr('r',200).attr('stroke','red').attr('fill','none')
+
+    //var data=[d3.range(80).map(()=>{return {type:'a'}}), d3.range(160).map(()=>{return {type:'b'}}) ]
+    var data = [].concat(
+    d3.range(80).map(function() { return {type: "a"}; }),
+    d3.range(160).map(function() { return {type: "b"}; })
+    );
+
+    var node =d3.select('svg').append('g').selectAll('circle').data(data).enter().append('circle')
+        .attr('r',2.5).attr('fill',function(d){
+
+            return d.type==='a'?'blue':'red'
+            })
+
+    var simua=d3.forceSimulation(data).force('charge',d3.forceCollide().radius(5))
+        .force('r',d3.forceRadial(function(d){return d.type==='a'?100:200})).on('tick',ticked)
+
+    function ticked(){
+        node.attr('cx',function(d){
+
+            return d.x}).attr('cy',function(d){return d.y})
+    }
+}
+
+</script>
+</body>
+</html>
