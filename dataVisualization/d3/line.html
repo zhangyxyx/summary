@@ -20,14 +20,17 @@ var x=d3.scaleBand().domain(data.map(d=>d.name)).range([margin.left,width-margin
 var y=function(){}
 var y=d3.scaleLinear().domain([0,d3.max(data,d=>d.value)]).nice().range([height-margin.bottom,margin.top])
 
+var line=function(){}
+var line=d3.line().defined(d=>!isNaN(d.value)).x(d=>x(d.name)).y(d=>y(d.value))
+
 var xAxis=function(){}
 var xAxis=g=>g.attr('transform',`translate(0,${height-margin.bottom})`).call(d3.axisBottom(x).tickSizeOuter(0))
 
 var yAxis=function(){}
 var yAxis=g=>g.attr('transform',`translate(${margin.left},0)`).call(d3.axisLeft(y))
 
-svg.append('g').attr('fill','black').selectAll('rect').data(data).enter().append('rect')
-    .attr('x',d=>x(d.name)).attr('y',d=>y(d.value)).attr('height',d=>y(0)-y(d.value)).attr('width',x.bandwidth())
+svg.append('path').datum(data).attr('fill','none').attr('stroke','black').attr('stroke-width','1.5').attr('stroke-linejoin','round')
+    .attr('stroke-linecap','round').attr('d',line)
 svg.append('g').call(xAxis)
 svg.append('g').call(yAxis)//
 
