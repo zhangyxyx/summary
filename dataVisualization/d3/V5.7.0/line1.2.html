@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .axis path,
+.axis line{
+    fill: none;
+    stroke: black;
+    shape-rendering: crispEdges;
+}
+.axis text {
+    font-family: sans-serif;
+    font-size: 11px;
+}
+path {
+  fill: transparent;
+  stroke: green;
+}
+
+    </style>
+</head>
+<body>
+<script src="./js/d3.js"></script>
+<script>
+    var width=400,height=400,padding={left:20,bottom:20,right:20,top:20}
+    var data=[{x:0,y:5},{x:1,y:35},{x:2,y:25},{x:3,y:40},{x:4,y:10}];
+    var xWidth=380,yWidth=380
+
+    var svg=d3.select('body').append('svg')
+            .attr('width',width).attr('height',height)
+
+    var x=d3.scaleLinear().domain([0,data.length]).range([0,xWidth-padding.left])
+    var y=d3.scaleLinear().domain([50,0]).range([0,yWidth-padding.bottom])
+
+    var xAxis=d3.axisBottom(x)
+    var yAxis=d3.axisLeft(y)
+        
+    var line=d3.line().x((d,i)=>{return x(d.x)+padding.left})
+            .y((d)=>{return y(d.y)+padding.bottom});
+
+    var path=svg.append('path').attr('stroke-width',2).attr('d',line(data))
+
+    svg.append('g').attr('transform','translate('+padding.left+','+(height-padding.bottom)+')').call(xAxis)
+    svg.append('g').attr('transform','translate('+padding.left+','+(height-yWidth)+')').call(yAxis)
+    
+</script>
+</body>
+</html>
