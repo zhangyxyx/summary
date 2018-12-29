@@ -13,7 +13,8 @@
    1. raphael 这是一个可以画拓扑的插件
    2. D3 这是用d3实现的一些效果 版本5.7.0
   * 相关资料：
-   [d3中文文档](https://d3js.org.cn/)
+   1. [d3中文文档](https://d3js.org.cn/)
+   2. [d3英文文档](https://github.com/d3/d3)
 ### 三、echarts
 > 这是所有关于echarts的一些操作demo
 ### 四、jsPlugin 
