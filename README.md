@@ -8,10 +8,10 @@
    1. BaiduMapTile使用C#写的，可以手动下载地图瓦片的代码
    2. baidumap2.0.3可以实现离线地图
 ### 二、dataVisualization
-  * 是关于数据可视化做的一些demo或者了解的知识
+  > * 是关于数据可视化做的一些demo或者了解的知识
    1. raphael 这是一个可以画拓扑的插件
    2. D3 这是用d3实现的一些效果 版本5.7.0
-     ** 相关资料：
+  >>   ** 相关资料：
         1)、https://d3js.org.cn/
 ### 三、echarts
   * 这是所有关于echarts的一些操作demo
