@@ -10,25 +10,24 @@ namespace BaiduMapTile
 {
     public class TileDownloader
     {
-        static public String[] MAP_HOSTS =
-                    { 
-                 //"http://or.map.bdimg.com:8080/tile/", 
-                 //"http://or0.map.bdimg.com:8080/tile/",
-                 //"http://or1.map.bdimg.com:8080/tile/", 
-                 //"http://or2.map.bdimg.com:8080/tile/",
-                 //"http://or3.map.bdimg.com:8080/tile/",
-                 "http://or.map.bdimg.com/tile/", 
-                 "http://or0.map.bdimg.com/tile/",
-                 "http://or1.map.bdimg.com/tile/", 
-                 "http://or2.map.bdimg.com/tile/",
-                 "http://or3.map.bdimg.com/tile/",
-
-                 "http://online0.map.bdimg.com/tile/", 
-                 "http://online1.map.bdimg.com/tile/", 
-                 "http://online2.map.bdimg.com/tile/", 
-                 "http://online3.map.bdimg.com/tile/", 
-                 "http://online4.map.bdimg.com/tile/"
-                 };
+        static public String[] CUSTOM_MAP_HOSTS = {
+           "http://api0.map.bdimg.com/customimage/tile/",
+           "http://api1.map.bdimg.com/customimage/tile/",
+           "http://api2.map.bdimg.com/customimage/tile/",
+           "http://api3.map.bdimg.com/customimage/tile/"
+        };
+        static public String[] MAP_HOSTS = { 
+           "http://or.map.bdimg.com/tile/", 
+           "http://or0.map.bdimg.com/tile/",
+           "http://or1.map.bdimg.com/tile/", 
+           "http://or2.map.bdimg.com/tile/",
+           "http://or3.map.bdimg.com/tile/",
+           "http://online0.map.bdimg.com/tile/", 
+           "http://online1.map.bdimg.com/tile/", 
+           "http://online2.map.bdimg.com/tile/", 
+           "http://online3.map.bdimg.com/tile/", 
+           "http://online4.map.bdimg.com/tile/"
+       };
 
         static private String MAP_TILE_DIR = "maptile\\";      //瓦片图
         //static private String PANO_TILE_DIR = "PanoTile/";          //全景
@@ -54,6 +53,8 @@ namespace BaiduMapTile
         //瓦片总数和已下载的瓦片数
         private int mTotalTile;
         private int mDownloadedTile;
+        private bool isCustomStyle = false;
+        private string mapStyle = "pl";
 
         //中间变量
         int mX = 0, mY = 0, mZ = 0;
@@ -65,9 +66,14 @@ namespace BaiduMapTile
             mUi = form;
         }
 
-        public void execute(String baseDir, PointGeo leftBottomPoint, PointGeo rightTopPoint, List<int> zoomArray, int threadCnt, int mapType)
+        public void execute(String baseDir, PointGeo leftBottomPoint, PointGeo rightTopPoint, List<int> zoomArray, int threadCnt, int mapType, String mapStyle)
         {
             mBaseDir = baseDir;
+            if (!String.IsNullOrEmpty(mapStyle))
+            {
+                this.mapStyle = mapStyle;
+                this.isCustomStyle = true;
+            }
 
             if (mBaseDir.EndsWith("\\"))
             {
@@ -149,12 +155,15 @@ namespace BaiduMapTile
                     Console.Write(strLog + " Exist\n");
                     continue;
                 }
-
-                int i = 0;
-                for(; i < 5; i++)
+                bool downloadFailed = false;
+                String[] hosts = this.isCustomStyle ? CUSTOM_MAP_HOSTS : MAP_HOSTS;
+                // 尝试访问各个 host
+                for(int i = 0; i < hosts.Length; i++)
                 {
-                    if(download(task.url, task.file))
+                    string url = hosts[i] + task.url;
+                    if (download(url, task.file))
                     {
+                        downloadFailed = false;
                         ++mDownloadedTile;
 
                         updateProgress(mDownloadedTile, mTotalTile, DOWNLOAD_STATE_DOWNLOADING);
@@ -171,20 +180,16 @@ namespace BaiduMapTile
                     }
                     else
                     {
-                        Util.log("Retry["+i+"]" + task.url);
+                        downloadFailed = true;
+                        Util.log("Retry["+i+"]:\n" + url);
                     }
                 }
-                
-                if(i >= 5)
+                // 跳过下载
+                if (downloadFailed)
                 {
-                    ++mErrorCnt;
+                    ++mDownloadedTile;
+                    updateProgress(mDownloadedTile, mTotalTile, DOWNLOAD_STATE_DOWNLOADING);
                 }
-                
-                if(mErrorCnt >= 20)
-                {
-                    break;
-                }
-                
             }
             
             Util.log("Thread[" + id + "] completed. Error = " + mErrorCnt);
@@ -269,12 +274,12 @@ namespace BaiduMapTile
                         for (; mY <= mRightTopTile.y; )
                         {
                             int hostid = Math.Abs(mX + mY) % MAP_HOSTS.Length;
-                            String host = MAP_HOSTS[hostid];
 
                             if (mMapType == 0)
                             {
                                 //街道图（png） http://online0.map.bdimg.com/tile/?qt=tile&x=6536&y=1797&z=15&styles=pl
-                                task.url = host + "?qt=tile&x=" + mX + "&y=" + mY + "&z=" + mZoomArray[mZ] + "&styles=pl";
+                                task.url = "?&udt=20181205&scale=1&ak=3LH29MOBsbydY4PZ1Hyzp9z4bGpwC354" 
+                                    + "&x=" + mX + "&y=" + mY + "&z=" + mZoomArray[mZ] + "&styles=" + this.mapStyle;
                                 task.file = mBaseMapTileDir + mZoomArray[mZ] + "\\" + mX + "\\" + mY + ".png";
                             }
                             else
@@ -291,25 +296,6 @@ namespace BaiduMapTile
                             task.z = mZoomArray[mZ];
 
                             mY++;
-                            
-                            //String strLog = "[" + 
-                            //    mDownloadedTile + "/" + mTotalTile + "," + 
-                            //    mZoomArray[mZ] + "/" + mZoomArray[mZoomArray.Count - 1] + "," + 
-                            //    mX + "/" + mRightTopTile.x + "," + 
-                            //    mY + "/" + mRightTopTile.y + "]" + 
-                            //    " => " + task.file;
-
-                            //if(Util.isFileExists(task.file))
-                            //{
-                            //    mDownloadedTile++;
-                            //    setStatusText(strLog + " Exist");
-                            //    continue;
-                            //}
-                            //else
-                            //{
-                            //    setStatusText(strLog);
-                            //}
-                            
                             return task;
                         }
                         
@@ -341,10 +327,16 @@ namespace BaiduMapTile
                 Uri u = new Uri(urlString);
                 HttpWebRequest mRequest = (HttpWebRequest)WebRequest.Create(u);
                 mRequest.Method = "GET";
+                mRequest.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36";
                 mRequest.ContentType = "application/x-www-form-urlencoded";
 
                 HttpWebResponse wr = (HttpWebResponse)mRequest.GetResponse();
-
+                if(wr.ContentType != "image/jpeg" && wr.ContentType != "image/png")
+                {
+                    Util.log("download failed: not found");
+                    wr.Close();
+                    return false;
+                }
                 Stream sIn = wr.GetResponseStream();
                 FileStream fs = new FileStream(fileString, FileMode.Create, FileAccess.Write);
 
