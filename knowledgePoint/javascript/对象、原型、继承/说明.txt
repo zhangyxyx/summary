@@ -1,0 +1,103 @@
+1.理解什么是对象：
+任何东西都可以是对象，对象就是一组无序属性的集合 对象具有属性和方法
+1.1 属性的类型
+属性内部又定义了两种属性：数据属性和访问器属性
+（1）数据属性：有4个描述的行为
+	Configurable表示是否可以通过delate删除属性
+	Enumerable表示是否可以通过for-in循环返回属性
+	Writable表示是否修改属性的值
+	Value表示这个属性的数据值
+想要访问这些行为就需要用到Object.defineProtoperty()这个方法，参数是对象 属性名 {行为:值}
+注意：如果一旦设置为false也就是不可配置之后，就不能配置成可配置的了（除了：writeable）
+      虽然ie8能实现这个方法，但是实现不彻底（只能在DOM对象上使用，只能创建访问器属性），所以不要在ie8使用
+（2）访问器属性
+	Configurable是否通过delate删除
+	Enumerable 是否通过for-in循环
+	Get 读取属性调用的函数
+	Set 写入属性调用的函数
+同样需要通过Object.definePrototype() 参数也是一样的 如果是get和set就是值需要写成函数
+这里有两个非标准的获取和写入属性的函数
+	_definefineGetter_()和_defineSetter_()这两个可以只用用对象.方法（‘属性’，functon(){return this.属性}）
+1.2定义多个属性
+Object.defineProperties() 参数：对象 {属性：{行为：值}}
+1.3获取属性的特性
+利用上面两个方法设置好属性的特性之后，就可以用Obecjt.getOwnPropertyDescriptor()获取到属性的行为
+Obecjt.getOwnPropertyDescriptor() 参数 对象 属性名
+获取到的是这个属性的所有的行为的json类型
+===========================================
+2.创建对象
+2.1工厂模式
+function person(name,age){
+	var o=new Oject();
+	o.name=name;
+	o.age=age;
+	o.getname=function(){
+		alert(this.name)
+	}
+	return o;
+}
+var person1=person(1,2)
+这里面是类似一个公共的函数，每次调用这个函数传入对应的值。这样省了每次都要写相同的代码
+问题是：这样不能知道一个对象的类型
+
+2.2构造函数模式
+function Person(name,age){
+	this.name=name;
+	this.age=age;
+	this.getname=function(){
+		alert(this.name)
+	}
+}
+var person1=new Person(1,2)
+这里面new的作用是：1.一个新的对象 2.将this指向这个新的对象 3.给这个新的对象添加属性
+constructor判断对象的都构造函数
+instanceof判断对象的类型
+问题：person1里面有个function function也是一个对象，在某种意义上来说每次new一个实例的的时候也是new了一个function
+这样的话每个实例都有一个不同的function实例
+解决：
+将this.getname=getname然后再构造函数外部写一个getname的函数，这样每个实例都指向的是全局的getname
+问题：像上面这样解决，就会造成可能出现很多的全局函数
+
+2.3原型模式
+理解原型 实例 构造函数的关系 如图：原型实构造函数.png
+原型：每个函数都有一个prototype属性，这个属性是一个指针，指向一个对象 就是原型对象
+实例：就new 构造函数出来的，实例有一个内部的_proto_指针指向原型对象
+注意：判断实例是否等于某个原型对象 用isPrototypeof这个方法Person.prototype.isPrototypePf(person1)
+      获取某个对象的原型 Object.getPrototypeof()
+      如果一个实例重写了一个属性的值，那么访问这个属性的时候，显示在实例找，没有的话，在找原型
+判断属性存放在原型还是实例？      
+hasOwnProperty检测属性是否来自于实例，只有属性来自实例，才会返回true
+in只要通过能够访问的属性就返回true
+这两个结合可以确定属性是在原型还是在实例
+
+2.4组合会用构造函数和原型模式
+function Person(name,age,job){
+	this.name=name;
+	this.age=age;
+	this.friends=[1,2]
+}
+Person.prototype={
+	constructor:Person,//放在原型对象是为了重写默认的prototype对象的时候，constructor属性变成新的对象的constructor属性，而指向Object函数
+	sayname:function(){
+		alert(this.name)
+	}
+}
+var person1=new Person(1,2)
+==========================================
+3.继承
+原型链：如图：继承也是原型链.png
+function Parent(name){
+	this.name=name;
+}
+Parent.prototype.sayname=function(){
+	alert(this.name)
+}
+function Child(name,job){
+	Parent.call(this,name);//将父级的属性继承，避免子级重写父级属性
+	this.job=job
+}
+Child.prototype=new Parent();//继承
+Child.prototype.constructor=Child;
+Child.prototype.sayjob=function(){
+	alert(this.job)
+}

@@ -1,0 +1,14 @@
+1.正则的几种方法：
+str.search(reg)寻找某个位置
+str.match(reg)匹配返回的对象
+str.replace(reg，function(){})替换
+reg.test(str)是否符合 通过返回true
+2.规则
+[abc]任意一个
+[^abc]除了abc之外的任意一个
+{n}正好n个
+{n,m}至少n个 至多m个
+\d数字 \w单词 \s空格
+\D非数字 \W非单词 \S非空格
+.任意东西 \.就是点 \\就是斜杠
+^行首 $行尾 +尽可能多 | 或者 i忽略 g从头到尾 m多行

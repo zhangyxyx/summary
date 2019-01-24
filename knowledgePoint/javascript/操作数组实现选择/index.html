@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<table>
+    <thead>
+        <tr>
+            <td>name<input type="text" data-name="name" class="change"/></td>
+            <td>age<input type="text" data-name="age" class="change"/></td>
+            <td>work<input type="text" data-name="work" class="change"/></td>
+        </tr>
+    </thead>
+    <tbody class="con">
+        
+    </tbody>
+</table>
+
+<script src="./jquery.js"></script>
+<script>
+$(function(){
+    var  arr=[{name:'1',age:'h',work:'11'},{name:'1',age:'s',work:'22'},{name:'2',age:'h',work:'33'},{name:'2',age:'s',work:'44'}];
+    render();
+    function render(){
+        $(".con").empty();
+        for(var i=0;i<arr.length;i++){
+            var otd="<tr><td name='name'>"+arr[i].name+"</td><td name='age'>"+arr[i].age+"</td><td name='work'>"+arr[i].work+"</td></tr>";
+            $(".con").append(otd)
+        }
+    }
+    //选择
+    $(".change").keyup(function(){
+        $(".con").empty();
+        //获取到你选择的选项，形成json
+        var a={};
+        for(var i=0;i<$(".change").length;i++){
+            var key=$(".change").eq(i).attr("data-name");
+            var val=$(".change").eq(i).val();
+            var json={key:val};
+            a[key]=val;
+        }
+        
+       var result=[];
+       //循环每一个数据项
+        for(var i=0;i<arr.length;i++){
+            if(every(arr[i])){
+                result.push(arr[i])
+            }
+        }
+        //在每一个数据项中判断之前设置的json里面的值在数据项中是否存在
+        function every(every){
+            for(var j in a){
+                if(every[j].indexOf(a[j])<0){
+                    return false;
+                } 
+            }
+            return true
+        }
+        //得到最终的数据，进行渲染
+        for(var i=0;i<result.length;i++){
+            var otd="<tr><td name='name'>"+result[i].name+"</td><td name='age'>"+result[i].age+"</td><td name='work'>"+result[i].work+"</td></tr>";
+            $(".con").append(otd)
+        }
+    })
+})
+
+</script>   
+</body>
+</html>

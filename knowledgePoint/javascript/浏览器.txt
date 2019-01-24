@@ -1,0 +1,27 @@
+浏览器：
+在浏览器方面：IE10已经支持ES6了，其他的chrome firfox等都可以支持最新版的ES6
+==========
+浏览器对象：
+js可以获取很多对象
+window对象可以表示浏览器的窗口
+    innerWidth和innerHeight表示出了菜单栏之外的浏览器内部的宽高
+    outerWidth和outerHeight表示整个浏览器的宽高
+
+navigator表示浏览器的信息
+    判断浏览器的版本可以用window.navigator.userAgent
+    但是如果用的是两个兼容性的写法 var w=document.documentElement.scrollTop||document.body.scrollTop;
+
+screen表示屏幕
+    screen.width
+    screen.height
+
+location表示当前地址栏的地址
+    location.href地址 location.hash地址后面的hash 等还有很多
+
+document表示整个页面
+    document表示树的根节点
+    获取元素 document.getElementById() document.getElementByTagName()
+
+history历史
+    history.go(1)前进 history.go(-1)后退
+    history.forward()前进 history.back()后退
