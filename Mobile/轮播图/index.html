@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0"/>
+		<meta name="apple-mobile-web-app-capable" content="yes"/>
+		<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+		<title>zepto</title>
+		<style>
+		*{margin:0px;padding:0px;}
+		html{font-size:20px;}
+		.box{width:16rem;height:7.5rem;overflow:hidden;}	
+		ul{width:64rem;transition:all .4s ease;list-style-type:none;overflow:hidden;}
+		li{width:16rem;height:7.5rem;float:left;}
+		</style>
+		<script src="js/zepto.min.js"></script>
+		<script>
+		document.addEventListener("DOMContentLoaded",function(){
+			document.documentElement.style.fontSize=2*20*document.documentElement.clientWidth/640+"px";
+			(function(win,doc){
+				function change(){
+					document.documentElement.style.fontSize=document.documentElement.clientWidth/16+"px";
+				};
+				win.addEventListener("resize",change,false);
+				doc.addEventListener("DOMContentLoaded",change,false);
+			})(window,document);
+		},false);
+		$(function(){
+			var n=0;
+			$("ul").on("swipeLeft",function(){
+				n++;
+				$("ul").css("margin-left",-n*16+"rem");
+				
+				if(n>=4){
+					n=-1;
+					$("ul").css("margin-left","0rem");
+				}
+			});
+		});
+		</script>
+	</head>
+	<body>
+	<div class="box">
+		<ul>
+			<li style="background:red;"></li>
+			<li style="background:blue;"></li>
+			<li style="background:green;"></li>
+			<li style="background:yellow;"></li>
+		</ul>
+	</div>
+	</body>
+</html>

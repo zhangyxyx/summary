@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0"/>
+		<meta name="apple-mobile-web-app-capable" content="yes"/>
+		<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+		<title>分类</title>
+		<link rel="stylesheet" type="text/css" href="css/swiper-3.4.1.min.css"/>
+		<style>
+		*{margin:0px;padding:0px;}
+		html{font-size:20px;}
+		.sort_left .swiper-slide{font-size:0.8rem;border-bottom:1px solid #ccc; display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;}
+		</style>
+	</head>
+	<body>
+	<div class="sort_left" style="width:20%;border-right:1px solid #ccc;overflow:hidden">
+		<div class="swiper-container" >
+	        <div class="swiper-wrapper">
+	            <div class="swiper-slide">热门推荐</div>
+	            <div class="swiper-slide">精品女装</div>
+	            <div class="swiper-slide">品牌男装</div>
+	            <div class="swiper-slide">个护化妆</div>
+	            <div class="swiper-slide">家用电器</div>
+	            <div class="swiper-slide">电器办公</div>
+	            <div class="swiper-slide">手机数码</div>
+	            <div class="swiper-slide">母婴童装</div>
+	            <div class="swiper-slide">图书</div>
+	            <div class="swiper-slide">家具家纺</div>
+	            <div class="swiper-slide">居家生活</div>
+	            <div class="swiper-slide">家具建材</div>
+	            <div class="swiper-slide">视频生鲜</div>
+	            <div class="swiper-slide">酒水饮料</div>
+	            <div class="swiper-slide">运动户外</div>
+	            <div class="swiper-slide">鞋靴箱包</div>
+	            <div class="swiper-slide">奢品礼品</div>
+	            <div class="swiper-slide">钟表珠宝</div>
+	            <div class="swiper-slide">玩具乐器</div>
+	            <div class="swiper-slide">内衣配饰</div>
+	            <div class="swiper-slide">汽车用品</div>
+	            <div class="swiper-slide">音像制品</div>
+	            <div class="swiper-slide">医药保健</div>
+	            <div class="swiper-slide">计生情趣</div>
+	            <div class="swiper-slide">全球购</div>
+	            <div class="swiper-slide">京东金融</div>
+	            <div class="swiper-slide">生活旅行</div>
+	            <div class="swiper-slide">宠物农资</div>
+	            
+	        </div>
+	       
+	    </div>
+
+	</div>
+
+	<script src="js/jquery-1.7.2.js"></script>
+	<script src="js/swiper.min.js"></script>
+	<script>
+	var swiper = new Swiper('.swiper-container', {
+        slidesPerView: 13,
+        direction : 'vertical',
+    });
+    $(function(){
+    	var h=$(window).height();
+    	$(".sort_left").css("height",h+"px");
+    	console.log(h);
+    });
+	</script>
+	</body>
+</html>

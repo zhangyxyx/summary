@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui">
+    <link rel="stylesheet" href="css/main.css" />
+    <script type="text/javascript" src="js/rootfont.js"></script>
+	</head>
+	<style>
+	html, body, div, span, applet, object, iframe,
+	h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+	a, abbr, acronym, address, big, cite, code,
+	del, dfn, em, img, ins, kbd, q, s, samp,
+	small, strike, strong, sub, sup, tt, var,
+	b, u, i, center,
+	dl, dt, dd, ol, ul, li,
+	fieldset, form, label, legend,
+	table, caption, tbody, tfoot, thead, tr, th, td,
+	button,article, aside, canvas, details, embed, figure,
+	figcaption, footer, header, hgroup, menu, nav,
+	output, ruby, section, summary, time, mark,
+	audio, video {
+	 	margin: 0;
+		padding: 0;
+		border: 0;
+		vertical-align: baseline;
+		background: transparent;
+		outline: none;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+	article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
+	ol, ul { list-style: none; }
+	button{background: transparent;}
+	blockquote, q { quotes: none; }
+	blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; }
+	strong { font-weight: bold; }
+	table { border-collapse: collapse; border-spacing: 0; }
+	img { border: 0; max-width: 100%; }
+
+	html{
+		line-height: initial;
+	}
+	body{
+		font-size: 0.32rem;
+	}
+	/*上面两行代码特意提出来，是为了解决html字体过大时，他的line-height对子孙元素的不良影响。必不可少，开发时你可以把他放到样式重置中。*/
+	div{float:left;}
+	.div1{width:2rem;height:2rem;background:red}
+	.div2{width:2rem;height:2rem;background:green}
+	.div3{width:2.4rem;height:2rem;background:yellow}
+	</style>
+	<script>
+	//根据屏幕大小改变根元素字体大小
+	 (function(win,lib) {
+			var doc = win.document;
+			var docEl = doc.documentElement;
+			var metaEl = doc.querySelector('meta[name="viewport"]');
+			var flexibleEl = doc.querySelector('meta[name="flexible"]');
+			var dpr = 0;
+			var scale = 0;
+			var tid;
+			var flexible = lib.flexible || (lib.flexible = {});
+
+			if (metaEl) {
+			    //console.warn('将根据已有的meta标签来设置缩放比例');
+			    var match = metaEl.getAttribute('content').match(/initial\-scale=([\d\.]+)/);
+			    if (match) {
+			        scale = parseFloat(match[1]);
+			        dpr = parseInt(1 / scale);
+			    }
+			} else if (flexibleEl) {
+			    var content = flexibleEl.getAttribute('content');
+			    if (content) {
+			        var initialDpr = content.match(/initial\-dpr=([\d\.]+)/);
+			        var maximumDpr = content.match(/maximum\-dpr=([\d\.]+)/);
+			        if (initialDpr) {
+			            dpr = parseFloat(initialDpr[1]);
+			            scale = parseFloat((1 / dpr).toFixed(2));
+			        }
+			        if (maximumDpr) {
+			            dpr = parseFloat(maximumDpr[1]);
+			            scale = parseFloat((1 / dpr).toFixed(2));
+			        }
+			    }
+			}
+
+			if (!dpr && !scale) {
+			    var isAndroid = win.navigator.appVersion.match(/android/gi);
+			    var isIPhone = win.navigator.appVersion.match(/iphone/gi);
+			    var devicePixelRatio = win.devicePixelRatio;
+			    if (isIPhone) {
+			        // iOS下，对于2和3的屏，用2倍的方案，其余的用1倍方案
+			        if (devicePixelRatio >= 3 && (!dpr || dpr >= 3)) {
+			            dpr = 3;
+			        } else if (devicePixelRatio >= 2 && (!dpr || dpr >= 2)) {
+			            dpr = 2;
+			        } else {
+			            dpr = 1;
+			        }
+			    } else {
+			        // 其他设备下，仍旧使用1倍的方案
+			        dpr = 1;
+			    }
+			    scale = 1 / dpr;
+			}
+
+			docEl.setAttribute('data-dpr', dpr);
+			if (!metaEl) {
+			    metaEl = doc.createElement('meta');
+			    metaEl.setAttribute('name', 'viewport');
+			    metaEl.setAttribute('content', 'initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
+			    if (docEl.firstElementChild) {
+			        docEl.firstElementChild.appendChild(metaEl);
+			    } else {
+			        var wrap = doc.createElement('div');
+			        wrap.appendChild(metaEl);
+			        doc.write(wrap.innerHTML);
+			    }
+			}
+
+			function refreshRem() {
+			    var width = docEl.getBoundingClientRect().width;
+			    if (width / dpr > 750) {
+			        width = 750 * dpr;
+			    }
+			    var rem = width / 750 * 100;   // 设计图 750
+			    docEl.style.fontSize = rem + 'px';
+			    flexible.rem = win.rem = rem;
+			}
+
+			win.addEventListener('resize', function() {
+			    clearTimeout(tid);
+			    tid = setTimeout(refreshRem, 300);
+			}, false);
+			win.addEventListener('pageshow', function(e) {
+			    if (e.persisted) {
+			        clearTimeout(tid);
+			        tid = setTimeout(refreshRem, 300);
+			    }
+			}, false);
+
+			if (doc.readyState === 'complete') {
+			    doc.body.style.fontSize = 12 * dpr + 'px';
+			} else {
+			    doc.addEventListener('DOMContentLoaded', function(e) {
+			        doc.body.style.fontSize = 12 * dpr + 'px';
+			    }, false);
+			}
+			refreshRem();
+
+			flexible.dpr = win.dpr = dpr;
+			flexible.refreshRem = refreshRem;
+			flexible.rem2px = function(d) {
+			    var val = parseFloat(d) * this.rem;
+			    if (typeof d === 'string' && d.match(/rem$/)) {
+			        val += 'px';
+			    }
+			    return val;
+			}
+			flexible.px2rem = function(d) {
+			    var val = parseFloat(d) / this.rem;
+			    if (typeof d === 'string' && d.match(/px$/)) {
+			        val += 'rem';
+			    }
+			    return val;
+			}
+		    })(window, window['lib'] || (window['lib'] = {}));
+	</script>
+	<body>
+	<div class="div1"></div>
+	<div class="div2"></div>
+	<div class="div3"></div>
+	</body>
+</html>

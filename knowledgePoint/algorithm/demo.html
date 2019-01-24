@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	<script>
+	/*去重*/
+		var arr=[1,4,4,7,3,9,0,3,2,1,"你好","你","你好","你 "];
+		var arr2=[];
+		for(var i=0;i<arr.length;i++){
+			if(arr2.indexOf(arr[i])==-1){
+				arr2.push(arr[i]);
+			}
+		}
+		console.log(arr2);
+	/*排序*/
+	var arr=[1,4,2,8,3,0,5];
+    var temp;
+    for(var i=0;i<arr.length;i++){
+            for(var j=0;j<arr.length;j++){
+                if(arr[j]>arr[j+1]){
+                    temp=arr[j];
+                    arr[j]=arr[j+1];
+                    arr[j+1]=temp;
+                }
+            }
+    }
+	document.write('最后排序之后的结果:'+arr);
+	/*判断数组中最多出现的字符的次数*/
+	 var s="DFSSDAFQWAWEQWS";
+        var fres={};  //用来记录所有的字符的出现频次
+        var mostFreqChar=''; //用来记录最大频次的字符
+        var key;
+        for(var i=0;i<s.length;i++){
+            var char=s[i];
+            if(!fres[char]){
+                fres[char]=0;
+            }
+            fres[char]++;
+         }
+
+        for(key in fres){
+            if(mostFreqChar==''||fres[key]>fres[mostFreqChar]){
+                mostFreqChar=key;
+            }
+         }
+        console.log(mostFreqChar);
+        console.log(fres[mostFreqChar]);
+	</script>
+	</body>
+</html>

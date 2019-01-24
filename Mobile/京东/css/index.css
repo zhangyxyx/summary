@@ -1,0 +1,72 @@
+html, body, div, span, applet, object, iframe,
+	h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+	a, abbr, acronym, address, big, cite, code,
+	del, dfn, em, img, ins, kbd, q, s, samp,
+	small, strike, strong, sub, sup, tt, var,
+	b, u, i, center,
+	dl, dt, dd, ol, ul, li,
+	fieldset, form, label, legend,
+	table, caption, tbody, tfoot, thead, tr, th, td,
+	button,article, aside, canvas, details, embed, figure,
+	figcaption, footer, header, hgroup, menu, nav,
+	output, ruby, section, summary, time, mark,
+	audio, video {
+	 	margin: 0;
+		padding: 0;
+		border: 0;
+		vertical-align: baseline;
+		background: transparent;
+		outline: none;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+	article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
+	ol, ul { list-style: none; }
+	button{background: transparent;}
+	blockquote, q { quotes: none; }
+	blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; }
+	strong { font-weight: bold; }
+	table { border-collapse: collapse; border-spacing: 0; }
+	img { border: 0; max-width: 100%; }
+	html{
+		line-height: initial;
+	}
+	body{
+		font-size: 0.32rem;
+	}
+	/*上面两行代码特意提出来，是为了解决html字体过大时，他的line-height对子孙元素的不良影响。必不可少，开发时你可以把他放到样式重置中。*/
+/*swiper*/
+.swiper-container {
+    width: 100%;
+    height: 100%;
+}
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+
+    /* Center slide text vertically */
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+}
+/*京东秒杀*/
+.jdms_photo .swiper-container {
+    width: 100%;
+    height: 1.4rem;
+    margin: 0.02rem auto;
+}
+.news .swiper-container {
+    width: 100%;
+    height: 100%;
+}

@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui">
+    <link rel="stylesheet" type="text/css" href="css/index.css"/>
+    <link rel="stylesheet" type="text/css" href="css/swiper.css"/>
+    <script src="js/jquery-1.7.2.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/swiper.js"></script>
+    <style>
+    /*顶部*/
+    .header{position:fixed;z-index:2;width:100%;top:0px;left:0px;height:0.4rem;line-height:0.4rem;}
+	/*导航*/
+	.nav{overflow:hidden;height:1.3rem}
+	.nav div{float:left;text-align:center;margin-top:0.1rem;}
+	.nav div div{width:100%;height:0.34rem;}
+	.nav div div img{height:100%}
+	.nav div span{height:0.3rem;font-size:0.12rem;display:block;}
+	/**/
+	.jdms_photo .swiper-slide{position:relative;}
+	.jdms_photo span{display:block;width:100%;font-size:0.14rem;font-weight:bold;position:absolute;bottom:0px;left:0px;text-align:center;color:red;}
+	.jdms_photo img{position:absolute;top:0px;left:0px;}
+    </style>
+    
+	</head>
+	<body>
+	<div class="header">
+		<div style="margin:0px 0.1rem;float:left;color:#fff;font-size:0.2rem;width:0.56rem;height:0.21rem;"><img src="img/logo.v2.png" style="width:100%;height:100%"></div>
+		<input style="outline:none;padding:0px 0.05rem;float:left;height:0.25rem;width:60%;border:1px solid #fff;border-radius:20px;margin-top:0.05rem;" type="text" placeholder="请输入..."/>
+		<div style="margin-right:0.2rem;float:right;font-size:0.15rem;color:#fff">登录</div>
+	</div>
+	<!-- Swiper -->
+	<div class="banner" style="height:1.68rem;">
+	    <div class="swiper-container">
+	        <div class="swiper-wrapper">
+	            <div class="swiper-slide"><img src="img/swiper/1.jpg"></div>
+	            <div class="swiper-slide"><img src="img/swiper/2.jpg"></div>
+	            <div class="swiper-slide"><img src="img/swiper/3.jpg"></div>
+	            <div class="swiper-slide"><img src="img/swiper/4.jpg"></div>
+	            <div class="swiper-slide"><img src="img/swiper/5.jpg"></div>
+	        </div>
+	        <!-- Add Pagination -->
+	        <div class="swiper-pagination"></div>
+	    </div>
+    </div>
+    <!---->
+    <div style="height:0.96rem;"><img src="img/contact_top.jpg"></div>
+    <div style="background:#f2eeee;padding-bottom:0.1rem;">
+    <!--导航-->
+    <div class="nav" >
+    	<div style="width:0.75rem;height:0.51rem;"><div><img src="img/nav/1.png"></div><span>京东超市</span></div>
+    	<div style="width:0.75rem;height:0.51rem;"><div><img src="img/nav/2.png"></div><span>全球购</span></div>
+    	<div style="width:0.75rem;height:0.51rem;"><div><img src="img/nav/3.png"></div><span>服装城</span></div>
+    	<div style="width:0.75rem;height:0.51rem;"><div><img src="img/nav/4.png"></div><span>京东生鲜</span></div>
+    	<div style="width:0.75rem;height:0.51rem;"><div><img src="img/nav/5.png"></div><span>京东到家</span></div>
+    	<div style="width:0.75rem;height:0.51rem;"><div><img src="img/nav/6.png"></div><span>充值中心</span></div>
+    	<div style="width:0.75rem;height:0.51rem;"><div><img src="img/nav/7.png"></div><span>惠赚钱</span></div>
+    	<div style="width:0.75rem;height:0.51rem;"><div><img src="img/nav/8.png"></div><span>领券</span></div>
+    	<div style="width:0.75rem;height:0.51rem;"><div><img src="img/nav/9.png"></div><span>物流查询</span></div>
+    	<div style="width:0.75rem;height:0.51rem;"><div><img src="img/nav/10.png"></div><span>我的关注</span></div>
+    </div>
+    <!--京东快报-->
+    <div class="news" style="margin:0.1rem auto 0px;height:0.3rem;line-height:0.3rem;width:3.59rem;background:#fff;">
+    	<img src="img/jd-news-tit.png" style="margin:0.08rem;width:0.73rem;height:0.16rem;float:left;">
+    	<!---->
+    	<div style="width:2.32rem;height:0.3rem;float:left;">
+	    	<div class="swiper-container" >
+		        <div class="swiper-wrapper">
+		            <div class="swiper-slide">全民健身，打折1</div>
+		            <div class="swiper-slide">荣耀超级单，倒计时1天</div>
+		            <div class="swiper-slide">玩转3C,爆品2折</div>
+		        </div>
+	    	</div>
+    	</div>
+    	<span style="font-size:0.12rem;float:right;margin-right:0.1rem;">|更多</span>
+    </div>
+    </div>
+    <!--京东秒杀-->
+    <div class="jdms_top" style="height:0.34rem;line-height:0.34rem;">
+    	<img src="img/57fdff2eNb7cd186f.png" style="width:0.69rem;height:0.27rem;margin-top:0.04rem;float:left;"/>
+    	<span style="float:left;font-size:0.12rem;font-weight:bold;margin-left:0.1rem">12点场</span>
+    	<span style="float:left;font-size:0.12rem;margin-left:0.1rem">00:00:00</span>
+    </div>
+    <!--京东秒杀图片-->
+    <div class="jdms_photo">
+    	<!-- Swiper -->
+    	<div class="swiper-container">
+	        <div class="swiper-wrapper">
+	            <div class="swiper-slide"><img src="img/jdms_photo/1.jpg"><span>￥79.9</span></div>
+	            <div class="swiper-slide"><img src="img/jdms_photo/2.jpg"><span>￥199</span></div>
+	            <div class="swiper-slide"><img src="img/jdms_photo/2.jpg"><span>￥1995</span></div>
+	            <div class="swiper-slide"><img src="img/jdms_photo/4.jpg"><span>￥19.9</span></div>
+	            <div class="swiper-slide"><img src="img/jdms_photo/5.jpg"><span>￥209</span></div>
+	            <div class="swiper-slide"><img src="img/jdms_photo/6.jpg"><span>￥1399</span></div>
+	            <div class="swiper-slide"><img src="img/jdms_photo/7.jpg"><span>￥2869</span></div>
+				<div class="swiper-slide"><img src="img/jdms_photo/8.jpg"><span>￥49.9</span></div>
+	        </div>	       
+   		</div>
+    </div>
+    <!---->
+    <img src="img/58cbd79aN67fae51e.jpg!q70 (1).jpg"/>
+    <div class="cl" style="overflow:hidden">
+    	<img src="img/cl/1.jpg" style="float:left;width:50%;height:1.05rem;"/>
+    	<img src="img/cl/2.jpg" style="float:left;width:50%;height:1.05rem;"/>
+    	<img src="img/cl/3.jpg" style="float:left;width:50%;height:1.05rem;"/>
+    	<img src="img/cl/4.jpg" style="float:left;width:50%;height:1.05rem;"/>
+    </div>
+    <!--我爱生活-->
+    <div class="wash" style="overflow:hidden">
+    	<div style="height:0.38rem;text-align:center;background:url(img/我爱生活/floor-tit.png)">
+    		<img src="img/我爱生活/578de36bNae7bb54a.png!q70.jpg" style="width:0.68rem;height:0.28rem;">
+    	</div>
+    	<div class="wash">
+    		<div style="widtH:1.87rem;height:1.05rem;padding:0.1rem 0px 0px 0.1rem;float:left;">
+    			<span style="float:left;"><h1 style="font-size:0.16rem;">玩转3C</h1><p style="font-size:0.12rem;">红米4X 放量抢</p></span>
+    			<img src="img/我爱生活/1.jpg" style="width:0.79rem;float:right">
+    		</div>
+    		<div style="widtH:1.87rem;height:1.05rem;padding:0.1rem 0px 0px 0.1rem;floaT:left;">
+    			<span style="float:left;"><h1 style="font-size:0.16rem;">京东家电</h1><p style="font-size:0.12rem;">2件8.8折</p></span>
+    			<img src="img/我爱生活/2.jpg" style="width:0.79rem;float:right">
+    		</div>
+    		<div style="widtH:1.87rem;height:1.05rem;padding:0.1rem 0px 0px 0.1rem;floaT:left;">
+    			<span style="float:left;"><h1 style="font-size:0.16rem;">京东超市</h1><p style="font-size:0.12rem;">限量1元抢</p></span>
+    			<img src="img/我爱生活/3.jpg" style="width:0.79rem;float:right">
+    		</div>
+    		<div style="widtH:1.87rem;height:1.05rem;padding:0.1rem 0px 0px 0.1rem;floaT:left;">
+    			<span style="float:left;"><h1 style="font-size:0.16rem;">爱家</h1><p style="font-size:0.12rem;">睡眠节599-100</p></span>
+    			<img src="img/我爱生活/4.jpg" style="width:0.79rem;float:right">
+    		</div>
+    		<!--我爱生活-->
+    		<div style="widtH:0.93rem;height:1.21rem;padding:0.1rem 0px 0px 0.1rem;floaT:left;">
+    			<span style="float:left;"><h1 style="font-size:0.16rem;">爱宝宝</h1><p style="font-size:0.12rem;">低至2折</p></span>
+    			<img src="img/我爱生活/5.jpg" style="width:0.79rem;float:right">
+    		</div>
+    		<div style="widtH:0.93rem;height:1.21rem;padding:0.1rem 0px 0px 0.1rem;floaT:left;">
+    			<span style="float:left;"><h1 style="font-size:0.16rem;">爱美丽</h1><p style="font-size:0.12rem;">粉色小羊皮</p></span>
+    			<img src="img/我爱生活/6.jpg" style="width:0.79rem;float:right">
+    		</div>
+    		<div style="widtH:0.93rem;height:1.21rem;padding:0.1rem 0px 0px 0.1rem;floaT:left;">
+    			<span style="float:left;"><h1 style="font-size:0.16rem;">爱吃</h1><p style="font-size:0.12rem;">满99减30</p></span>
+    			<img src="img/我爱生活/7.jpg" style="width:0.79rem;float:right">
+    		</div>
+    		<div style="widtH:0.93rem;height:1.21rem;padding:0.1rem 0px 0px 0.1rem;floaT:left;">
+    			<span style="float:left;"><h1 style="font-size:0.16rem;">爱穿搭</h1><p style="font-size:0.12rem;">运动界</p></span>
+    			<img src="img/我爱生活/8.jpg" style="width:0.79rem;float:right">
+    		</div>
+    	</div>
+    </div>
+    <!--第二个轮播图-->
+    <div class="banner2" style="height:0.85rem;padding:0.1rem;">
+    	<div class="swiper-container">
+	        <div class="swiper-wrapper">
+	            <div class="swiper-slide"><img src="img/banner2/58c91953N22d941d9.jpg"></div>
+	            <div class="swiper-slide"><img src="img/banner2/58cf92cbN9f58dbf5.jpg!q70.jpg"></div>
+	        </div>
+	        <!-- Add Pagination -->
+	        <div class="swiper-pagination"></div>
+	    </div>
+    </div>
+    <!--享品质-->
+    <div class="wash" style="overflow:hidden">
+    	<div style="height:0.38rem;text-align:center;background:url(img/我爱生活/floor-tit.png)">
+    		<img src="img/享品质/586c5dfdNe496351a.png!q70.jpg" style="width:0.68rem;height:0.28rem;">
+    	</div>
+    	<div class="wash">
+    		<div style="widtH:1.87rem;height:1.05rem;padding:0.1rem 0px 0px 0.1rem;float:left;">
+    			<span style="float:left;"><h1 style="font-size:0.16rem;">全球尖货</h1><p style="font-size:0.12rem;">自营进口机油</p></span>
+    			<img src="img/享品质/1.jpg" style="width:0.79rem;float:right">
+    		</div>
+    		<div style="widtH:1.87rem;height:1.05rem;padding:0.1rem 0px 0px 0.1rem;floaT:left;">
+    			<span style="float:left;"><h1 style="font-size:0.16rem;">京东精选</h1><p style="font-size:0.12rem;">热销个户排行</p></span>
+    			<img src="img/享品质/2.jpg" style="width:0.79rem;float:right">
+    		</div>
+    		<div style="widtH:1.87rem;height:1.05rem;padding:0.1rem 0px 0px 0.1rem;floaT:left;">
+    			<span style="float:left;"><h1 style="font-size:0.16rem;">京东超市</h1><p style="font-size:0.12rem;">限量1元抢</p></span>
+    			<img src="img/享品质/3.jpg" style="width:0.79rem;float:right">
+    		</div>
+    		<div style="widtH:1.87rem;height:1.05rem;padding:0.1rem 0px 0px 0.1rem;floaT:left;">
+    			<span style="float:left;"><h1 style="font-size:0.16rem;">爱家</h1><p style="font-size:0.12rem;">睡眠节599-100</p></span>
+    			<img src="img/享品质/4.jpg" style="width:0.79rem;float:right">
+    		</div>
+    		<!--我爱生活-->
+    		<div style="widtH:0.93rem;height:1.21rem;padding:0.1rem 0px 0px 0.1rem;floaT:left;">
+    			<span style="float:left;"><h1 style="font-size:0.16rem;">爱宝宝</h1><p style="font-size:0.12rem;">低至2折</p></span>
+    			<img src="img/享品质/5.jpg" style="width:0.79rem;float:right">
+    		</div>
+    		<div style="widtH:0.93rem;height:1.21rem;padding:0.1rem 0px 0px 0.1rem;floaT:left;">
+    			<span style="float:left;"><h1 style="font-size:0.16rem;">爱美丽</h1><p style="font-size:0.12rem;">粉色小羊皮</p></span>
+    			<img src="img/享品质/6.jpg" style="width:0.79rem;float:right">
+    		</div>
+    		<div style="widtH:0.93rem;height:1.21rem;padding:0.1rem 0px 0px 0.1rem;floaT:left;">
+    			<span style="float:left;"><h1 style="font-size:0.16rem;">爱吃</h1><p style="font-size:0.12rem;">满99减30</p></span>
+    			<img src="img/享品质/7.jpg" style="width:0.79rem;float:right">
+    		</div>
+    		<div style="widtH:0.93rem;height:1.21rem;padding:0.1rem 0px 0px 0.1rem;floaT:left;">
+    			<span style="float:left;"><h1 style="font-size:0.16rem;">爱穿搭</h1><p style="font-size:0.12rem;">运动界</p></span>
+    			<img src="img/享品质/8.jpg" style="width:0.79rem;float:right">
+    		</div>
+    	</div>
+    </div>
+    <!--第三个轮播图-->
+    <div class="banner3" style="height:0.85rem;padding:0.1rem;">
+    	<div class="swiper-container">
+	        <div class="swiper-wrapper">
+	            <div class="swiper-slide"><img src="img/banner3/1.jpg"></div>
+	            <div class="swiper-slide"><img src="img/banner3/2.jpg"></div>
+	        </div>
+	        <!-- Add Pagination -->
+	        <div class="swiper-pagination"></div>
+	    </div>
+    </div>
+    <!--够特色-->
+    <div class="wash" style="overflow:hidden">
+    	<div style="height:0.38rem;text-align:center;background:url(img/我爱生活/floor-tit.png)">
+    		<img src="img/购特色/578de6d1N9e38b8e5.png!q70.jpg" style="width:0.68rem;height:0.28rem;">
+    	</div>
+    	<div class="wash">
+    		<div style="widtH:1.87rem;height:1.05rem;padding:0.1rem 0px 0px 0.1rem;float:left;">
+    			<span style="float:left;"><h1 style="font-size:0.16rem;">智能生活</h1><p style="font-size:0.12rem;">低至1元</p></span>
+    			<img src="img/购特色/1.jpg" style="width:0.79rem;float:right">
+    		</div>
+    		<div style="widtH:0.93rem;height:1.21rem;padding:0.1rem 0px 0px 0.1rem;floaT:left;">
+    			<span style="float:left;"><h1 style="font-size:0.16rem;">京东众筹</h1><p style="font-size:0.12rem;">1元秒杀</p></span>
+    			<img src="img/购特色/2.jpg" style="width:0.79rem;float:right">
+    		</div>
+    		<div style="widtH:0.93rem;height:1.21rem;padding:0.1rem 0px 0px 0.1rem;floaT:left;">
+    			<span style="float:left;"><h1 style="font-size:0.16rem;">京东旅行</h1><p style="font-size:0.12rem;">周二开房便宜</p></span>
+    			<img src="img/购特色/3.jpg" style="width:0.79rem;float:right">
+    		</div>
+    		<div style="widtH:1.87rem;height:1.05rem;padding:0.1rem 0px 0px 0.1rem;floaT:left;">
+    			<span style="float:left;"><h1 style="font-size:0.16rem;">白条商城</h1><p style="font-size:0.12rem;">苹果12期免息</p></span>
+    			<img src="img/购特色/4.jpg" style="width:0.79rem;float:right">
+    		</div>
+    		<div style="widtH:0.93rem;height:1.21rem;padding:0.1rem 0px 0px 0.1rem;floaT:left;">
+    			<span style="float:left;"><h1 style="font-size:0.16rem;">爱车生活</h1><p style="font-size:0.12rem;">1元安装</p></span>
+    			<img src="img/购特色/5.jpg" style="width:0.79rem;float:right">
+    		</div>
+    		<div style="widtH:0.93rem;height:1.21rem;padding:0.1rem 0px 0px 0.1rem;floaT:left;">
+    			<span style="float:left;"><h1 style="font-size:0.16rem;">电影娱乐</h1><p style="font-size:0.12rem;">1元抢手机</p></span>
+    			<img src="img/购特色/6.jpg" style="width:0.79rem;float:right">
+    		</div>
+    		<!--我爱生活-->
+    		<div style="widtH:0.93rem;height:1.21rem;padding:0.1rem 0px 0px 0.1rem;floaT:left;">
+    			<span style="float:left;"><h1 style="font-size:0.16rem;">清仓二手</h1><p style="font-size:0.12rem;">iphone6秒杀</p></span>
+    			<img src="img/购特色/7.jpg" style="width:0.79rem;float:right">
+    		</div>
+    		<div style="widtH:0.93rem;height:1.21rem;padding:0.1rem 0px 0px 0.1rem;floaT:left;">
+    			<span style="float:left;"><h1 style="font-size:0.16rem;">大药房</h1><p style="font-size:0.12rem;">舒筋活血</p></span>
+    			<img src="img/购特色/11.jpg" style="width:0.79rem;float:right">
+    		</div>
+    		<div style="widtH:0.93rem;height:1.21rem;padding:0.1rem 0px 0px 0.1rem;floaT:left;">
+    			<span style="float:left;"><h1 style="font-size:0.16rem;">陪伴宝宝</h1><p style="font-size:0.12rem;">1元秒杀</p></span>
+    			<img src="img/购特色/9.jpg" style="width:0.79rem;float:right">
+    		</div>
+    		<div style="widtH:0.93rem;height:1.21rem;padding:0.1rem 0px 0px 0.1rem;floaT:left;">
+    			<span style="float:left;"><h1 style="font-size:0.16rem;">京东拍卖</h1><p style="font-size:0.12rem;">匠心工艺收藏</p></span>
+    			<img src="img/购特色/10.jpg" style="width:0.79rem;float:right">
+    		</div>
+    	</div>
+    </div>
+    <!--第四个轮播图-->
+    <div class="banner4" style="height:0.85rem;padding:0.1rem;">
+    	<div class="swiper-container">
+	        <div class="swiper-wrapper">
+	            <div class="swiper-slide"><img src="img/banner4/1.jpg"></div>
+	            <div class="swiper-slide"><img src="img/banner4/2.jpg"></div>
+	        </div>
+	        <!-- Add Pagination -->
+	        <div class="swiper-pagination"></div>
+	    </div>
+    </div>
+    <!--逛商城-->
+    <div class="wash" style="overflow:hidden">
+    	<div style="height:0.38rem;text-align:center;background:url(img/我爱生活/floor-tit.png)">
+    		<img src="img/逛商城/578de9fcNb59b6153.png!q70.jpg" style="width:0.68rem;height:0.28rem;">
+    	</div>
+    	<div class="wash">
+    		<div style="widtH:1.87rem;height:1.05rem;padding:0.1rem 0px 0px 0.1rem;float:left;">
+    			<span style="float:left;"><h1 style="font-size:0.16rem;">手机数码</h1><p style="font-size:0.12rem;">sufare超级价</p></span>
+    			<img src="img/逛商城/1.jpg" style="width:0.79rem;float:right">
+    		</div>
+    		<div style="widtH:1.87rem;height:1.05rem;padding:0.1rem 0px 0px 0.1rem;floaT:left;">
+    			<span style="float:left;"><h1 style="font-size:0.16rem;">时尚官</h1><p style="font-size:0.12rem;">299减199</p></span>
+    			<img src="img/逛商城/2.jpg" style="width:0.79rem;float:right">
+    		</div>
+    		<div style="widtH:1.87rem;height:1.05rem;padding:0.1rem 0px 0px 0.1rem;floaT:left;">
+    			<span style="float:left;"><h1 style="font-size:0.16rem;">中外名酒</h1><p style="font-size:0.12rem;">买二付一</p></span>
+    			<img src="img/逛商城/3.jpg" style="width:0.79rem;float:right">
+    		</div>
+    		<div style="widtH:1.87rem;height:1.05rem;padding:0.1rem 0px 0px 0.1rem;floaT:left;">
+    			<span style="float:left;"><h1 style="font-size:0.16rem;">大家电馆</h1><p style="font-size:0.12rem;">满1000减100</p></span>
+    			<img src="img/逛商城/4.jpg" style="width:0.79rem;float:right">
+    		</div>
+    		<!--我爱生活-->
+    		<div style="widtH:0.93rem;height:1.21rem;padding:0.1rem 0px 0px 0.1rem;floaT:left;">
+    			<span style="float:left;"><h1 style="font-size:0.16rem;">母婴馆</h1><p style="font-size:0.12rem;">抽劵299减100</p></span>
+    			<img src="img/逛商城/5.jpg" style="width:0.79rem;float:right">
+    		</div>
+    		<div style="widtH:0.93rem;height:1.21rem;padding:0.1rem 0px 0px 0.1rem;floaT:left;">
+    			<span style="float:left;"><h1 style="font-size:0.16rem;">电脑办公</h1><p style="font-size:0.12rem;">尊享3折</p></span>
+    			<img src="img/逛商城/6.jpg" style="width:0.79rem;float:right">
+    		</div>
+    		<div style="widtH:0.93rem;height:1.21rem;padding:0.1rem 0px 0px 0.1rem;floaT:left;">
+    			<span style="float:left;"><h1 style="font-size:0.16rem;">鞋靴箱包</h1><p style="font-size:0.12rem;">299减20</p></span>
+    			<img src="img/逛商城/7.jpg" style="width:0.79rem;float:right">
+    		</div>
+    		<div style="widtH:0.93rem;height:1.21rem;padding:0.1rem 0px 0px 0.1rem;floaT:left;">
+    			<span style="float:left;"><h1 style="font-size:0.16rem;">小家电馆</h1><p style="font-size:0.12rem;">白条6期免息</p></span>
+    			<img src="img/逛商城/8.jpg" style="width:0.79rem;float:right">
+    		</div>
+    		<!--我爱生活-->
+    		<div style="widtH:0.93rem;height:1.21rem;padding:0.1rem 0px 0px 0.1rem;floaT:left;">
+    			<span style="float:left;"><h1 style="font-size:0.16rem;">生鲜馆</h1><p style="font-size:0.12rem;">新品生鲜</p></span>
+    			<img src="img/逛商城/9.jpg" style="width:0.79rem;float:right">
+    		</div>
+    		<div style="widtH:0.93rem;height:1.21rem;padding:0.1rem 0px 0px 0.1rem;floaT:left;">
+    			<span style="float:left;"><h1 style="font-size:0.16rem;">运动户外</h1><p style="font-size:0.12rem;">满299减40</p></span>
+    			<img src="img/逛商城/10.jpg" style="width:0.79rem;float:right">
+    		</div>
+    		<div style="widtH:0.93rem;height:1.21rem;padding:0.1rem 0px 0px 0.1rem;floaT:left;">
+    			<span style="float:left;"><h1 style="font-size:0.16rem;">图书音像</h1><p style="font-size:0.12rem;">满199减100</p></span>
+    			<img src="img/逛商城/11.jpg" style="width:0.79rem;float:right">
+    		</div>
+    		<div style="widtH:0.93rem;height:1.21rem;padding:0.1rem 0px 0px 0.1rem;floaT:left;">
+    			<span style="float:left;"><h1 style="font-size:0.16rem;">钟表馆</h1><p style="font-size:0.12rem;">每满100减20</p></span>
+    			<img src="img/逛商城/12.jpg" style="width:0.79rem;float:right">
+    		</div>
+    	</div>
+    </div>
+    <!---->
+    <div style="height:0.96rem;"><img src="img/banner.jpg"></div>
+    <!--发现好店-->
+     <div class="wash" style="overflow:hidden">
+    	<div style="height:0.38rem;text-align:center;background:url(img/我爱生活/floor-tit.png)">
+    		<img src="img/发现好店/587c8b2bNec769cc1.png!q70.jpg" style="width:0.68rem;height:0.28rem;">
+    	</div>
+    	<div class="wash">
+    		<div style="position:relative;widtH:1.87rem;height:1.39rem;padding:0.1rem 0px 0px 0.1rem;float:left;">
+    			<span><h1 style="font-size:0.16rem;">精选</h1><p style="font-size:0.12rem;">20家好店为你精选推荐</p></span>
+    			<div style="height:0.88rem;">
+    				<img src="img/发现好店/1.jpg" style="width:0.79rem;float:left">
+    				<img src="img/发现好店/1.jpg" style="width:0.79rem;float:left">
+    			</div>
+    			<span style="position:absolute;height:0.17rem;width:90%;margin-left:5%;text-align:center;bottom:5px;left:0px;display:block;background:rgba(0,0,0,.5);font-size:0.12rem;">HeyJuice官方旗舰店</span>
+    		</div>
+    		<div style="position:relative;widtH:1.87rem;height:1.39rem;padding:0.1rem 0px 0px 0.1rem;float:left;">
+    			<span><h1 style="font-size:0.16rem;">女神</h1><p style="font-size:0.12rem;">女神教室</p></span>
+    			<div>
+    				<img src="img/发现好店/2.jpg" style="width:0.79rem;float:left">
+    				<img src="img/发现好店/3.jpg" style="width:0.79rem;float:left">
+    			</div>
+    			<span style="position:absolute;height:0.17rem;width:90%;margin-left:5%;text-align:center;bottom:5px;left:0px;display:block;background:rgba(0,0,0,.5);font-size:0.12rem;">森马官方旗舰店</span>
+    		</div>
+    	</div>
+    </div>
+    <!--优选清单-->
+     <div class="wash" style="overflow:hidden">
+    	<div style="height:0.38rem;text-align:center;background:url(img/我爱生活/floor-tit.png)">
+    		<img src="img/优选清单/589a8ce3Nb18b2ded.png!q70.jpg" style="width:0.68rem;height:0.28rem;">
+    	</div>
+    	<div class="wash">
+    		<div style="position:relative;widtH:1.87rem;height:1.43rem;padding:0.1rem 0px 0px 0.1rem;float:left;">
+    			<span><h1 style="font-size:0.16rem;">自拍不够美？自拍达人必备高像素手机推荐</h1></span>
+    			<div style="height:0.88rem;">
+    				<img src="img/优选清单/1.jpg" style="width:0.79rem;float:left">
+    				<img src="img/优选清单/2.jpg" style="width:0.79rem;float:left">
+    			</div>
+    		</div>
+    		<div style="position:relative;widtH:1.87rem;height:1.43rem;padding:0.1rem 0px 0px 0.1rem;float:left;">
+    			<span><h1 style="font-size:0.16rem;">让音乐伴你晨跑，运动蓝牙耳机</h1></span>
+    			<div>
+    				<img src="img/优选清单/3.jpg" style="width:0.79rem;float:left">
+    				<img src="img/优选清单/4.jpg" style="width:0.79rem;float:left">
+    			</div>
+    		</div>
+    	</div>
+    </div>
+    
+	</body>
+</html>

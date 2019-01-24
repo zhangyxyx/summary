@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0"/>
+		<meta name="apple-mobile-web-app-capable" content="yes"/>
+		<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+		<link href="juhuasuan.css" type="text/css" rel="stylesheet" />
+		<!--[if lt IE 9]>
+		<script src="html5shiv.min.js"></script>
+		<![endif]-->
+		<title></title>
+		<script>
+			window.onload=function ()
+			{
+				//640设计图的宽度
+				//40=2*20 2是二倍图 20是html{font-size:20px}
+				//16=640/2/20
+				document.documentElement.style.fontSize=40*document.documentElement.clientWidth/640+'px';
+				(function (win, doc) {
+			 	function change()
+			 	{
+			 		document.documentElement.style.fontSize=document.documentElement.clientWidth/16+'px';
+			 	}
+			 	doc.addEventListener('DOMContentLoaded',change,false);
+			 	win.addEventListener('resize',change,false);
+			})(window, document);
+
+			};
+		</script>
+	</head>
+	<body>
+		<div class="box">
+			<header class="header">
+				<input type="text" value="m.juhuasuan.com" />
+			</header>
+			<div class="back">
+				<span></span>
+				<img src="images/juhuasuan.png" />
+			</div>
+			<div class="banner">
+				<ul class="pic">
+					<li><img src="images/bg.png"/></li>
+				</ul>
+				<div class="button">
+					<a href="javascript:;"></a>
+					<a href="javascript:;"></a>
+					<a href="javascript:;"></a>
+					<a href="javascript:;"></a>
+					<a href="javascript:;" class="active"></a>
+				</div>
+			</div>
+			<ul class="list">
+				<li>
+					<img src="images/1.png" />
+					<span>商品</span>
+				</li>
+				<li>
+					<img src="images/2.png" />
+					<span>生活</span>
+				</li>
+				<li>
+					<img src="images/3.png" />
+					<span>品牌</span>
+				</li>
+				<li>
+					<img src="images/4.png" />
+					<span>聚宝盆</span>
+				</li>
+				<li>
+					<img src="images/5.png" />
+					<span>聚名牌</span>
+				</li>
+				<li>
+					<img src="images/6.png" />
+					<span>聚家装</span>
+				</li>
+				<li>
+					<img src="images/7.png" />
+					<span class="active">聚透</span>
+				</li>
+				<li>
+					<img src="images/8.png" />
+					<span>客户端</span>
+				</li>
+			</ul>
+			<div class="sale">
+				<div class="title">
+					<h3>聚划算热卖排行</h3>
+					<p>TOP10</p>
+				</div>
+				<ul class="ware-list">
+					<li class="content">
+						<div class="num1" style="background: #e00202;">1</div>
+						<img src="images/bg1.png"/>
+						<div class="price">
+							<div class="price-cont">
+								<p class="sold">已售68423</p>
+								<p class="sold">
+									<span class="red">2.3</span>折
+									<span>￥<em>299</em></span>
+								</p>
+							</div>
+							<div class="rebate">￥51</div>
+						</div>
+					</li>
+					<li class="content">
+						<div class="num1" style="background: #ff4800;">2</div>
+						<img src="images/bg2.png"/>
+						<div class="price">
+							<div class="price-cont">
+								<p class="sold">已售68423</p>
+								<p class="sold">
+									<span class="red">2.3</span>折
+									<span>￥<em>299</em></span>
+								</p>
+							</div>
+							<div class="rebate">￥51</div>
+						</div>
+					</li>
+					<li class="content">
+						<div class="num1" style="background: #ff7300;">3</div>
+						<img src="images/bg3.png"/>
+						<div class="price">
+							<div class="price-cont">
+								<p class="sold">已售68423</p>
+								<p class="sold">
+									<span class="red">2.3</span>折
+									<span>￥<em>299</em></span>
+								</p>
+							</div>
+							<div class="rebate">￥51</div>
+						</div>
+					</li>
+					<li class="content">
+						<div class="num1" style="background: #ff9d00;">4</div>
+						<img src="images/bg4.png"/>
+						<div class="price">
+							<div class="price-cont">
+								<p class="sold">已售68423</p>
+								<p class="sold">
+									<span class="red">2.3</span>折
+									<span>￥<em>299</em></span>
+								</p>
+							</div>
+							<div class="rebate">￥51</div>
+						</div>
+					</li>
+					<li class="content">
+						<div class="num1" style="background: #ffa800;">5</div>
+						<img src="images/bg5.png"/>
+						<div class="price">
+							<div class="price-cont">
+								<p class="sold">已售68423</p>
+								<p class="sold">
+									<span class="red">2.3</span>折
+									<span>￥<em>299</em></span>
+								</p>
+							</div>
+							<div class="rebate">￥51</div>
+						</div>
+					</li>
+					<li class="content">
+						<div class="num1" style="background: #ffb400;">6</div>
+						<img src="images/bg6.png"/>
+						<div class="price">
+							<div class="price-cont">
+								<p class="sold">已售68423</p>
+								<p class="sold">
+									<span class="red">2.3</span>折
+									<span>￥<em>299</em></span>
+								</p>
+							</div>
+							<div class="rebate">￥51</div>
+						</div>
+					</li>
+					<li class="content">
+						<div class="num1" style="background: #ffba00;">7</div>
+						<img src="images/bg7.png"/>
+						<div class="price">
+							<div class="price-cont">
+								<p class="sold">已售68423</p>
+								<p class="sold">
+									<span class="red">2.3</span>折
+									<span>￥<em>299</em></span>
+								</p>
+							</div>
+							<div class="rebate">￥51</div>
+						</div>
+					</li>
+					<li class="content">
+						<div class="num1" style="background: #fcd000;">8</div>
+						<img src="images/bg8.png"/>
+						<div class="price">
+							<div class="price-cont">
+								<p class="sold">已售68423</p>
+								<p class="sold">
+									<span class="red">2.3</span>折
+									<span>￥<em>299</em></span>
+								</p>
+							</div>
+							<div class="rebate">￥51</div>
+						</div>
+					</li>
+					<li class="content">
+						<div class="num1" style="background: #ffd719;">9</div>
+						<img src="images/bg9.png"/>
+						<div class="price">
+							<div class="price-cont">
+								<p class="sold">已售68423</p>
+								<p class="sold">
+									<span class="red">2.3</span>折
+									<span>￥<em>299</em></span>
+								</p>
+							</div>
+							<div class="rebate">￥51</div>
+						</div>
+					</li>
+					<li class="content">
+						<div class="num1" style="background: #ffe152;">10</div>
+						<img src="images/bg10.png"/>
+						<div class="price">
+							<div class="price-cont">
+								<p class="sold">已售68423</p>
+								<p class="sold">
+									<span class="red">2.3</span>折
+									<span>￥<em>299</em></span>
+								</p>
+							</div>
+							<div class="rebate">￥51</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="box2">
+				<div class="more">更多划算 逛起来!</div>
+				<div class="fenlei">
+					<img src="images/group.png" />
+					<ul class="fenlei-list">
+						<li><a href="javascript:;" class="red marginL">服饰</a></li>
+						<li><a href="javascript:;">配饰</a></li>
+						<li><a href="javascript:;">美妆</a></li>
+						<li><a href="javascript:;">鞋包</a></li>
+						<li><a href="javascript:;">食品</a></li>
+						<li><a href="javascript:;" class="red">家居</a></li>
+						<li><a href="javascript:;">运动</a></li>
+						<li><a href="javascript:;" class="red">电器</a></li>
+						<li><a href="javascript:;">百货</a></li>
+						<li><a href="javascript:;">母婴</a></li>
+						<li><a href="javascript:;">数码</a></li>
+						<li><a href="javascript:;">更多</a></li>
+					</ul>
+				</div>
+				<div class="more">精彩商品 逛起来!</div>
+				<div class="fenlei">
+					<img src="images/life.png" />
+					<ul class="fenlei-list">
+						<li><a href="javascript:;" class="red">美食</a></li>
+						<li><a href="javascript:;">教育</a></li>
+						<li><a href="javascript:;">酒店</a></li>
+						<li><a href="javascript:;">电影</a></li>
+						<li><a href="javascript:;">生活服务</a></li>
+						<li><a href="javascript:;" class="red">卡券</a></li>
+						<li><a href="javascript:;">摄影</a></li>
+						<li><a href="javascript:;" class="red">粮油生鲜</a></li>
+						<li><a href="javascript:;">门票</a></li>
+						<li><a href="javascript:;">休闲娱乐</a></li>
+						<li><a href="javascript:;"></a></li>
+						<li><a href="javascript:;"></a></li>
+					</ul>
+				</div>
+				<div class="more">品质生活 逛起来!</div>
+				<div class="fenlei">
+					<img src="images/brand.png" />
+					<ul class="fenlei-list">
+						<li><a href="javascript:;">七匹狼</a></li>
+						<li><a href="javascript:;" class="red">红粉女郎</a></li>
+						<li><a href="javascript:;">卓诗尼</a></li>
+						<li><a href="javascript:;" class="red">收纳博士</a></li>
+						<li><a href="javascript:;">惠氏</a></li>
+						<li><a href="javascript:;">夏乐</a></li>
+						<li><a href="javascript:;">帕克伦</a></li>
+						<li><a href="javascript:;">古今</a></li>
+						<li><a href="javascript:;" class="red">九牧</a></li>
+						<li><a href="javascript:;">诺奥</a></li>
+						<li><a href="javascript:;">红豆</a></li>
+						<li><a href="javascript:;">曼秀雷敦</a></li>
+					</ul>
+				</div>
+				<div class="more">品牌折扣 逛起来!</div>
+				<div class="type"><img src="images/9.png"/></div>
+			</div>
+			<div class="login">
+				<a href="javascript:;" class="loginIn">登录</a>
+				<a href="javascript:;" class="loginIn">注册</a>
+				<a href="javascript:;" class="top">TOP</a>
+			</div>
+			<footer>
+				<ul class="edition">
+					<li><a href="javascript:;">标准版</a></li>
+					<li><a href="javascript:;">电脑版</a></li>
+				</ul>
+				<p>©2013 浙B2-20080224    服务中心</p>
+			</footer>
+		</div>
+	</body>
+</html>

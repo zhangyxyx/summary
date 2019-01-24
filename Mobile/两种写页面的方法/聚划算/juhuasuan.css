@@ -1,0 +1,133 @@
+/*默认样式*/
+body, ul, ol, li, p, h1, h2, h3, h4, h5, h6, form, fieldset, table, td, img, div, dl, dt, dd, input { margin: 0; padding: 0; border: 0; }
+body { font-size: 14px; font-family: 微软雅黑; }
+ul, ol { list-style-type: none; }
+select, input, img { vertical-align: middle; outline: none; }
+a { text-decoration: none; outline: none;}
+
+html { overflow-x: hidden; font-size: 20px;}
+.clearfix:after { content: ""; display: block; clear: both; }
+.clearfix { zoom: 1; }
+
+.marginL{margin-right: -0.025rem; margin-bottom: -0.025rem;}
+.box{width: 16rem; margin: 0 auto;}
+.header{width: 16rem;  height: 2.45rem; background: #f8f8f8;}
+.header input{width: 15.1rem; height: 1.45rem; background: #dedede; margin: 0.5rem 0 0 0.5rem; border-radius: 0.25rem; font-size: 0.75rem; color: #000; text-align: center; line-height: 1.45rem;}
+.back{width: 100%; height: 2.55rem; background:-webkit-linear-gradient(rgba(255,255,255,1),rgba(235,235,235,1));}
+.back span{background: url(images/back.png) no-repeat; width: 3.15rem; height: 1.55rem; display: block; float: left; margin: 0.5rem 0 0 0.55rem;}
+.back img{width: 3.7rem; height: 1rem; padding: 0.8rem 0 0.8rem 2.5rem; }
+
+.banner{width: 100%; height: 7.5rem; overflow: hidden; position: relative;}
+.pic{width: 100%; height: 6.75rem; float: left;}
+.pic img{width: 100%; height: 100%;}
+.button{position: absolute; left: 50%; bottom:0;}
+.button a{width: 0.25rem; height: 0.25rem; background: #a9a9a9; border-radius: 50%; float: left; margin: 0 0.125rem; position: relative; left: -50%; top: 0;}
+.button a.active{background: #ff4300;}
+
+.list{width: 100%; overflow: hidden;}
+.list li{width: 25%; height: 3rem; margin-top: 1rem; text-align: center; float: left;}
+.list li img{width: 2rem; height: 2rem;}
+.list li span{width: 100%; float: left; padding-top: 0.45rem; font-size: 0.55rem; color: #999999; height: 0.55rem; line-height: 0.55rem;}
+.list li span.active{background: url(images/dian.png) no-repeat 0.8rem 0.75rem;}
+
+.sale{width: calc(100% - 1rem); margin-top: 1.1rem; overflow: hidden; margin: 0 0.5rem;}
+.title{width:100%; height: 0.7rem;  border-bottom: 0.1rem solid #dcdcdc; padding: 0.55rem 0;}
+.title h3{color: #000; line-height: 0.7rem; border-left: 0.1rem solid red; height: 0.7rem; font-size: 0.7rem; padding-left: 0.45rem; float: left;}
+.title p{float: right; font-size: 0.55rem; line-height: 0.7rem;}
+
+.ware-list{width: 100%; margin-top: 0.5rem;}
+.content{width:100%; height: 3rem; margin: 0.5rem 0;} 
+.num1{width: 1.5rem; /*background: rgba(224, 2, 2, 1);*/ font-size: 0.9rem; color: #fff; line-height: 3rem; text-align: center; float: left;}
+.content img{width: 4.5rem; height: 3rem; float: left;}
+.price{background: #f4f4f4; float: left; width: calc(100% - 1.5rem - 4.5rem); height: 3rem;}
+.price-cont{margin-top: 0.55rem; float: left;}
+.sold{font-size: 0.55rem; color: #999999; line-height: 0.9rem; padding-left: 0.55rem;}
+.red{color: #c7223d;}
+.sold em{font-style: normal; text-decoration: line-through;}
+.rebate{float: right; font-size: 0.55rem; margin-top:1rem; color: #c7223d; background: url(images/more.png) no-repeat 1.7rem 0.1rem; padding-right: 1.3rem;}
+
+.box2{margin: 0 0.5rem;}
+.more{width: 100%; height: 2rem; background: #f5f5f5; font-size: 0.7rem; color: #666666; text-align: center; line-height: 2rem;}
+
+.fenlei{width: 100%; height: 8.8rem; overflow: hidden; margin: 0.5rem 0;}
+.fenlei img{width: 3.75rem; height: 8.8rem; float: left;}
+.fenlei-list{width: calc(100% - 3.75rem); float: left;}
+.fenlei-list li{width: 33.3%; height: 2.2rem; float: left; border: 0.025rem solid #eee; box-sizing: border-box; font-size: 0.65rem; text-align: center; line-height: 2.2rem;}
+.fenlei-list li a{ color: #999999;}
+.fenlei-list li a.red{color: #c7223d;}
+
+.type{width: 100%; height: 4rem;  margin: 1rem 0 0.5rem 0;}
+.type img{width: 100%; height: 4rem; float: left;}
+
+.login{width: calc(100% - 0.15rem); height: 2.25rem; background: #f8f8f8; padding-left:0.15rem;}
+.loginIn{padding: 0 0.6rem; font-size: 0.65rem; line-height: 2.25rem; color: #000; float: left;}
+.top{float: right; background: url(images/shang.png) no-repeat 2rem 0.95rem; font-size: 0.65rem; line-height: 2.25rem; color: #000; padding-right: 1.55rem;}
+
+footer{width: 100%; height: 3.65rem; background: #eee; text-align: center;}
+.edition{width: 5.62rem; padding: 0.7rem 5.25rem 0; overflow: hidden;}
+.edition li{font-size: 0.7rem; line-height: 1.4rem; float: left; padding: 0 0.35rem;}
+.edition li a{color: #000000;}
+footer p{font-size: 0.45rem; color: #999999; line-height: 1.35rem;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
