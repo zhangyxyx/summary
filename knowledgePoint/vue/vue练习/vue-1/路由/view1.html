@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<h1>Hello World</h1>
+			<p>
+				<router-link to="/foo">Go to Foo</router-link>
+				<router-link to="/bar">Go to Bar</router-link>
+			</p>
+			<router-view></router-view>
+		</div>
+		<script src="../js/vue.js"></script>
+		<script src="js/vue-router.js"></script>
+		<script>
+		//引入模板
+		const Foo={template:'<div>Foo</div>'}
+		const Bar={template:'<div>Bar</div>'}
+		//每个的路径
+		const routes=[
+			{path:'/foo',component:Foo},
+			{path:'/Bar',component:Bar}
+		]
+		//实例路由
+		const router=new VueRouter({
+			routes:routes
+		})
+		//实例Vue
+		const app=new Vue({
+			router
+		}).$mount("#app")
+		</script>
+	</body>
+</html>

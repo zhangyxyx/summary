@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<textarea :value="input" @input="update"></textarea>
+			<div v-html="text"></div>
+		</div>
+		<script src="../js/vue.js"></script>
+		<script>
+		new Vue({
+			el:'#app',
+			data:{
+				input:'#hello'
+			},
+			computed:{
+				text:function(){
+					return marked(this.input,{sanitize:true})
+				}
+			},
+			methods:{
+				update:function(e){
+					this.input=e.target.value
+				}
+			}
+		})
+		</script>
+	</body>
+</html>

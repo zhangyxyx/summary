@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="example">
+			<mycompany></mycompany>
+		</div>
+		<script src="../js/vue.js"></script>
+		<script>
+		var MyCompany=Vue.extend({
+			template:'<div>hello world!</div>'
+		});
+		Vue.component('mycompany',MyCompany);
+		new Vue({
+			el:'#example'
+		})
+		
+		</script>
+	</body>
+</html>

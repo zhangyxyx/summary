@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<ul>
+				<li v-for="item in items">{{item.message}}</li>
+			</ul>
+		</div>
+		<script src="../js/vue.js"></script>
+		<script>
+			new Vue({
+				el:'#app',
+				data:{
+					items:[
+						{message:'第一个'},
+						{message:'第二个'},
+						{message:'第三个'},
+						{message:'第四个'},
+					]
+				}
+			})
+		</script>
+	</body>
+</html>

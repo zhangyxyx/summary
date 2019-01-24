@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	<div id="app" v-demo:hello.a.b="message"></div>
+	<script src="../js/vue.js"></script>
+	<script>
+	Vue.directive('demo',{
+		bind:function(el,binding,vnode){
+			var s=JSON.stringify
+			el.innerHTML=
+			'name:'+s(binding.name)+'<br>'+
+			'value:'+s(binding.value)+'<br>'+
+			'expression:'+s(binding.expression)+'<br>'+
+			'argument:'+s(binding.arg)+'<br>'+
+			'modifiers:'+s(binding.modifiers)+'<br>'+
+			'vnode keys:'+Object.keys(vnode).join(', ')
+		}
+	})
+	new Vue({
+		el:'#app',
+		data:{
+			message:'111'
+		}
+	})
+	</script>
+	</body>
+</html>

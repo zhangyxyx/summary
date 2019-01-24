@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div id="app3">
+	<p v-is="seen">现在怎么</p>
+</div>	
+<div id="app4">
+	<ol>
+		<li v-for="seen in seens">
+			{{seen.seen}}
+		</li>
+	</ol>
+</div>
+<script src="./js/vue.js"></script>
+<script>
+	var app3=new Vue({
+		el:'#app3',
+		data:{
+			seen:true
+		}
+	})
+	var app4=new Vue({
+		el:'#app4',
+		data:{
+			seens:[
+				{seen:'123'},
+				{seen:'zhang'},
+				{seen:'ui'},
+			]
+		}
+	})
+</script>
+</body>
+</html>

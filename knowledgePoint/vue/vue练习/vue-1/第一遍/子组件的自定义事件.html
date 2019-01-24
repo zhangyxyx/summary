@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	
+		<div id="el">
+			<p>{{total}}</p>
+			<button-on v-on:incrent="increntTotal"></button-on>
+			<button-on v-on:incrent="increntTotal"></button-on>
+		</div>
+		<script src="../js/vue.js"></script>
+		<script>
+	
+		Vue.component('button-on',{
+			template: '<button v-on:click="incrent">{{ count }}</button>',
+			data:function(){
+				return {
+					count:0
+				}
+			},
+			methods:{
+				incrent:function(){
+					this.count+=1
+					this.$emit('incrent')
+				},
+			}
+		})
+		new Vue({
+			el:'#el',
+			data:{
+				total:0
+			},
+			methods:{
+				increntTotal:function(){
+				this.total+=1
+			}
+			},
+			
+		})
+		</script>
+	</body>
+</html>

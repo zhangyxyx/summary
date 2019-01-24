@@ -1,0 +1,119 @@
+1.vue实例
+data是中属性是响应式的，但是有个条件是必须是在vue创建的时候，放置的
+如果已经创建完了，然后vm.b=2那么这个b不是响应式的
+生命周期~图
+
+2.模板语法
+{{}}这个里面只能放置文本，如果想放置html的话，用v-html这可以实现html
+但是尽量不要用，因为这会造成xss攻击
+v-bind : 
+v-on @
+
+3.计算属性和观察者
+（1）区别 computed和methods
+computed是依赖缓存进行的，如果数据没有变化，那么不会重新执行函数 开销小
+methods不管有没有变化都会执行函数
+
+（2）区别：computed和watch
+这个区别性能上可能没有区别 就是computed代码比较简单
+
+（3）computed默认是只有getter，但是你自己可以设置一个setter
+
+（4）观察者就是watch,当你想要在数据变化响应时，执行异步操作或者开销比较大的操作
+
+4.class和Style绑定
+使用v-bind绑定class名字和style
+
+
+5.条件渲染
+用key管理可复用的元素 当v-if和v-else渲染两个input的时候，在切换的时候，vue为了
+高效就会切换不用的元素，但是input框之前输入文字之后，切换的时候不会去掉，所有我们需要
+用key表示当前的是唯一的
+
+当v-if和v-for一起使用的时候，v-for比v-if优先级高
+
+5.列表渲染
+v-for="{value,key,index} in object"
+键值  键名  索引
+在每次循环的时候，你需要用v-bind:key="index"来绑定一个解决的是vue的就地复用
+为了给vue一个提示，以便追踪每个节点的身份，从而重用和重新排序现有元素
+
+变异方法：就是es5中数组的方法 会改变原有的数组
+重塑数组：只是返回一个新数组 filter concat() slice()
+
+vue不能检测一下变动的数组：
+（1）当你利用索引直接设置一个项时 解决是set
+（2）当你修改数组的长度时 解决是slice
+
+还是由于js限制，vue不能检测对象属性的添加和删除 但是可以Vue.set(object,key,value)
+向嵌套对象添加响应式属性
+
+v-for作用域组件的时候不会讲值直接传到组件内，因为组件有自己的作用域，可以用过props传递
+
+6.事件处理
+v-on
+事件修饰符是：.stop .prevent .capture .self .once
+使用修饰符顺序很重要 相应的代码会以同样的顺序产生
+
+还有键值修饰符 v-on:keyup.enter="submit"
+.enter .tab .delete .esc .space .up .down .left .right
+.ctrl .alt .shift .mate(Mac系统键盘上)
+鼠标按钮修饰符 .left  .right  .middle
+
+7.表单
+修饰符：.lazy转变为在chnage事件中同步
+    .number将用户输入值自动转为number类型
+    .trim用来过滤用户输入的首尾空格
+
+8.组件
+组件可以扩展html元素。封装可重用的代码，在较高层面上，组件是自定义元素。以is特性扩展
+在组件中data必须是函数
+父组件传给子组件是用props props中可以自己设置验证的形式
+子组件传给父组件是$emit
+
+.sync
+
+非父子组件通信，可以使用一个空的实例作为一个事件总线中心
+
+slot内容分发，将父组件和子组件自身额模板杂糅在一起，就是类似于占位的作用，子组件根据slot的位置 放置 并且不会覆盖之前父组件原有的东西
+作用域插槽
+
+动态组件：用is将多个组件绑定到同一个挂载点 v-bind:is="currentView"
+
+<keep-acitve>
+<component v-bind:is="currentView"></component>
+</keep-acitve>
+这个keep-acitve的作用是保留组件在内存，避免重复渲染
+
+杂项：vue组件来自API来自三个部门：props events slot内容分发，将父组件和子组件自身额模板杂糅在一起，就是类似于占位的作用，子组件根据slot的位置
+有时候需要在js中访问子组件<child ref="profile"></child> 访问的时候是：
+var parent=new Vue({el:'#parent'})
+var child=parent.$refs.profile
+这个ref只在组件渲染完成后才填充，并且这个是非响应式的。它只作为获取子组件的应急方案
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

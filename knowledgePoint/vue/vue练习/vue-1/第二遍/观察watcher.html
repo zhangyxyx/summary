@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<p>
+				ask a ues/no quersiton:
+				<input v-model="question">
+			</p>
+			<p>{{answer}}</p>
+		</div>
+		<script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js"></script>
+		<script src="https://unpkg.com/lodash@4.13.1/lodash.min.js"></script>
+		<script>
+			new Vue({
+				el:'#app',
+				data:{
+					question:'',
+					answer:'i cannot give you an answer until you ask a quertion'
+				},
+				watch:{
+					question:function(newQuestion){
+						this.answer='waiting...',
+						this.getAnswer()
+					}
+				},
+				methods:{
+					getAnswer:_.debounce(
+						function(){
+							var vm=this
+							if(this.question.indexOf('?')===-1){
+								vm.answer='Question usually contain a question mark'
+								return;
+							}
+							vm.answer='Tinking...'
+							
+						}
+					)
+				}
+			})
+		</script>
+	</body>
+</html>

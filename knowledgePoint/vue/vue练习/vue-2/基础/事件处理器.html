@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div id="app1">
+	<button v-on:click="counter+=1">增加1</button>
+	<p>{{counter}}</p>
+</div>	
+<script src="./js/vue.js"></script>
+<script>
+var app1=new Vue({
+	el:'#app1',
+	data:{
+		counter:0
+	}
+})
+</script>
+</body>
+</html>

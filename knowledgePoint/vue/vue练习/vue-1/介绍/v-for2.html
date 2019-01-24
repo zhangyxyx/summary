@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="el">
+			<span v-for="todo in todos">{{todo.t1}}</span>
+		</div>
+		<script src="js/vue.js"></script>
+		<script>
+		new Vue({
+			el:'#el',
+			data:{
+				todos:[
+					{t1:"h1"},
+					{t1:"h2"},
+					{t1:"h3"},
+				]
+				
+			}
+		})
+		</script>
+	</body>
+</html>

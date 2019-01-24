@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<input type="text" v-model="message"/>
+			<model-template :my-message="message"></model-template>
+		</div>
+		<script src="../js/vue.js"></script>
+		<script>
+		Vue.component('model-template',{
+			template:'<div>{{myMessage}}</div>',
+			props:['myMessage'],
+			
+		})
+		new Vue({
+			el:'#app',
+			data:{
+				message:'hello'
+			}
+		})
+		</script>
+	</body>
+</html>

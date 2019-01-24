@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<style>
+		.component-fade-enter-active,.component-fade-leave-active{transition:opacity .3s;}
+		.component-fade-enter,.component-fade-leave-acitve{opacity:0}
+		</style>
+		<div id="transition-component-demo" class="demo">
+			<input type="radio" value="v-a" id="a" name="view" @click="clickview($event)" v-model="test"/>
+			<label for="a">A</labesl>
+			<input type="radio" value="v-b" id="b" name="view" @click="clickview"  v-model="test"/>
+			<label for="b">B</label>
+			<transition name="component-fade" mode="out-in">
+				<component v-bind:is="view"></component>
+			</transition>
+		</div>
+		<script src="../js/jquery-1.7.2.js"></script>
+		<script src="../js/vue.js"></script>
+		<script>
+		new Vue({
+			el:'#transition-component-demo',
+			data:{
+				view:'v-a',
+				test:'v-a'
+			},
+			methods:{
+				clickview:function(event){
+					this.view=event.path[0].defaultValue;
+				}
+			},
+			components:{
+				'v-a':{
+					template:'<div>Component A</div>'
+				},
+				'v-b':{
+					template:'<div>Component B</div>'
+				}
+			}
+		})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<style>
+		.fade-enter-active,.fade-leave-active{
+			opacity:0.5;
+		}
+		.fade-enter,.fade-leave-acitve{
+			opacity:0
+		}
+		</style>
+		<div id="app">
+			<button @click="show=!show">点击</button>
+			<transition name="fade">
+				<p v-if="show">显示</div>
+			</transition>
+		</div>
+		<script src="../js/vue.js"></script>
+		<script>
+		new Vue({
+			el:'#app',
+			data:{
+				show:true
+			}
+		})
+		
+		</script>
+	</body>
+</html>

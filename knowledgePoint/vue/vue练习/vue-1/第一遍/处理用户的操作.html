@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<p>{{message}}</p>
+			<button v-on:click="clickmessage">点击操作</button>
+		</div>
+		<script src="../js/vue.js"></script>
+		<script>
+		new Vue({
+			el:"#app",
+			data:{
+				message:"hello world"
+			},
+			methods:{
+				clickmessage:function(){
+					this.message=this.message.split('').reverse().join('');
+				}
+			}
+		})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	<div id="app">
+		<p>{{total}}</p>
+		<button-c v-on:incrent="increnttatol"></button-c>
+		<button-c v-on:incrent="increnttatol"></button-c>
+	</div>
+	<script src="../js/vue.js"></script>
+	<script>
+	Vue.component('button-c',{
+		template:'<button v-on:click="incrent">{{n}}</button>',
+		data:function(){
+			return {
+				n:0
+			}
+		},
+		methods:{
+			incrent:function(){
+				this.n+=1
+				this.$emit('incrent')
+			}
+		}
+	})
+	new Vue({
+		el:'#app',
+		data:{
+			total:0
+		},
+		methods:{
+			increnttatol:function(){
+				this.total+=1
+			}
+		}
+	})
+	</script>
+	</body>
+</html>

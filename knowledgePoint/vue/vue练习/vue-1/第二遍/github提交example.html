@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	<div id="demo">
+		<h1>test vue.js</h1>
+		<template v-for="branch in branches">
+			<input type="radio"
+				:id="branch"
+				:value="branch"
+				name="branch"
+				v-model="currentBranch"
+				>
+			<label :for="branch">{{branch}}</label>
+		</template>
+		<p>vuejs/vue@{{currentBranch}}</p>
+		<ul>
+			<li v-for="record in commits">
+				<a href="recoed.html_ul" class="commit">{{record.sha.slice(0,7)}}</a>
+			</li>
+		</ul>
+	</div>
+	<script src="../js/vue.js"></script>
+	<script>
+ 	var apiURL="https://api.github.com/repos/vuejs/vue/commits?per_page=3&sha=";
+ 	new Vue({
+		el:'#demo',
+		data:{
+			branches:['master','dev'],
+			currentBranch:'master',
+			commits:null
+		},
+		created:function(){
+			this.fetchData();
+		},
+		watch:{
+			currentBranch:'fetchData'
+		},
+		
+		methods:{
+			fetchData:function(){
+				var xhr=new XMLHttpRequest()
+				var self=this
+				xhr.open('GET',apiURL+self.currentBranch)
+				xhr.onload=function(){
+					self.commits=JSON.parse(xhr.responseText)
+				}
+				xhr.send();
+			}
+		}
+ 	})
+	</script>
+	</body>
+</html>

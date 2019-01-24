@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div id="app">
+<template v-if="login==='user'">
+	<label>username</label>
+	<input placeholder="姓名"/>
+</template>	
+<template v-else>
+	<label>email</label>
+	<input placeholder="邮箱">
+</template>
+<button v-on:click="toggle">toggle</button>
+</div>
+<script src="./js/vue.js"></script>
+<script>
+var app=new Vue({
+	el:'#app',
+	data:{
+		login:'user'
+	},
+	methods:{
+		toggle:function(){
+			this.login=this.login==='user'?'email':'user'
+		}
+	}
+})
+</script>
+</body>
+</html>

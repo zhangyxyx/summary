@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<span v-if="seen">看到了吧</span>
+		</div>
+		<script src="../js/vue.js"></script>
+		<script>
+			new Vue({
+				el:'#app',
+				data:{
+					seen:false
+				}
+			})
+		</script>
+	</body>
+</html>

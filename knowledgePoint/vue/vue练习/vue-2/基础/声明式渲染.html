@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div id="app1">
+	<span v-bind:title="message">
+		鼠标悬停几秒钟之后查看此处的时间
+	</span>
+</div>
+<script src="./js/vue.js"></script>
+<script>
+	var app2=new Vue({
+		el:'#app1',
+		data:{
+			message:'页面加载与'+new Date()
+		}
+	})
+</script>
+</body>
+</html>

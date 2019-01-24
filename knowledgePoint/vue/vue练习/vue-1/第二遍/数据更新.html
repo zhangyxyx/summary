@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<span v-bind:title="message"></span>
+		</div>
+		<script src="../js/vue.js"></script>
+		<script>
+			new Vue({
+				el:'#app',
+				data:{
+					message:'you is a '+new Date()
+				}
+			})
+		</script>
+	</body>
+</html>

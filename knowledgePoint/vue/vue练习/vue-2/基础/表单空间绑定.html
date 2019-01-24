@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app1">
+		<input type="checkbox" value="jack" v-model="message">jack
+		<input type="checkbox" value="11" v-model="message">john
+		<input type="checkbox" value="22" v-model="message">Mike
+		<p>有：{{message}}</p>
+	</div>
+	<script src="./js/vue.js"></script>
+	<script>
+	var app1=new Vue({
+		el:'#app1',
+		data:{
+			message:[]
+		},
+		
+	})
+	</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+		<template v-if="login=='user'">
+			<p>username</p>
+		</template>
+		<template v-else>
+			<p>email</p>
+		</template>
+		<button @click="clicktoggle">切换</button>
+		</div>
+		<script src="../js/vue.js"></script>
+		<script>
+			new Vue({
+				el:"#app",
+				data:{
+					login:'user'
+				},
+				methods:{
+					clicktoggle:function(){
+						this.login=this.login=='user'?'email':'user'
+					}
+				}
+				
+			})
+		</script>
+	</body>
+</html>

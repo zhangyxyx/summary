@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<my-component></my-component>
+		</div>
+		<div id="app1">
+			<child-component></child-component>
+			<child-component></child-component>
+			<child-component></child-component>
+		</div>
+		<!--父子组件-->
+		<div id="app2">
+			<input type="text" v-model="message">
+			<child v-bind:my-message="message"></child>
+		</div>
+		<!--子组件给父组件传递数据-->
+		<div id="app3">
+			<p>{{cc}}</p>
+			<button-child v-on:incrent='incentTotal'></button-child>
+			<button-child v-on:incrent='incentTotal'></button-child>
+		</div>
+		
+		<script src="../js/vue.js"></script>
+		<script>
+		var child={
+			template:'<div>一个小的组件</div>'
+		}
+		new Vue({
+			el:'#app',
+			components:{
+				'my-component':child
+			}
+		})
+		var data={n:0};
+		var child1={
+			template:'<button @click="n+=1">{{n}}</button>',
+			data:function(){
+				return{
+					n:0
+				}
+			}
+		}
+		new Vue({
+			el:'#app1',
+			components:{
+				'child-component':child1
+			}
+		})
+
+		var n={
+			props:['myMessage'],
+			template:'<p>{{myMessage}}</p>',
+			
+		}
+		new Vue({
+			el:'#app2',
+			components:{
+				'child':n
+			},
+			data:{
+				message:0
+			}
+		})
+		/*子组件给父组件传递数据*/
+		var nn={
+			template:'<button v-on:click="incrent">{{n}}</button>',
+			data:function(){
+				return{
+					n:0
+				}
+			},
+			methods:{
+				incrent:function(){
+					this.n+=1;
+					this.$emit('incrent')
+				}
+			}
+		}
+		new Vue({
+			el:'#app3',
+			data:{
+				cc:0
+			},
+			methods:{
+				incentTotal:function(){
+					this.cc+=1;
+				}
+			},
+			components:{
+				'button-child':nn
+			}
+		})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div id="el">
+			<div><input v-model="parent"/></div>
+			</br>
+			<child v-bind:my-message="parent"></child>
+		</div>
+		<script src="../js/vue.js"></script>
+		<script>
+		
+		Vue.component('child',{
+			props:["myMessage"],
+			template:'<div>{{myMessage}}</div>'
+		})
+		new Vue({
+			el:'#el',
+			data:{
+				parent:'hello'	
+			}
+		})
+		</script>
+	</body>
+</html>

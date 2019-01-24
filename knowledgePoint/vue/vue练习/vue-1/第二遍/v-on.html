@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<span>{{message}}</span>
+			<button v-on:click="revise">改变</button>
+		</div>
+		<script src="../js/vue.js"></script>
+		<script>
+			new Vue({
+				el:'#app',
+				data:{
+					message:'hello'
+				},
+				methods:{
+					revise:function(){
+						this.message="vue"
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

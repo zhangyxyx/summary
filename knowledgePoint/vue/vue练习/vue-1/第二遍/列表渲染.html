@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<ul>
+				<li v-for="(item,index) in items">{{index}}{{item.text}}</li>
+			</ul>
+		</div>
+		<div id="app1">
+			<ul>
+				<li v-for="(value,key,index) in object">{{key}}-{{index}}-{{value}}</li>
+			</ul>
+		</div>
+		<script src="../js/vue.js"></script>
+		<script>
+		new Vue({
+			el:'#app',
+			data:{
+				items:[
+				{text:'第一个'},
+				{text:'第二个'},
+				{text:'第三个'},
+				{text:'第四个'},
+				{text:'第五个'},
+				]
+			}
+		})
+		new Vue({
+			el:'#app1',
+			data:{
+				object:{
+					firstname:'123',
+					age:23,
+					home:'123'
+				}  
+			}
+		})
+		</script>
+	</body>
+</html>

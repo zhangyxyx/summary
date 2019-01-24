@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	<div id="even">
+		<template v-if="login==='username'">
+			<label>username</label>
+			<input type="text" placeholder="姓名"/>
+		</template>
+		<trmplate v-else>
+			<label>email</label>
+			<input type="text" placeholder="邮箱"/>
+		</template>
+	</div>
+	<script src="../js/vue.js"></script>
+	<script>
+	new Vue({
+		id:'#even',
+		dataType:{
+			login:'username',
+		},
+		methods:{
+			toggel:function(){
+				return this.login=this.login==='username'?'email':'username'
+			},
+		}
+	})
+	</script>
+	</body>
+</html>

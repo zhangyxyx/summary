@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="e">
+			<button v-on:click="count+=1">增加1</button>
+			<p>{{count}}</p>
+		</div>
+		<div id="e2">
+			<button v-on:click.once="say">说</button>
+		</div>
+		<div id="e3">
+			<button v-on:keyup.space="speak">说</button>
+		</div>
+		<div id="e4">
+			<input placeholder="输入" v-model="message"/>
+			<p>{{message}}</p>
+		</div>
+		
+		<div id="e5">
+			<mycomponent></mycomponent>
+		</div>
+		
+		<script src="../js/vue.js"></script>
+		<script>
+		var data={count:0}
+		Vue.component('mycomponent',{
+			template:'<button v-on:click="count+=1">{{count}}</button>',
+			data:function(){
+				return data;
+			}
+		})
+		new Vue({
+			el:"#e5",
+		})
+		new Vue({
+			el:'#e',
+			data:{
+				count:0
+			}
+		});
+		new Vue({
+			el:'#e2',
+			methods:{
+				say:function(){
+					alert('hello world');
+				},
+			}
+		});
+		new Vue({
+			el:"#e3",
+			methods:{
+				speak:function(){
+					alert("你好")
+				},
+			}
+		});
+		new Vue({
+			el:"#e4",
+			data:{
+				message:0
+			}
+		})
+		</script>
+	</body>
+</html>
