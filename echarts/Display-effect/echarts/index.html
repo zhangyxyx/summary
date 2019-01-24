@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>echarts</title>
+    <style>
+    *{margin:0px;padding:0px;}
+   
+    body{background:#081b22}
+    .line_one{height:300px;margin:20px 0px 70px 0px;}
+    .sum{width:40%;color:#213864;float:left;padding:0px 20px;box-sizing:border-box}
+    .sum table{width:100%;text-align:center;box-shadow:0px 5px 5px rgba(4,9,15,.4)}
+    .sum thead tr{background:rgba(14,19,39,.6)}
+    .sum thead td{padding:20px 0px;color:#fff}
+    .sum tbody tr{widtH:100%;box-shadow:0px -5px 5px rgba(4,9,15,.4)}
+    .sum tbody td{text-align:center;width:20%;padding:10px 0px;}
+    .sum tbody td img{display:block;margin:0 auto;margin-bottom:5px;}
+    .sum tbody td:nth-child(2n){font-size:25px;font-weight:bold;}
+    .line_two{height:400px;}
+    .anchorBL{  
+       display:none;  
+    } 
+    .sum_two{width:20%;}
+    .sum_two thead tr{background:#081b22}
+    .sum_two thead td{text-align:center;}
+    .sum_two thead td{padding:20px 0px;color:#588a7e}
+    .sum_two tbody tr{widtH:100%;box-shadow:0px -5px 5px rgba(4,9,15,0)}
+    .sum_two table{width:100%;text-align:center;border:1px solid #081b22}
+    .sum_two tbody td{color:#588a7e;text-align:center;width:20%;padding:10px 0px;border-top:1px solid #081b22}
+    .sum_two tbody td:nth-child(2n){font-size:18px;font-weight:bold;}
+    .sum_two td{width:70px;text-align:left;} 
+    </style>
+</head>
+<body>
+<h2 style="color:#588a7e;text-align:center;padding:20px 0px;">公司财务共享中心展示屏</h2>
+<div class="line_one">
+        <div class="sum">
+            <table cellspacing="0">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td>本日</td>
+                        <td>趋势</td>
+                        <td>本月</td>
+                        <td>趋势</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                            <td><img src="./img/form.png" style="width:20px;height:20px;">接收量</td>
+                            <td>486</td>
+                            <td>趋势</td>
+                            <td>3168</td>
+                            <td>趋势</td>
+                    </tr>
+                    <tr>
+                            <td><img src="./img/form.png" style="width:20px;height:20px;">处理量</td>
+                            <td>256</td>
+                            <td>趋势</td>
+                            <td>1032</td>
+                            <td>趋势</td>
+                    </tr>
+                    <tr>
+                            <td><img src="./img/form.png" style="width:20px;height:20px;">待处理</td>
+                            <td>684</td>
+                            <td>趋势</td>
+                            <td>357</td>
+                            <td>趋势</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="mycharts_zero" style="width:20%;height:350px;floaT:left;"></div>
+        <div id="mycharts_one" style="width:40%;height:250px;float:left;">
+        </div>
+        
+</div>
+<div class="line_two">
+        <div id="mycharts_two" style="width:40%;height:400px;float:left;"></div>
+        <div class="sum sum_two">
+            <h2 style="text-align:center;color:#588a7e;margin-bottom:25px;">实时接收量排名</h2>
+                <table cellspacing="0">
+                    <thead style="color:#588a7e">
+                        <tr>
+                            <td>排名</td>
+                            <td>地区</td>
+                            <td>单数</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                                <td>1</td>
+                                <td>山东</td>
+                                <td>34562</td>
+                        </tr>
+                        <tr>
+                                <td>2</td>
+                                <td>江苏</td>
+                                <td>34262</td>
+                        </tr>
+                        <tr>
+                                <td>3</td>
+                                <td>山东</td>
+                                <td>34562</td>
+                        </tr>
+                        <tr>
+                                <td>4</td>
+                                <td>山东</td>
+                                <td>34562</td>
+                        </tr>
+                        <tr>
+                                <td>5</td>
+                                <td>山东</td>
+                                <td>34562</td>
+                        </tr>
+                        <tr>
+                                <td>6</td>
+                                <td>山东</td>
+                                <td>34562</td>
+                        </tr>
+                        <tr>
+                                <td>7</td>
+                                <td>山东</td>
+                                <td>34562</td>
+                        </tr>
+                    </tbody>
+                </table>
+        </div>
+        <div style="float:right;width:40%">
+                <div id="mycharts_three" style="width:100%;height:200px;"></div>
+                <div id="mycharts_four" style="width:100%;height:200px;"></div>
+        </div>
+</div>
+
+
+<script src="./jquery.js"></script>
+<script src="./echarts.js"></script> 
+<script src="./data.js"></script>
+<script src="./bmap.min.js"></script>
+<script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=G311s6kamEaECe40uvn2qfKRvNW2m9RW&s=1"></script>
+
+
+<script>
+$(function(){
+    //仪表盘
+    var mychartsZero=echarts.init(document.getElementById('mycharts_zero'));
+    var optionZero = {
+        tooltip : {
+            title:'本月单据平均处理率',
+            formatter: "{a} <br/>{b} : {c}%"
+        },
+        
+        series: [
+            {
+                name: '业务指标',
+                type: 'gauge',
+                detail: {formatter:'{value}%'},
+                data: [{value: 50, name: '完成率'}]
+            }
+        ]
+    };
+    mychartsZero.setOption(optionZero)
+    //柱形图
+    var mychartsOne=echarts.init(document.getElementById('mycharts_one'));
+    var optionOne={
+        title: {
+            text: '各分组单据处理平均耗时统计',
+            left:'center',
+            textStyle:{
+                color:'#588a7e',
+            }
+        },
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'shadow'
+            },
+            y:'bottom',
+            height:'100px',
+            textStyle:{
+                color:'#588a7e'
+            },
+            formatter: function (params) {
+            var tar;
+            if (params[1].value != '-') {
+                tar = params[1];
+            }
+            else {
+                tar = params[0];
+            }
+            return tar.name + '<br/>' + tar.seriesName + ' : ' + tar.value;
+        }
+        },
+        legend: {
+            data: ['本周', '上周'],
+            x: 'bottom',
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        yAxis: {
+            type: 'value',
+            boundaryGap: [0, 0.01],
+            axisLine:{
+                lineStyle:{
+                    color:'#588a7e'
+                }
+            }
+        },
+        xAxis: {
+            type: 'category',
+            data: ['周一','周二','周三','周四','周五','周六'],
+            axisLine:{
+                lineStyle:{
+                    color:'#588a7e'
+                }
+            }
+        },
+        series: [
+            {
+                name: '本月',
+                type: 'bar',
+                label: {
+                    normal: {
+                        show: true,
+                        position: 'top'
+                    }
+                },
+                data: [20, 10, 5, 30, 20, 15]
+            },
+            {
+                name: '上月',
+                type: 'bar',
+                label: {
+                    normal: {
+                        show: true,
+                        position: 'top'
+                    }
+                },
+                data: [13, 45, 23, 56, 2, 34]
+            }
+        ]
+    }
+    mychartsOne.setOption(optionOne);
+    //地图
+    var mychartsTwo=echarts.init(document.getElementById('mycharts_two'));
+    var data=$.data();
+    var convertData = function (data) {
+        var res = [];
+        for (var i = 0; i < data.length; i++) {
+            var geoCoord = geoCoordMap[data[i].name];
+            if (geoCoord) {
+                res.push({
+                    name: data[i].name,
+                    value: geoCoord.concat(data[i].value)
+                });
+            }
+        }
+        return res;
+    }; 
+    function renderItem(params, api) {
+        var coords = [
+            [116.7,39.53],
+            [103.73,36.03],
+            [112.91,27.87],
+            [120.65,28.01],
+            [119.57,39.95]
+        ];
+        var points = [];
+        for (var i = 0; i < coords.length; i++) {
+            points.push(api.coord(coords[i]));
+        }
+        var color = api.visual('color');
+    
+        return {
+            type: 'polygon',
+            shape: {
+                points: echarts.graphic.clipPointsByRect(points, {
+                    x: params.coordSys.x,
+                    y: params.coordSys.y,
+                    width: params.coordSys.width,
+                    height: params.coordSys.height
+                })
+            },
+            style: api.style({
+                fill: color,
+                stroke: echarts.color.lift(color)
+            })
+        };
+    }
+    var optionTwo = {
+        title: {
+            text: '全国各分部实时反馈',
+            left: 'center',
+            textStyle: {
+                color: '#588a7e'
+            }
+        },
+        tooltip : {
+            trigger: 'item'
+        },
+        bmap: {
+            center: [104.114129, 37.550339],
+            zoom: 5,
+            roam: true,
+            mapStyle: {
+                styleJson: [
+                        {
+                            "featureType": "water",
+                            "elementType": "all",
+                            "stylers": {
+                                'color': '#081b22'
+                            }
+                        },
+                        {
+                            "featureType": "land",
+                            "elementType": "all",
+                            "stylers": {
+                                "color": "#081b22"
+                            }
+                        },
+                        {
+                            "featureType": "boundary",
+                            "elementType": "geometry",
+                            "stylers": {
+                                "color": "#081b22"
+                            }
+                        },
+                        {
+                            "featureType": "railway",
+                            "elementType": "all",
+                            "stylers": {
+                                "visibility": "off"
+                            }
+                        },
+                        {
+                            "featureType": "highway",
+                            "elementType": "geometry",
+                            "stylers": {
+                                "color": "#081b22"
+                            }
+                        },
+                        {
+                            "featureType": "highway",
+                            "elementType": "geometry.fill",
+                            "stylers": {
+                                "color": "#005b96",
+                                "lightness": 1
+                            }
+                        },
+                        {
+                            "featureType": "highway",
+                            "elementType": "labels",
+                            "stylers": {
+                                "visibility": "off"
+                            }
+                        },
+                        {
+                            "featureType": "arterial",
+                            "elementType": "geometry",
+                            "stylers": {
+                                "color": "#004981"
+                            }
+                        },
+                        {
+                            "featureType": "arterial",
+                            "elementType": "geometry.fill",
+                            "stylers": {
+                                "color": "#00508b"
+                            }
+                        },
+                        {
+                            "featureType": "poi",
+                            "elementType": "all",
+                            "stylers": {
+                                "visibility": "off"
+                            }
+                        },
+                        {
+                            "featureType": "green",
+                            "elementType": "all",
+                            "stylers": {
+                                "color": "#056197",
+                                "visibility": "off"
+                            }
+                        },
+                        {
+                            "featureType": "subway",
+                            "elementType": "all",
+                            "stylers": {
+                                "visibility": "off"
+                            }
+                        },
+                        {
+                            "featureType": "manmade",
+                            "elementType": "all",
+                            "stylers": {
+                                "visibility": "off"
+                            }
+                        },
+                        {
+                            "featureType": "local",
+                            "elementType": "all",
+                            "stylers": {
+                                "visibility": "off"
+                            }
+                        },
+                        {
+                            "featureType": "arterial",
+                            "elementType": "labels",
+                            "stylers": {
+                                "visibility": "off"
+                            }
+                        },
+                        {
+                            "featureType": "boundary",
+                            "elementType": "geometry.fill",
+                            "stylers": {
+                                "color": "#029fd4"
+                            }
+                        },
+                        {
+                            "featureType": "building",
+                            "elementType": "all",
+                            "stylers": {
+                                "color": "#1a5787"
+                            }
+                        },
+                        {
+                            "featureType": "label",
+                            "elementType": "all",
+                            "stylers": {
+                                "visibility": "off"
+                            }
+                        }
+                ]
+            }
+        },
+        series : [
+            {
+                name: 'pm2.5',
+                type: 'scatter',
+                coordinateSystem: 'bmap',
+                data: convertData(data),
+                itemStyle:{  
+                    normal:{  
+                            label:{show:true}  
+                            ,areaStyle:{color:'#081b22'}   //设置地图背景色的颜色设置   
+                    },   
+                }, 
+                symbolSize: function (val) {
+                    return val[2] / 10;
+                },
+                label: {
+                    normal: {
+                        formatter: '{b}',
+                        position: 'right',
+                        show: false
+                    },
+                    emphasis: {
+                        show: true
+                    }
+                },
+                itemStyle: {
+                    normal: {
+                        color: '#ddb926'
+                    }
+                }
+            },
+            {
+                name: 'Top 5',
+                type: 'effectScatter',
+                coordinateSystem: 'bmap',
+                data: convertData(data.sort(function (a, b) {
+                    return b.value - a.value;
+                }).slice(0, 6)),
+                symbolSize: function (val) {
+                    return val[2] / 10;
+                },
+                showEffectOn: 'emphasis',
+                rippleEffect: {
+                    brushType: 'stroke'
+                },
+                hoverAnimation: true,
+                label: {
+                    normal: {
+                        formatter: '{b}',
+                        position: 'right',
+                        show: true
+                    }
+                },
+                itemStyle: {
+                    normal: {
+                        color: '#f4e925',
+                        shadowBlur: 10,
+                        shadowColor: '#333'
+                    }
+                },
+                zlevel: 1
+            },
+           
+        ]
+    };
+    mychartsTwo.setOption(optionTwo);
+    //折线上
+    var mychartsThree=echarts.init(document.getElementById('mycharts_three'));
+    var optionThree = {
+        title: {
+            text: '单据处理量月趋势对比分析',
+            left:'center',
+            textStyle:{
+                color:'#588a7e',
+            }
+        },
+        tooltip: {
+            trigger: 'axis',
+            
+        },
+        legend: {
+            data:['本月','上月'],
+            x:'right',
+            height:'50px',
+            textStyle:{
+                color:'#588a7e'
+            }
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+       
+        xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            data: ['周一','周二','周三','周四','周五','周六','周日'],
+            axisLine:{
+                lineStyle:{
+                    color:'#588a7e'
+                }
+            }
+        },
+        yAxis: {
+            type: 'value',
+            axisLine:{
+                lineStyle:{
+                    color:'#588a7e'
+                }
+            }
+        },
+        series: [
+            {
+                name:'本月',
+                type:'line',
+                stack: '总量',
+                data:[120, 132, 101, 134, 90, 230, 210]
+            },
+            {
+                name:'上月',
+                type:'line',
+                stack: '总量',
+                data:[220, 182, 191, 234, 290, 330, 310]
+            },
+        ]
+    };
+    mychartsThree.setOption(optionThree)
+    //折线下
+    var mychartsFour=echarts.init(document.getElementById('mycharts_four'));
+    var optionFour = {
+        title: {
+            text: '图像扫描30天趋势图',
+            left:'center',
+            textStyle:{
+                color:'#588a7e',
+            }
+        },
+        legend: {
+            data:['本月','上月'],
+            x:'right',
+            height:'50px',
+            textStyle:{
+                color:'#588a7e'
+            }
+        },
+        tooltip : {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'cross',
+                label: {
+                    backgroundColor: '#6a7985'
+                }
+            }
+        },
+        
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis : [
+            {
+                type : 'category',
+                boundaryGap : false,
+                data : ['周一','周二','周三','周四','周五','周六','周日'],
+                axisLine:{
+                    lineStyle:{
+                        color:'#588a7e'
+                    }
+                }
+            }
+        ],
+        yAxis : [
+            {
+                type : 'value',
+                axisLine:{
+                    lineStyle:{
+                        color:'#588a7e'
+                    }
+                }
+            }
+        ],
+        series : [
+            {
+                name:'邮件营销',
+                type:'line',
+                stack: '总量',
+                areaStyle: {normal: {}},
+                data:[120, 132, 101, 134, 90, 230, 210]
+            },
+            
+        ]
+    };
+    mychartsFour.setOption(optionFour);
+})    
+</script>
+</body>
+</html>
