@@ -1,18 +1,15 @@
 ### 项目说明:  
-
-- 在IP网管页面的选择某一个设备进入到详情页面，点击详情页面中的设备的位置图标进入到地图页面;  
-
-- 地图页面的显示：
-    level:13-16;一开始显示设备在地图的位置(level:12);鼠标滑动加大level,直到16不在变化;鼠标可以滑动,拖动地图;鼠标放在设备上可以有弹框显示设备的具体信息;
+    - 在IP网管页面的选择某一个设备进入到详情页面，点击详情页面中的设备的位置图标进入到地图页面;  
+    - 地图页面的显示：
+    - level:13-16;一开始显示设备在地图的位置(level:12);鼠标滑动加大level,直到16不在变化;鼠标可以滑动,拖动地图;鼠标放在设备上可以有弹框显示设备的具体信息;
 ### 项目开发:  
-
     C#下载地图瓦片的12-16的全国地图;调用百度地图API;地图瓦片大小：(12-13 40万张图片 1.22G;14    200万 2166345   15    800万    占用空间：19.4G )
 ### 文档：
     - 百度地图api:http://lbsyun.baidu.com/jsdemo.htm#a1_2
     - http://d0.map.baidu.com/resource/mappic/
     - http://or2.map.bdimg.com:8080/tile/?qt=tile&x=6536&y=1797&z=15&styles=pl&udt=20130822
 ### 资料：
-> kc.getTilesUrl=function(a,b){var c=a.x,d=a.y,e=256*Math.pow(2,20-b),d=Math.round((9998336-e*d)/e)-1;return url=this.yA[Math.abs(c+d)%this.yA.length]+this.map.zb+"/"+this.map.Yr+"/3/lv"+(21-b)+"/"+c+","+d+".jpg"};  
+###### kc.getTilesUrl=function(a,b){var c=a.x,d=a.y,e=256*Math.pow(2,20-b),d=Math.round((9998336-e*d)/e)-1;return url=this.yA[Math.abs(c+d)%this.yA.length]+this.map.zb+"/"+this.map.Yr+"/3/lv"+(21-b)+"/"+c+","+d+".jpg"};  ######
 
 > kc.getTilesUrl = function(a, b) {
     var c = a.x,
