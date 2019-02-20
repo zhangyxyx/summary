@@ -9,15 +9,15 @@
     - http://d0.map.baidu.com/resource/mappic/
     - http://or2.map.bdimg.com:8080/tile/?qt=tile&x=6536&y=1797&z=15&styles=pl&udt=20130822
 ### 资料：
-###### kc.getTilesUrl=function(a,b){var c=a.x,d=a.y,e=256*Math.pow(2,20-b),d=Math.round((9998336-e*d)/e)-1;return url=this.yA[Math.abs(c+d)%this.yA.length]+this.map.zb+"/"+this.map.Yr+"/3/lv"+(21-b)+"/"+c+","+d+".jpg"};  ######
+    kc.getTilesUrl=function(a,b){var c=a.x,d=a.y,e=256*Math.pow(2,20-b),d=Math.round((9998336-e*d)/e)-1;return url=this.yA[Math.abs(c+d)%this.yA.length]+this.map.zb+"/"+this.map.Yr+"/3/lv"+(21-b)+"/"+c+","+d+".jpg"};
 
-> kc.getTilesUrl = function(a, b) {
-    var c = a.x,
-    d = a.y,
-    e = 256 * Math.pow(2, 20 - b),
-    d = Math.round((9998336 - e * d) / e) - 1;
-    return url = this.yA[Math.abs(c + d) % this.yA.length] + this.map.zb + "/" + this.map.Yr + "/3/lv" + (21 - b) + "/" + c + "," + d + ".jpg"
-};  
+    kc.getTilesUrl = function(a, b) {
+        var c = a.x,
+        d = a.y,
+        e = 256 * Math.pow(2, 20 - b),
+        d = Math.round((9998336 - e * d) / e) - 1;
+        return url = this.yA[Math.abs(c + d) % this.yA.length] + this.map.zb + "/" + this.map.Yr + "/3/lv" + (21 - b) + "/" + c + "," + d + ".jpg"
+    };  
 
 > a: x = 6536  y = 1797
 b: 15
