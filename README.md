@@ -6,7 +6,8 @@
 ### 一、aboutMap
 >关于地图的一些
    1. BaiduMapTile使用C#写的，可以手动下载地图瓦片的代码
-   2. baidumap2.0.3可以实现离线地图
+   2. baidumap2.0.3可以实现demo下载地图瓦片
+   3. baiduMap实现离线地图
 ### 二、dataVisualization
 > 基本介绍：是关于数据可视化做的一些demo或者了解的知识
   * 分类：
