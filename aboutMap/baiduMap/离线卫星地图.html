@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>百度离线卫星地图DEMO</title>
+<script type="text/javascript" src="js/apiv2.0_satellite.js"></script>
+<script type="text/javascript" src="js/AreaRestriction.js"></script>
+<script type="text/javascript" src="js/DrawingManager_one_rect.js"></script>
+<link rel="stylesheet" href="style/DrawingManager.css" />
+<!--script type="text/javascript" src="http://api.map.baidu.com/api?v=1.3"></script-->
+<!--<link rel="stylesheet" type="text/css" href="bmap.css"/>-->
+</head>
+<body>
+
+<style type="text/css">
+body,html,#map_container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  margin: 0;
+}
+
+.anchorBL {  
+    display: none;  
+}  
+</style>
+
+<div style="width: 100%;height: 100%;overflow: hidden;border:1px solid gray" id="map_container"></div>
+</body>
+</html>
+<script type="text/javascript">
+var map = new BMap.Map("map_container",{mapType: BMAP_NORMAL_MAP});      //设置卫星图为底图
+var point = new BMap.Point(116.404, 39.915);    // 创建点坐标
+map.centerAndZoom(point,13);                     // 初始化地图,设置中心点坐标和地图级别。
+
+//map.addControl(new BMap.MapTypeControl());
+map.addControl(new BMap.NavigationControl());
+map.enableScrollWheelZoom();                  // 启用滚轮放大缩小。
+map.enableKeyboard();                         // 启用键盘操作。  
+//map.setCurrentCity("北京");          // 设置地图显示的城市 此项是必须设置的
+
+//map.setMinZoom(10);
+//map.setMaxZoom(17);
+
+//标记
+//var p = new BMap.Point(120.261407, 31.547833);
+//var marker = new BMap.Marker(p);  
+//map.addOverlay(marker);
+
+//地图浏览者只能在限定区域内浏览地图
+//var b = new BMap.Bounds(new BMap.Point(119.48, 31.1),new BMap.Point(120.64, 32.01));
+//try {	
+//	BMapLib.AreaRestriction.setBounds(map, b);
+//} catch (e) {
+//	alert(e);
+//}
+
+//画矩形
+    var styleOptions = {
+        strokeColor:"red",    //边线颜色。
+        fillColor:"red",      //填充颜色。当参数为空时，圆形将没有填充效果。
+        strokeWeight: 1,       //边线的宽度，以像素为单位。
+        strokeOpacity: 0.8,	   //边线透明度，取值范围0 - 1。
+        fillOpacity: 0.4,      //填充的透明度，取值范围0 - 1。
+        strokeStyle: 'solid' //边线的样式，solid或dashed。
+    }
+    //实例化鼠标绘制工具
+    var drawingManager = new BMapLib.DrawingManager(map, {
+        isOpen: false, //是否开启绘制模式
+        enableDrawingTool: true, //是否显示工具栏
+        drawingToolOptions: {
+            anchor: BMAP_ANCHOR_TOP_RIGHT, //位置
+            offset: new BMap.Size(5, 5), //偏离值
+            drawingModes : [
+                //BMAP_DRAWING_MARKER,
+                //BMAP_DRAWING_CIRCLE,
+                //BMAP_DRAWING_POLYLINE,
+                //BMAP_DRAWING_POLYGON,
+                BMAP_DRAWING_RECTANGLE 
+            ],
+            scale: 0.8 //工具栏缩放比例
+        },
+        circleOptions: styleOptions, //圆的样式
+        polylineOptions: styleOptions, //线的样式
+        polygonOptions: styleOptions, //多边形的样式
+        rectangleOptions: styleOptions //矩形的样式
+    });
+
+    //添加鼠标绘制工具监听事件，用于获取绘制结果
+    drawingManager.addEventListener('rectanglecomplete',function(e) {
+        
+        var b = e.getBounds();
+        
+        if(typeof(window.external.SetScale) != 'undefined'){
+            window.external.SetScale(b.getSouthWest().lng, b.getSouthWest().lat, b.getNorthEast().lng, b.getNorthEast().lat);
+        }
+
+    });
+    
+    //C#调用，开始画范围
+    function OpenDrawRect() 
+    { 
+        drawingManager.open();
+        drawingManager.setDrawingMode(BMAP_DRAWING_RECTANGLE);
+        
+        return; 
+    } 
+
+    //C#调用，结束画范围
+    function CloseDrawRect() 
+    { 
+        drawingManager.close();
+        
+        return; 
+    } 
+
+
+
+
+/*
+
+//根据经纬度计算瓦片相关的信息
+var TILE_SIZE = 256;
+
+map.addEventListener('click', function(e){
+  var info = new BMap.InfoWindow('', {width: 260});
+  var projection = this.getMapType().getProjection();
+  
+  var lngLat = e.point;  
+  //lngLat.lng = 120.64 , lngLat.lat = 31.1;
+  var lngLatStr = "经纬度：" + lngLat.lng + ", " + lngLat.lat;
+  
+  var worldCoordinate = projection.lngLatToPoint(lngLat);
+  var worldCoordStr = "<br />平面坐标：" + worldCoordinate.x + ", " + worldCoordinate.y;
+  
+  var pixelCoordinate = new BMap.Pixel(Math.floor(worldCoordinate.x * Math.pow(2, this.getZoom() - 18)), 
+                                       Math.floor(worldCoordinate.y * Math.pow(2, this.getZoom() - 18)));
+  var pixelCoordStr = "<br />像素坐标：" + pixelCoordinate.x + ", " + pixelCoordinate.y;
+  
+  var tileCoordinate = new BMap.Pixel(Math.floor(pixelCoordinate.x / 256),
+                                 Math.floor(pixelCoordinate.y / 256));
+  var tileCoordStr = "<br />图块坐标：" + tileCoordinate.x + ", " + tileCoordinate.y;
+  
+  var viewportCoordinate = map.pointToPixel(lngLat);
+  var viewportCoordStr = "<br />可视区域坐标：" + viewportCoordinate.x + ", " + viewportCoordinate.y;
+  
+  var overlayCoordinate = map.pointToOverlayPixel(lngLat);
+  var overlayCoordStr = "<br />覆盖物坐标：" + overlayCoordinate.x + ", " + overlayCoordinate.y;
+  
+  var zoomStr = "<br />放大界别：" + map.getZoom();
+  
+  var urlStr = "<br/><a href='http://or2.map.bdimg.com:8080/tile/?qt=tile&x="+tileCoordinate.x+"&y="+tileCoordinate.y+"&z="+map.getZoom()+"&styles=pl' target='_blank'>街道地图url</a>"
+  var urlStr2 = "<br/><a href='http://shangetu3.map.bdimg.com/it/u=x="+tileCoordinate.x+";y="+tileCoordinate.y+";z="+map.getZoom()+";v=009;type=sate&fm=46' target='_blank'>卫星图url</a>"
+  
+  //将数据传递给java
+  if(typeof(theJavaFunction) == "function"){
+    theJavaFunction(tileCoordinate.x, tileCoordinate.y, this.getZoom());
+  }
+  
+  //将数据传递给C#
+  if(typeof(window.external.ShowMessage) != 'undefined'){
+    window.external.ShowMessage("x = " + tileCoordinate.x + ", y = " + tileCoordinate.y + ", zoom = " + this.getZoom());
+  }
+  
+  info.setContent(lngLatStr + worldCoordStr + pixelCoordStr + tileCoordStr + 
+                  viewportCoordStr + overlayCoordStr + zoomStr + urlStr + urlStr2);
+  map.openInfoWindow(info, lngLat);
+});
+*/
+
+</script>
