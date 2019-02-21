@@ -3,86 +3,86 @@
 - 地图页面的显示：
 - level:13-16;一开始显示设备在地图的位置(level:12);鼠标滑动加大level,直到16不在变化;鼠标可以滑动,拖动地图;鼠标放在设备上可以有弹框显示设备的具体信息;
 ### 项目开发:  
-C#下载地图瓦片的12-16的全国地图;调用百度地图API;地图瓦片大小：(12-13 40万张图片 1.22G;14    200万 2166345   15    800万    占用空间：19.4G )
+- C#下载地图瓦片的12-16的全国地图;调用百度地图API;地图瓦片大小：(12-13 40万张图片 1.22G;14    200万 2166345   15    800万    占用空间：19.4G )
 ### 文档：
 - 百度地图api:http://lbsyun.baidu.com/jsdemo.htm#a1_2
 - http://d0.map.baidu.com/resource/mappic/
 - http://or2.map.bdimg.com:8080/tile/?qt=tile&x=6536&y=1797&z=15&styles=pl&udt=20130822
 ### 资料：
 #### 地图的计算
-    kc.getTilesUrl=function(a,b){var c=a.x,d=a.y,e=256*Math.pow(2,20-b),d=Math.round((9998336-e*d)/e)-1;return url=this.yA[Math.abs(c+d)%this.yA.length]+this.map.zb+"/"+this.map.Yr+"/3/lv"+(21-b)+"/"+c+","+d+".jpg"};
+kc.getTilesUrl=function(a,b){var c=a.x,d=a.y,e=256*Math.pow(2,20-b),d=Math.round((9998336-e*d)/e)-1;return url=this.yA[Math.abs(c+d)%this.yA.length]+this.map.zb+"/"+this.map.Yr+"/3/lv"+(21-b)+"/"+c+","+d+".jpg"};
 
-    kc.getTilesUrl = function(a, b) {
-        var c = a.x,
-        d = a.y,
-        e = 256 * Math.pow(2, 20 - b),
-        d = Math.round((9998336 - e * d) / e) - 1;
-        return url = this.yA[Math.abs(c + d) % this.yA.length] + this.map.zb + "/" + this.map.Yr + "/3/lv" + (21 - b) + "/" + c + "," + d + ".jpg"
+kc.getTilesUrl = function(a, b) {
+    var c = a.x,
+    d = a.y,
+    e = 256 * Math.pow(2, 20 - b),
+    d = Math.round((9998336 - e * d) / e) - 1;
+    return url = this.yA[Math.abs(c + d) % this.yA.length] + this.map.zb + "/" + this.map.Yr + "/3/lv" + (21 - b) + "/" + c + "," + d + ".jpg"
+};  
+
+a: x = 6536  y = 1797
+b: 15
+c: "normal"  
+
+jc.getTilesUrl = function(a, b, c) {
+    var d = a.x,         //d = 6536  
+    a = a.y,             //a = 1797
+    e = "pl";            //e = "pl"
+    this.map.$g();       //
+    e = ic[c];
+    var yyy=(hc[Math.abs(d + a) % hc.length] + "?qt=tile&x=" + (d + "").replace(/-/gi, "M") + "&y=" + (a + "").replace(/-/gi, "M") + "&z=" + b + "&styles=" + e + (6 == t.M.S ? "&color_dep=32&colors=50": "") + "&udt=20130822").replace(/-(\d+)/gi, "M$1");  
+
+图块坐标
+1,3  2,3  3,3
+1,2  2,2  3,2
+1,1  2,1  3,1  
+
+###### 地图(最低是第4级)
+- http://online0.map.bdimg.com/tile/?qt=tile&x=6536&y=1797&z=15&styles=pl
+- http://or2.map.bdimg.com:8080/tile/?qt=tile&x=6536&y=1797&z=15&styles=pl&udt=20130822  
+
+###### 路网
+- http://or2.map.bdimg.com:8080/tile/?qt=tile&x=52294&y=14384&z=18&styles=sl
+- http://or2.map.bdimg.com:8080/tile/?qt=tile&x=52295&y=14383&z=18&styles=sl&udt=20130712  
+
+###### 全景图
+- http://pcsv0.map.bdimg.com/tile/?udt=v&qt=tile&styles=pl&x=52294&y=14384&z=18  
+
+###### 卫星图(最低是第1级)
+- http://shangetu3.map.bdimg.com/it/u=x=52295;y=14383;z=18;v=009;type=sate&fm=46  
+
+###### 将瓦片地址改为本地图片
+    jc.getTilesUrl = function(a, b, c) {
+        var d = a.x,
+            a = a.y,
+            e = "pl";
+        this.map.$g();
+        e = ic[c];
+        //return (hc[Math.abs(d + a) % hc.length] + "?qt=tile&x=" + (d + "").replace(/-/gi, "M") + "&y=" + (a + "").replace(/-/gi, "M") + "&z=" + b + "&styles=" + e + (6 == t.M.S ? "&color_dep=32&colors=50" : "") + "&udt=20130822").replace(/-(\d+)/gi, "M$1")
+        return "maptile/" + b + "/" + d + "/" + a + ".jpg"
     };  
 
-    a: x = 6536  y = 1797
-    b: 15
-    c: "normal"  
-
-    jc.getTilesUrl = function(a, b, c) {
-        var d = a.x,         //d = 6536  
-        a = a.y,             //a = 1797
-        e = "pl";            //e = "pl"
-        this.map.$g();       //
-        e = ic[c];
-        var yyy=(hc[Math.abs(d + a) % hc.length] + "?qt=tile&x=" + (d + "").replace(/-/gi, "M") + "&y=" + (a + "").replace(/-/gi, "M") + "&z=" + b + "&styles=" + e + (6 == t.M.S ? "&color_dep=32&colors=50": "") + "&udt=20130822").replace(/-(\d+)/gi, "M$1");  
-
-    图块坐标
-    1,3  2,3  3,3
-    1,2  2,2  3,2
-    1,1  2,1  3,1  
-
-    地图(最低是第4级)
-    http://online0.map.bdimg.com/tile/?qt=tile&x=6536&y=1797&z=15&styles=pl
-    http://or2.map.bdimg.com:8080/tile/?qt=tile&x=6536&y=1797&z=15&styles=pl&udt=20130822  
-
-    路网
-    http://or2.map.bdimg.com:8080/tile/?qt=tile&x=52294&y=14384&z=18&styles=sl
-    http://or2.map.bdimg.com:8080/tile/?qt=tile&x=52295&y=14383&z=18&styles=sl&udt=20130712  
-
-    全景图
-    http://pcsv0.map.bdimg.com/tile/?udt=v&qt=tile&styles=pl&x=52294&y=14384&z=18  
-
-    卫星图(最低是第1级)
-    http://shangetu3.map.bdimg.com/it/u=x=52295;y=14383;z=18;v=009;type=sate&fm=46  
-
-    将瓦片地址改为本地图片
-        jc.getTilesUrl = function(a, b, c) {
-            var d = a.x,
-                a = a.y,
-                e = "pl";
-            this.map.$g();
-            e = ic[c];
-            //return (hc[Math.abs(d + a) % hc.length] + "?qt=tile&x=" + (d + "").replace(/-/gi, "M") + "&y=" + (a + "").replace(/-/gi, "M") + "&z=" + b + "&styles=" + e + (6 == t.M.S ? "&color_dep=32&colors=50" : "") + "&udt=20130822").replace(/-(\d+)/gi, "M$1")
-            return "maptile/" + b + "/" + d + "/" + a + ".jpg"
-        };  
-
-    禁用canvas（IE8本来就不支持，对于Chrome、Firefox、IE9以上要通过源代码来禁用）
-    如果使用canvas，就不会使用瓦片图，所以这个函数改为直接返回false
-            Dc: function() {
-                var a = this.U() >= this.F.Ou && this.ha() == ra && 18 >= this.U(),
-                    b = o;
-                try {
-                    document.createElement("canvas").getContext("2d"), b = i
-                } catch (c) {
-                    b = o
-                }
-                //return a && b
-                return false
-            },
-            
-    修改相关图片地址：(file:///D:/images/openhand.cur)
-            //ca: "http://api0.map.bdimg.com/images/",
-            ca: "./images/",
-            
-    修改blank.gif地址（不知道这个图片是干什么用的）        
-                        //Sa.src = "http://api.map.baidu.com/images/blank.gif?" + a.src
-                        Sa.src = "./images/blank.gif"
+禁用canvas（IE8本来就不支持，对于Chrome、Firefox、IE9以上要通过源代码来禁用）
+如果使用canvas，就不会使用瓦片图，所以这个函数改为直接返回false
+        Dc: function() {
+            var a = this.U() >= this.F.Ou && this.ha() == ra && 18 >= this.U(),
+                b = o;
+            try {
+                document.createElement("canvas").getContext("2d"), b = i
+            } catch (c) {
+                b = o
+            }
+            //return a && b
+            return false
+        },
+        
+修改相关图片地址：(file:///D:/images/openhand.cur)
+        //ca: "http://api0.map.bdimg.com/images/",
+        ca: "./images/",
+        
+修改blank.gif地址（不知道这个图片是干什么用的）        
+                    //Sa.src = "http://api.map.baidu.com/images/blank.gif?" + a.src
+                    Sa.src = "./images/blank.gif"
 
 
 
