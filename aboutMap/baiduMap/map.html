@@ -4,6 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>机房地理位置</title>
 <script type="text/javascript" src="js/apiv2.0_street.js"></script>
+<script type="text/javascript" src="js/DistanceTool_min.js"></script>
 <script type="text/javascript" src="js/AreaRestriction.js"></script>
 <script type="text/javascript" src="js/DrawingManager_one_rect.js"></script>
 <link rel="stylesheet" href="style/DrawingManager.css" />
@@ -102,6 +103,11 @@ function map(result){
 
     map.setMinZoom(12);
     map.setMaxZoom(15);
+    var myDis = new BMapLib.DistanceTool(map);
+	map.addEventListener("load",function(){
+		myDis.open();  //开启鼠标测距
+		//myDis.close();  //关闭鼠标测距大
+	});
     //map.setMinZoom(6);
     //map.setMaxZoom(7);
 
