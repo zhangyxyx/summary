@@ -1,0 +1,11 @@
+//输入输出参数
+window.params={
+    input:[
+        {key:'name',text:"名称"},
+        {key:'sex',text:"性别"},
+        {key:'address',text:"地址"},
+    ],
+    output:[
+        {key:'MailingAddress',text:'邮寄地址'},
+    ]
+}

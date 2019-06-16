@@ -1,0 +1,9 @@
+*{margin:0px;padding:0px;}
+ul,li{list-style:none}
+.main{width:1000px;height:600px;margin:20px auto;border:1px solid red;}
+.menu{width:16%;float:left;height:100%;border:1px solid blue;}
+.topo{width:80%;float:left;height:100%;border:1px solid green;}
+
+/* 右键事件 */
+.contextEvent{width:80px;height:30px;position:absolute;left:0px;top:0px;z-index:2;background:#d6d3d3;display:none;line-height:30px;text-align:center;border-radius:3px;cursor:pointer;}
+.contextEvent p{width:100%;height:30px;line-height:30px;text-align:center;}
