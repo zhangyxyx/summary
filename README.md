@@ -13,6 +13,7 @@
   * 分类：
    1. raphael 这是一个可以画拓扑的插件
    2. D3 这是用d3实现的一些效果 版本5.7.0
+   3. dragTopo 这个可以拖动实现拓扑的一个功能，可以结合conductor实现工作流
   * 相关资料：
    1. [d3中文文档](https://d3js.org.cn/)
    2. [d3英文文档](https://github.com/d3/d3)
