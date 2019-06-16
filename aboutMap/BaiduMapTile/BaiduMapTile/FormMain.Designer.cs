@@ -1,4 +1,6 @@
-﻿namespace BaiduMapTile
+﻿using System;
+
+namespace BaiduMapTile
 {
     partial class FormMain
     {
@@ -79,6 +81,9 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.webBrowser_map_online = new System.Windows.Forms.WebBrowser();
             this.tabControl_map = new System.Windows.Forms.TabControl();
+            this.textBox_mapStyle = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_downlaod_thread_cnt)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -87,11 +92,12 @@
             this.statusStrip.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl_map.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button_start
             // 
-            this.button_start.Location = new System.Drawing.Point(12, 598);
+            this.button_start.Location = new System.Drawing.Point(12, 720);
             this.button_start.Margin = new System.Windows.Forms.Padding(4);
             this.button_start.Name = "button_start";
             this.button_start.Size = new System.Drawing.Size(144, 40);
@@ -588,7 +594,7 @@
             // 
             // button_pause
             // 
-            this.button_pause.Location = new System.Drawing.Point(176, 598);
+            this.button_pause.Location = new System.Drawing.Point(176, 720);
             this.button_pause.Margin = new System.Windows.Forms.Padding(4);
             this.button_pause.Name = "button_pause";
             this.button_pause.Size = new System.Drawing.Size(144, 40);
@@ -605,10 +611,10 @@
             this.toolStripStatusLabel2,
             this.toolStripStatusLabel3,
             this.toolStripStatusLabel_map_status});
-            this.statusStrip.Location = new System.Drawing.Point(0, 646);
+            this.statusStrip.Location = new System.Drawing.Point(0, 766);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
-            this.statusStrip.Size = new System.Drawing.Size(981, 25);
+            this.statusStrip.Size = new System.Drawing.Size(1061, 25);
             this.statusStrip.TabIndex = 36;
             this.statusStrip.Text = "statusStrip1";
             // 
@@ -627,7 +633,7 @@
             // 
             this.toolStripStatusLabel3.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right;
             this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(823, 20);
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(903, 20);
             this.toolStripStatusLabel3.Spring = true;
             // 
             // toolStripStatusLabel_map_status
@@ -643,7 +649,7 @@
             this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage1.Size = new System.Drawing.Size(645, 600);
+            this.tabPage1.Size = new System.Drawing.Size(725, 720);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "在线地图";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -655,7 +661,7 @@
             this.webBrowser_map_online.Margin = new System.Windows.Forms.Padding(4);
             this.webBrowser_map_online.MinimumSize = new System.Drawing.Size(27, 25);
             this.webBrowser_map_online.Name = "webBrowser_map_online";
-            this.webBrowser_map_online.Size = new System.Drawing.Size(637, 592);
+            this.webBrowser_map_online.Size = new System.Drawing.Size(717, 712);
             this.webBrowser_map_online.TabIndex = 0;
             this.webBrowser_map_online.Url = new System.Uri("", System.UriKind.Relative);
             this.webBrowser_map_online.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser_map_online_DocumentCompleted);
@@ -670,14 +676,51 @@
             this.tabControl_map.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl_map.Name = "tabControl_map";
             this.tabControl_map.SelectedIndex = 0;
-            this.tabControl_map.Size = new System.Drawing.Size(653, 629);
+            this.tabControl_map.Size = new System.Drawing.Size(733, 749);
             this.tabControl_map.TabIndex = 37;
+            // 
+            // textBox_mapStyle
+            // 
+            this.textBox_mapStyle.Location = new System.Drawing.Point(8, 71);
+            this.textBox_mapStyle.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox_mapStyle.Multiline = true;
+            this.textBox_mapStyle.Name = "textBox_mapStyle";
+            this.textBox_mapStyle.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox_mapStyle.Size = new System.Drawing.Size(288, 31);
+            this.textBox_mapStyle.TabIndex = 38;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.textBox_mapStyle);
+            this.groupBox1.Location = new System.Drawing.Point(12, 598);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Size = new System.Drawing.Size(308, 110);
+            this.groupBox1.TabIndex = 39;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "自定义样式";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // label9
+            // 
+            this.label9.ForeColor = System.Drawing.Color.DimGray;
+            this.label9.Location = new System.Drawing.Point(8, 22);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(288, 45);
+            this.label9.TabIndex = 39;
+            this.label9.Text = "请看页面生成的请求，如：t%3Aall%7Ce%3Ag%7Cs%3A89%7Ch%3A%23007fff%2Ct%3Awater%7Ce%3Aall%7Cc%3A" +
+    "%23ffffff";
+            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(981, 671);
+            this.ClientSize = new System.Drawing.Size(1061, 791);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.tabControl_map);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.button_pause);
@@ -704,9 +747,16 @@
             this.statusStrip.PerformLayout();
             this.tabPage1.ResumeLayout(false);
             this.tabControl_map.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion
@@ -762,6 +812,9 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.WebBrowser webBrowser_map_online;
         private System.Windows.Forms.TabControl tabControl_map;
+        private System.Windows.Forms.TextBox textBox_mapStyle;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label9;
     }
 }
 

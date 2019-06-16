@@ -53,7 +53,7 @@ namespace BaiduMapTile
 
             for (int i = 0; i < mCheckBoxZoom.Length; i++)
             {
-                mCheckBoxZoom[i].Checked = true;
+                mCheckBoxZoom[i].Checked = false;
             }
 
             //下载类型
@@ -161,7 +161,7 @@ namespace BaiduMapTile
 
             this.toolStripStatusLabel_download_status.Text = "开始下载";
             
-            mDownloader.execute(savePath, leftBottomPoint, rightTopPoint, zoomArray, threadCnt, mapType);
+            mDownloader.execute(savePath, leftBottomPoint, rightTopPoint, zoomArray, threadCnt, mapType, this.textBox_mapStyle.Text);
 
             this.button_start.Enabled = false;
             this.button_pause.Enabled = true;
@@ -279,6 +279,9 @@ namespace BaiduMapTile
             }
         }
 
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
 
+        }
     }
 }
