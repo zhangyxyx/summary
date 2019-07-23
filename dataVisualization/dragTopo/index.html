@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+	<link rel="stylesheet" href="lib/zTree/css/demo.css" type="text/css">
+	<link rel="stylesheet" href="lib/zTree/css/zTreeStyle/zTreeStyle.css" type="text/css">
+    <link rel="stylesheet" href="css/index.css" type="text/css">
+</head>
+<body>
+<div class="main">
+    <h4 style="text-align:center">拖动拓扑</h4>
+    <div style="width:100%;height:30px;text-align:right">
+        <button >重置画布</button>
+    </div>
+    <div class="menu" id="menu">
+        <ul id="treeDemo" class="ztree" style="width:90%;float:left"></ul>
+    </div>
+    <div class="topo" id="topo"></div>
+</div>
+<!-- 右键弹框 -->
+<div class="contextEvent">
+    <p class="delete">删除</p>
+</div>
+<script type="text/javascript" src="lib/jquery/jquery-1.9.1.min.js"></script>
+<!-- 节点树 -->
+<script type="text/javascript" src="lib/zTree/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="lib/zTree/js/jquery.ztree.core.js"></script>
+<script type="text/javascript" src="lib/zTree/js/jquery.ztree.excheck.js"></script>
+<script type="text/javascript" src="lib/zTree/js/jquery.ztree.exedit.js"></script>
+<!-- 拓扑 -->
+<script type="text/javascript" src="lib/raphael/raphael.min.js"></script>
+<script type="text/javascript" src="lib/raphael/raphael.topo.base.js"></script>
+<script type="text/javascript" src="lib/raphael/raphael.topo.lines.js"></script>
+<script type="text/javascript" src="lib/raphael/raphael.graph.js"></script>
+<!-- 主页面 -->
+<script type="text/javascript" src="js/PopComFn.js"></script>
+<script type="text/javascript" src="js/data.js"></script>
+<script type="text/javascript" src="js/tree.js"></script>
+
+<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript" src="js/topo.js"></script>
+</body>
+
+</html>
