@@ -8,6 +8,7 @@
    1. BaiduMapTile使用C#写的，可以手动下载地图瓦片的代码
    2. baidumap2.0.3可以实现demo下载地图瓦片
    3. baiduMap实现离线地图
+>其它关于地图的https://github.com/dingdong-zhang/About-the-map
 ### 二、dataVisualization
 > 基本介绍：是关于数据可视化做的一些demo或者了解的知识
   * 分类：
@@ -17,6 +18,7 @@
   * 相关资料：
    1. [d3中文文档](https://d3js.org.cn/)
    2. [d3英文文档](https://github.com/d3/d3)
+>其它关于可视化的https://github.com/dingdong-zhang/dataVisualization
 ### 三、echarts
 > 这是所有关于echarts的一些操作demo
 ### 四、jsPlugin 
