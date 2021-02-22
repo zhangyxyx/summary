@@ -28,7 +28,7 @@ export default {
               splitLine:{
                 lineStyle:{
                   type:'dashed',
-                  color:'#97e7fb'
+                  color:'rgba(151,213,251,.5)'
                 }
               },
               axisLine:{
@@ -45,7 +45,7 @@ export default {
               splitLine:{
                 lineStyle:{
                   type:'dashed',
-                  color:'#97e7fb'
+                  color:'rgba(151,213,251,.5)'
                 }
               },
               axisLine:{

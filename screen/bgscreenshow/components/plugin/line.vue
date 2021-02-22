@@ -29,7 +29,7 @@ export default {
               splitLine:{
                 lineStyle:{
                   type:'dashed',
-                  color:'#97e7fb'
+                  color:'rgba(151,213,251,.5)'
                 }
               },
               axisLine:{
@@ -46,7 +46,7 @@ export default {
               splitLine:{
                 lineStyle:{
                   type:'dashed',
-                  color:'#97e7fb'
+                  color:'rgba(151,213,251,.5)'
                 }
               },
               axisLine:{
@@ -61,7 +61,21 @@ export default {
             series: [{
                 name: '销量',
                 type: 'line',
-                data:that.echartsData.seriesdata
+                smooth:true,
+                symbol:'none',
+                lineStyle:{
+                  color:that.lineoption.lineonecolor
+                },
+                data:[10,24,34,67,14,22]
+            },{
+                name: '销量2',
+                type: 'line',
+                smooth:true,
+                symbol:'none',
+                lineStyle:{
+                  color:that.lineoption.linetwocolor
+                },
+                data:[10,24,88,7,37,66]
             }]
         });
     }

@@ -1,8 +1,9 @@
 <template>
   <div class="app-container">
     <Main/>
-    <el-divider></el-divider>
     <setLine/>
+    <setBar/>
+    <setMap/>
     <el-row>
       <el-col :span="24" style="text-align:right">
          <el-button type="primary" size="small" @click="exportjson" class="el-button filter-item el-button--primary el-button--mini">导出</el-button>
@@ -14,11 +15,15 @@
 
 import Main from './components/main.vue'
 import setLine from './components/setline.vue'
+import setBar from './components/setbar.vue'
+import setMap from './components/settopo.vue'
 export default {
   name: 'setlayout',
   components:{
     Main:Main,
-    setLine:setLine
+    setLine:setLine,
+    setBar:setBar,
+    setMap:setMap
   },
   data() {
    return{}

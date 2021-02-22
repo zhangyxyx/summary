@@ -1,9 +1,25 @@
 <template>
   <div class="app-container">
-    <h1>折线图设置</h1>
+    <h1>地图设置</h1>
     <el-divider></el-divider>
     <el-form inline class="app-form app-form-shadow" >
       <el-row class="row-1 checkItemselect">
+        
+        <el-col :span="8">
+          <el-form-item label="">
+              <el-checkbox v-model="checked">连线</el-checkbox>
+          </el-form-item>
+        </el-col> 
+        <el-col :span="8">
+          <el-form-item label="">
+              <el-checkbox v-model="checked">城市点</el-checkbox>
+          </el-form-item>
+        </el-col>
+        <el-col :span="8">
+          <el-form-item label="">
+              <el-checkbox v-model="checked">城市点</el-checkbox>
+          </el-form-item>
+        </el-col> 
         <el-col :span="8">
           <el-form-item label="几条折线">
               <el-select v-model="lineindex" placeholder="请选择">
@@ -73,7 +89,7 @@
 <script>
 
 export default {
-  name: 'setline',
+  name: 'setMap',
 
   data() {
    return{

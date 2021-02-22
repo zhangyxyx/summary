@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <h1>折线图设置</h1>
+    <h1>柱形图设置</h1>
     <el-divider></el-divider>
     <el-form inline class="app-form app-form-shadow" >
       <el-row class="row-1 checkItemselect">
@@ -73,7 +73,7 @@
 <script>
 
 export default {
-  name: 'setline',
+  name: 'setBar',
 
   data() {
    return{
