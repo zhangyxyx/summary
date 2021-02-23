@@ -2,72 +2,38 @@
   <div style="width:100%;height:100%;">
      <el-select class="treecheck" v-model="mineStatus" placeholder="请选择" multiple  @change="selectChange">
         <el-option  :value="mineStatusValue" style="height:100% !important">
-          <el-tree :data="data" show-checkbox node-key="id" ref="tree" highlight-current :props="defaultProps" @check-change="handleCheckChange"></el-tree>
+          <el-tree :data="data" show-checkbox :node-key="Tresslistid" ref="tree" highlight-current :props="defaultProps" @check-change="handleCheckChange"></el-tree>
       </el-option>
     </el-select>
   </div>
 </template>
 <script>
 export default {
+  props:['Tresslistdata','Tresslistid','Tresslistlabel'],
   data() {
     return {
       mineStatus: "",
       mineStatusValue: [],
-      data: [
-        {
-          id: 1,
-          label: "一级 1",
-          children: [
-            {
-              id: 4,
-              label: "二级 1-1"
-            }
-          ]
-        },
-        {
-          id: 2,
-          label: "一级 2",
-          children: [
-            {
-              id: 5,
-              label: "二级 2-1"
-            },
-            {
-              id: 6,
-              label: "二级 2-2"
-            }
-          ]
-        },
-        {
-          id: 3,
-          label: "一级 3",
-          children: [
-            {
-              id: 7,
-              label: "二级 3-1"
-            },
-            {
-              id: 8,
-              label: "二级 3-2"
-            }
-          ]
-        }
-      ],
+      data: [],
       defaultProps: {
         children: "children",
-        label: "label"
+        label:this.Tresslistlabel
       }
     };
   },
+  watch:{
+    Tresslistdata:function(){
+      this.data=[this.Tresslistdata]
+    }
+  },
   methods: {
-    //select框值改变时候触发的事件
     selectChange(e){
         var arrNew = [];
           var dataLength = this.mineStatusValue.length;
           var eleng = e.length;
           for(let i = 0; i< dataLength ;i++){
             for(let j = 0; j < eleng; j++){
-              if(e[j] === this.mineStatusValue[i].label){
+              if(e[j] === this.mineStatusValue[i][this.Tresslistlabel]){
                 arrNew.push(this.mineStatusValue[i])
               }
             }
@@ -79,15 +45,17 @@ export default {
         let arrLabel = [];
         let arr = [];
         res.forEach(item => {
-          arrLabel.push(item.label);
+          arrLabel.push(item[this.Tresslistlabel]);
           arr.push(item);
         });
         this.mineStatusValue = arr;
         this.mineStatus = arrLabel;
         console.log('arr:'+JSON.stringify(arr))
         console.log('arrLabel:'+arrLabel)
-      }
-    }
+    },
+  },
+  mounted(){
+  }
 }
 </script>
 <style scoped>
