@@ -1,6 +1,6 @@
 <template>
   <div style="width:100%;height:100%;">
-     <el-select class="treecheck" v-model="mineStatus" placeholder="请选择" multiple  @change="selectChange">
+     <el-select class="treecheck" v-model="mineStatus" placeholder="请选择" multiple  collapse-tags @change="selectChange">
         <el-option  :value="mineStatusValue" style="height:100% !important">
           <el-tree :data="data" show-checkbox :node-key="Tresslistid" ref="tree" highlight-current :props="defaultProps" @check-change="handleCheckChange"></el-tree>
       </el-option>
@@ -9,7 +9,7 @@
 </template>
 <script>
 export default {
-  props:['Tresslistdata','Tresslistid','Tresslistlabel'],
+  props:['Tresslistdata','Tresslistid','Tresslistlabel','Tresslistidckeckinit'],
   data() {
     return {
       mineStatus: "",
@@ -24,7 +24,26 @@ export default {
   watch:{
     Tresslistdata:function(){
       this.data=[this.Tresslistdata]
-    }
+    },
+    Tresslistidckeckinit:{
+      handler:function(){
+        var arr=this.Tresslistidckeckinit['name'].split(';')
+        this.mineStatus=arr
+        var codes=this.Tresslistidckeckinit['code'].split(';')
+        var arr2=[]
+        for(var i=0;i<codes.length;i++){
+          var node=this.$refs.tree.getNode(codes[i])
+          arr2.push(node.data)
+          this.mineStatusValue.push(node.data)
+        }
+        this.mineStatusValue.splice(arr2.length)
+        for(var i=0;i<arr2.length;i++){
+          this.$set(this.mineStatusValue,i,arr2[i])
+        }
+        this.$refs.tree.setCheckedNodes(this.mineStatusValue)
+      },
+      deep:true
+    },
   },
   methods: {
     selectChange(e){
@@ -44,14 +63,15 @@ export default {
         let res = this.$refs.tree.getCheckedNodes(true, true); //这里两个true，1. 是否只是叶子节点 2. 是否包含半选节点（就是使得选择的时候不包含父节点）
         let arrLabel = [];
         let arr = [];
+        let arrid=[];
         res.forEach(item => {
           arrLabel.push(item[this.Tresslistlabel]);
+          arrid.push(item[this.Tresslistid]);
           arr.push(item);
         });
         this.mineStatusValue = arr;
         this.mineStatus = arrLabel;
-        console.log('arr:'+JSON.stringify(arr))
-        console.log('arrLabel:'+arrLabel)
+        this.$emit('Tresslistidckeck',arrid)
     },
   },
   mounted(){
