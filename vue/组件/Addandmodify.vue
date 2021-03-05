@@ -267,20 +267,98 @@ export default {
       strAddr = strAddr+seg1+"."+seg2+"."+seg3+"."+seg4;
       this.maskbits=strAddr
     },
+    //子网地址和掩码位数算法函数
+    subnetmaskbitsfunc(strIpAddr,strBitNumber){
+      var mask=this.getMaskIntValue(strBitNumber);
+      var minip=this.ipStrToInt(strIpAddr)&mask;
+      var maxip=minip|(mask^0xffffffff);
+      return {
+        'startip':this.ipIntToStr(minip),
+        'endip':this.ipIntToStr(maxip)
+      }
+    },
+    getMaskIntValue(bitNumber){
+        var maskIntValue = 0x80000000;
+        if ((bitNumber<=0) || (bitNumber>32)) return 0;
+        maskIntValue >>= (bitNumber - 1);
+        return maskIntValue ;
+    },
+    ipStrToInt(ipString){
+        var begin=0;
+        var end=0,segValue=0,returnValue=0;
+
+        //分析地址前三段
+        for(var i=0;i<3;i++)
+        {
+            //找不到"."分隔符，为非法IP
+            end = ipString.indexOf(".",begin);
+            if (end==-1) return 0;
+
+            //数据不在0－255之间，为非法IP
+            segValue=parseInt(ipString.substring(begin,end));
+            if ((segValue<0) || (segValue>255)) return 0;
+
+            //拼装返回值
+            returnValue = (returnValue << 8) | segValue ;
+
+            //下一段的起始点
+            begin = end+1;
+
+        }
+
+        //地址最后一段数据不在0－255之间，为非法IP
+        segValue=parseInt(ipString.substring(begin));
+        if ((segValue<0) || (segValue>255)) return 0;
+
+        //拼装最后一段
+        returnValue = (returnValue << 8) | segValue ;
+
+        //返回
+        return returnValue;
+    },
+    ipIntToStr(intIpString){
+        var retValue="";
+        var intValue=0;
+        intValue = (intIpString&0xff000000)>>>24
+      retValue += intValue ;
+        retValue += ".";
+        intValue = (intIpString&0x00ff0000)>>>16;
+      retValue += intValue ;
+        retValue += ".";
+        intValue = (intIpString&0x0000ff00)>>>8;
+      retValue += intValue ;
+        retValue += ".";
+        intValue = (intIpString&0x000000ff);
+      retValue += intValue ;
+        return retValue;
+    },
     //获取登陆地址列表
     getloginaddresslist(){
       var that=this
-      var url=api
+      var url=recheck.urlCom+'/api/system/user/getAddrLimitList/'+this.netUserid
       axios(url, ({}), ("get")).then((response)=>{
           var result=response.data
           var data=result.data
           that.tableData.splice(data.length)
           for(var i=0;i<data.length;i++){
-            console.log(data[i])
             data[i]['edit']=0
             that.$set(that.tableData,i,data[i])
           }
       })
+    },
+    //判断是否可以重复提交
+    formattersub(item,data){
+      console.log(111111111)
+      var startIp=item.startIp
+      var endIp=item.endIp
+      var action=item.action
+      var repeat=0
+      for(var i=0;i<data.length;i++){
+        if(data[i]['startIp']===startIp&&data[i]['endIp']===endIp&&data[i]['action']===action){
+          repeat=1
+        }
+      }
+      return repeat
     },
     //增加
     addIp(){
@@ -290,8 +368,9 @@ export default {
         startip=this.startip
         endip=this.endip
       }else if(this.addresstype===''){
-        startip=this.subnetaddress
-        endip=this.maskbits
+        var ips=this.subnetmaskbitsfunc(this.subnetaddress,this.maskbits)
+        startip=ips.startip
+        endip=ips.endip
       }
       var reg=/^((2[0-4]\d|25[0-5]|[01]?\d\d?)\.){3}(2[0-4]\d|25[0-5]|[01]?\d\d?)$/
       if(reg.test(startip)&&reg.test(endip)){
@@ -303,8 +382,16 @@ export default {
           "endIp":endip,
           "edit":0
         }
-        this.tableData.push(json)
-        this.total=this.tableData.length
+        var repeat=this.formattersub(json,this.tableData)
+        if(repeat===0){
+          this.tableData.push(json)
+          this.total=this.tableData.length
+        }else{
+          this.$message({
+            message: '不可以重复提交！',
+            type: 'success'
+          });
+        }
       }else{
         this.$message({
           message: '起始IP或者终止IP格式不对',
@@ -323,16 +410,14 @@ export default {
           }
         }
       }
-      console.log(this.tableData)
     },
     //保存
     addLoginaddress(){
- 
       var params={
         netUserid:this.netUserid,
         addrAcl:this.tableData
       }
-      var url=api
+      var url=recheck.urlCom+'/api/system/user/addrLimit/'+this.createnetUserid
       axios.post(url, params).then((response)=>{
         var result=response.data
           if(result.tip==='成功'){

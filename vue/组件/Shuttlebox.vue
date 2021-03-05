@@ -1,5 +1,10 @@
 <template>
-  <div class="app-container resource" style="position:relative;">
+  <div class="app-container resource" style="position:relative;"
+      v-loading="loading"
+    element-loading-text="拼命加载中"
+    element-loading-spinner="el-icon-loading"
+    element-loading-background="rgba(0, 0, 0, 0.8)"
+  >
     <el-row class="clicksumit" style="width:200px;height:40px;position:absolute;right:0px;top:22px;z-index:2">
       <el-col :span="24">
         <el-button type="primary"  v-on:click="submitadd()">提交</el-button>
@@ -99,6 +104,7 @@
                     cell-class-name="cellclazz"
                     class="app-tablec"
                     row-key="deviceId"
+                    @select-all="handleSelectionChangeDevAll"
                     @selection-change="handleSelectionChangeDev"
                   >    
                   <el-table-column type="selection" width="55" reserve-selection></el-table-column>
@@ -146,6 +152,7 @@
                     cell-class-name="cellclazz"
                     class="app-tablec"
                     row-key="circuitID"
+                    @select-all="handleSelectionChangeCircuitAll"
                     @selection-change="handleSelectionChangeCircuit"
                   >    
                   <el-table-column type="selection" width="55" reserve-selection></el-table-column>
@@ -196,6 +203,7 @@
                     cell-class-name="cellclazz"
                     class="app-tablec"
                     row-key="tag"
+                    @select-all="handleSelectionChangeTagAll"
                     @selection-change="handleSelectionChangeTag"
                   >    
                   <el-table-column type="selection" width="55" reserve-selection></el-table-column>
@@ -257,6 +265,7 @@ export default {
   name: 'resourceauthor',
   data() {
     return{
+        loading:false,
         checkHeight:200,
         checktableHeight:200,
         createnetUserid:'admin',
@@ -413,8 +422,10 @@ export default {
         "authType":"CFG",
         "authList":arr
       }
+      this.loading=true
       var url=recheck.urlCom+'/api/system/user/configAuth/'+this.createnetUserid
       axios.post(url,params).then((result1)=>{
+        that.loading=false
         var result=result1.data
         if(result.tip==='成功'){
           this.$message({
@@ -448,6 +459,7 @@ export default {
         arr.push(json)
       }
       this.resourceJson.nodes=arr
+      //按照资源
       var data0=this.$refs.tree
       for(var i=0;i<data0.length;i++){
         var result=data0[i].getCheckedNodes()
@@ -477,23 +489,42 @@ export default {
         }else if(data0[i].data[0]['vendorName']){
           var resTypeid=data0[i].data[0]['vendor']
         } 
-
-        this.resourceJson[data0[i]['data'][0]['type']][resTypeid]={
-          'arr':arr,
-          'resClassName':data0[i].data[0]['resClassName'],
-          'resClassid':data0[i].data[0]['resClassid']
-        }      
+        if(result[0]){
+          if(result[0]['resTypeList']||result[0]['resPropList']){
+            this.resourceJson[data0[i]['data'][0]['type']][resTypeid]={
+              'arr':[{
+                resTypeName:'全部',
+                resTypeid:'all',
+              }],
+              'resClassName':data0[i].data[0]['resClassName'],
+              'resClassid':data0[i].data[0]['resClassid']
+            }
+          }
+        }else{
+          this.resourceJson[data0[i]['data'][0]['type']][resTypeid]={
+            'arr':arr,
+            'resClassName':data0[i].data[0]['resClassName'],
+            'resClassid':data0[i].data[0]['resClassid']
+          }
+        }
+              
       }
-
       //按照设备
       var data1=this.resourcedevchecks
       var arr1=[]
-      for(var i=0;i<data1.length;i++){
-        var json={
-          resTypeName: data1[i]['deviceName'],
-          resTypeid:data1[i]['deviceId'],
+      if(data1==='all'){
+        arr1=[{
+          resTypeName: '全部',
+          resTypeid:'all',
+        }]
+      }else{
+        for(var i=0;i<data1.length;i++){
+          var json={
+            resTypeName: data1[i]['deviceName'],
+            resTypeid:data1[i]['deviceId'],
+          }
+          arr1.push(json)
         }
-        arr1.push(json)
       }
       var json1={
         'arr':arr1,
@@ -504,12 +535,19 @@ export default {
       //按照电路
       var data2=this.resourcecircuitchecks
       var arr2=[]
-      for(var i=0;i<data2.length;i++){
-        var json={
-          resTypeName: data2[i]['circuitName'],
-          resTypeid:data2[i]['circuitID'],
+      if(data2==='all'){
+        all=[{
+          resTypeName:'全部',
+          resTypeid:'all',
+        }]
+      }else{
+        for(var i=0;i<data2.length;i++){
+          var json={
+            resTypeName: data2[i]['circuitName'],
+            resTypeid:data2[i]['circuitID'],
+          }
+          arr2.push(json)
         }
-        arr2.push(json)
       }
       var json2={
         'arr':arr2,
@@ -520,12 +558,19 @@ export default {
       //按照TAG
       var data3=this.resourcetagchecks
       var arr3=[]
-      for(var i=0;i<data3.length;i++){
-        var json={
-          resTypeName: data3[i]['tagDesc'],
-          resTypeid:data3[i]['tag'],
+      if(data3==='all'){
+        arr=[{
+          resTypeName:'全部',
+          resTypeid:'all',
+        }]
+      }else{
+        for(var i=0;i<data3.length;i++){
+          var json={
+            resTypeName: data3[i]['tagDesc'],
+            resTypeid:data3[i]['tag'],
+          }
+          arr3.push(json)
         }
-        arr3.push(json)
       }
       var json3={
         'arr':arr3,
@@ -533,101 +578,12 @@ export default {
         'resClassName':'TAG'
       }
       this.resourceJson.resourcetag['tag']=json3
-
-      // if(this.activeName==='resourcetype'||this.activeName==='resourceattr'||this.activeName==='resourcevendor'){
-      //   for(var i=0;i<data.length;i++){
-      //     var result=data[i].getCheckedNodes()
-      //     var arr=[]
-      //     for(var j=0;j<result.length;j++){
-      //       if(result[j]['resTypeName']){
-      //         var resTypeName=result[j]['resTypeName']
-      //         var resTypeid=result[j]['resTypeid']
-      //       }else if(result[j]['propName']){
-      //         var resTypeName=result[j]['propName']
-      //         var resTypeid=result[j]['propCode']
-      //       }else if(result[j]['vendorName']){
-      //         var resTypeName=result[j]['vendorName']
-      //         var resTypeid=result[j]['vendor']
-      //       }
-      //       var json={
-      //         resTypeName: resTypeName,
-      //         resTypeid: resTypeid
-      //       }
-      //       arr.push(json)
-      //     }
-          
-      //     var resTypeid=''
-      //     if(data[i].data[0]['resTypeName']){
-      //       var resTypeid=data[i].data[0]['resTypeid']
-      //     }else if(data[i].data[0]['propName']){
-      //       var resTypeid=data[i].data[0]['propCode']
-      //     }else if(data[i].data[0]['vendorName']){
-      //       var resTypeid=data[i].data[0]['vendor']
-      //     } 
-
-      //     this.resourceJson[data[i]['data'][0]['type']][resTypeid]={
-      //       'arr':arr,
-      //       'resClassName':data[i].data[0]['resClassName'],
-      //       'resClassid':data[i].data[0]['resClassid']
-      //     }      
-      //   }
-      // }else if(this.activeName==='resourcedev'){
-      //   var data=this.resourcedevchecks
-      //   var arr=[]
-      //   for(var i=0;i<data.length;i++){
-      //     var json={
-      //       resTypeName: data[i]['deviceName'],
-      //       resTypeid:data[i]['deviceId'],
-      //     }
-      //     arr.push(json)
-      //   }
-      //   var json={
-      //     'arr':arr,
-      //     'resClassid':this.devtype.value,
-      //     'resClassName':this.devtype.label
-      //   }
-      //   this.resourceJson.resourcedev['dev']=json
-      // }else if(this.activeName==='resourcecircuit'){
-      //   var data=this.resourcecircuitchecks
-      //   var arr=[]
-      //   for(var i=0;i<data.length;i++){
-      //     var json={
-      //       resTypeName: data[i]['circuitName'],
-      //       resTypeid:data[i]['circuitID'],
-      //     }
-      //     arr.push(json)
-      //   }
-      //   var json={
-      //     'arr':arr,
-      //     'resClassid':this.circuittype.value,
-      //     'resClassName':this.circuittype.label
-      //   }
-      //   this.resourceJson.resourcecircuit['circuit']=json
-      // }else if(this.activeName==='resourcetag'){
-      //   var data=this.resourcetagchecks
-      //   var arr=[]
-      //   for(var i=0;i<data.length;i++){
-      //     var json={
-      //       resTypeName: data[i]['tagDesc'],
-      //       resTypeid:data[i]['tag'],
-      //     }
-      //     arr.push(json)
-      //   }
-      //   var json={
-      //     'arr':arr,
-      //     'resClassid':'TAG',
-      //     'resClassName':'TAG'
-      //   }
-      //   this.resourceJson.resourcetag['tag']=json
-      // }
       console.log(this.resourceJson)
     },
     //添加到表格中
     setAddTable(){
       this.tableDatainit=[]
       var result=this.resourceJson
-      console.log(result)
-      console.log(1111111111111111)
       for(var m=0;m<result['nodes'].length;m++){
         if(result['nodes'][m]['selectFlag']==='1'){
           for(var key in result){
@@ -688,7 +644,6 @@ export default {
                       "resType":result[key][kk]['resClassid'],
                     }
                   }
-                  console.log(json)
                   this.tableDatainit.push(json)
                 }
               }
@@ -816,7 +771,7 @@ export default {
         });
         return;
       }
-      var url=recheck.urlCom+'/api1/api/resource/device/getDevicePageList'
+      var url=recheck.urlCom+'/api/resource/device/getDevicePageList'
       var params={ 
         "netUserid": 'zyucwh',//netUserid,             
         "nodeCode":'NOD999',//nodeCodes, 
@@ -870,7 +825,7 @@ export default {
         nodeCodes=nodeCodes+nodesdata[i]['nodeCode']+';'
       }
       nodeCodes=nodeCodes.substring(0,nodeCodes.length-1)
-      var url=recheck.urlCom+'/api1/api/resource/circuit/getCircuitPageList'
+      var url=recheck.urlCom+'/api/resource/circuit/getCircuitPageList'
       var params={ 
               "netUserid":'zyucwh',//netUserid, 
               "nodeCode":'NOD999',// nodeCodes,
@@ -922,7 +877,7 @@ export default {
       var tagTypeDesc=this.resourcetagchoosetype
       var tag=this.resourcetagchoosetag
       var netUserid=this.netUserid
-      var url=recheck.urlCom+'/api1/api/resource/tag/getTagPageList'
+      var url=recheck.urlCom+'/api/resource/tag/getTagPageList'
       var params={ 
         "netUserid":'zyucwh',//netUserid, 
         "page": { 
@@ -960,13 +915,22 @@ export default {
     handleSelectionChangeDev(val){
       this.resourcedevchecks=val
     },
+    handleSelectionChangeDevAll(){
+      this.resourcedevchecks='all'
+    },
     //按电路多选
     handleSelectionChangeCircuit(val){
       this.resourcecircuitchecks=val
     },
+    handleSelectionChangeCircuitAll(){
+      this.resourcedevchecks='all'
+    },
     //按TAG多选
     handleSelectionChangeTag(val){
       this.resourcetagchecks=val
+    },
+    handleSelectionChangeTagAll(val){
+      this.resourcetagchecks='all'
     },
     //表格多选
     handleSelectionChange(val){
