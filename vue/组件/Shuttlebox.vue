@@ -79,12 +79,12 @@
                   <el-row class="row-1">
                     <el-col :span="6">
                       <el-form-item label="设备属性">
-                        <el-select v-model="devtype" value-key="value" placeholder="请选择">
+                        <el-select v-model="devtype" placeholder="请选择">
                           <el-option
                             v-for="item in devtypedata"
                             :key="item.value"
                             :label="item.label"
-                            :value="item">
+                            :value="item.value">
                           </el-option>
                         </el-select> 
                       </el-form-item>
