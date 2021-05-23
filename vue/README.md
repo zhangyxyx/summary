@@ -39,6 +39,7 @@ class="app-table"
 ```
 
 2. treecheck多选框
+```javascript
 //节点
 NodeslistCheck:'',
 Nodeslist:'',
@@ -61,8 +62,11 @@ getcheckNodeslistid(data){
     }
     this.NodeslistCheck=str
 },
+```
+
 
 3. tree 单选框
+```javascript
 //所在组织
 OrglistCheck:'',
 Orglist:'',
@@ -82,6 +86,8 @@ getOrg(){
 getcheckOrglistid(data){
     this.OrglistCheck=data
 },
+```
+
 
 ## vue样式
 
