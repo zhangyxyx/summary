@@ -160,4 +160,49 @@ getcheckOrglistid(data){
   }
 ```
 
+2. 标签页
+```javascript
+  /*标签页顶部 背景颜色*/
+    .form .el-tabs--border-card>.el-tabs__header{
+      background-color: #6399ca;
+      border-bottom: 1px solid #e4e7ed;
+    }
+    /*标签页顶部 文字颜色*/
+    .form .el-tabs--border-card>.el-tabs__header .el-tabs__item{
+      color:#5fe2dc
+    }
+    /*标签页顶部选中*/
+    .form .el-tabs--border-card>.el-tabs__header .el-tabs__item.is-active{
+      color: #5683a9;
+      background-color: #29b3b3;
+      border-right-color: #e5e5e5;
+      border-left-color: #e5e5e5;
+    }
+    /*标签页 内容*/
+    .form .el-tabs--border-card{
+      background: #cc0f0f;
+      border: 1px solid #e5e5e5;
+    }
+```
 
+3. 树形
+```javascript
+/* 树形结构 初始化背景颜色和文字颜色 */
+.el-tree{
+  background: #091e34 !important;
+  border: 1px solid #091e34 !important;
+  color:#fff;
+}
+/* 鼠标移动上去之后背景颜色 */
+.el-select-dropdown__item.hover{
+  background: #091e34 !important;
+}
+/* 鼠标移动上去之后背景颜色 */
+.el-tree-node__content:hover{
+  background-color: #2470c0;
+}
+/* 鼠标选中之后背景颜色 */
+.el-tree--highlight-current .el-tree-node.is-current > .el-tree-node__content{
+  background: #091e34 !important;
+}
+```
