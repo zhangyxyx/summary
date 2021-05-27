@@ -6,7 +6,7 @@
 3. Addandmodify 可以对表格添加一行，并且在给某一行修改
 4. Shuttlebox 穿梭框 选中左边多选框 点击添加到右侧表格中
 
-## 资料
+## 功能
 1. 表格多选   
 reserve-selection   
 row-key="wsNbr" 
@@ -212,3 +212,5 @@ getcheckOrglistid(data){
   background: #091e34 !important;
 }
 ```
+
+
