@@ -44,4 +44,4 @@
    * 录音、音频转文字
    * 这个是IBM开发的，转的质量一般，但是人家是免费的不要要求太多,注意选择语言的时候选Mandarin broadband model (16KHz)（这是普通话） 地址：https://speech-to-text-demo.ng.bluemix.net/
    * 检测流量 https://github.com/BadApple9/speedtest-x 这个主要是检测某一个ip的上传下载的速率我这边根据这个弄成一个app地址是：https://github.com/zhangyxyx/About-app/tree/main/vue
-   * 抓包分析   Akime
+   * 抓包分析  arkime-main
