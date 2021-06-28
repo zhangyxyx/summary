@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html>
+<base href="../../../" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta http-equiv='Content-type' content='text/html; charset=utf-8'>
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<title>数据质量查询</title>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="assets/lib/vue/css/element.css">
+    <link rel="stylesheet" href="assets/lib/vue/css/element-ui.css">
+
+    <script type="text/javascript" src="assets/lib/vue/js/axios.js"></script>
+    <script type="text/javascript" src="assets/lib/vue/js/vue.js"></script>
+    <script type="text/javascript" src="assets/lib/vue/js/vueindex.js"></script>
+    <script type="text/javascript" src="assets/lib/vue/js/element.js"></script>
+    <script type="text/javascript" src="assets/lib/jquery/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="assets/lib/mockjs/mock-min.js"></script>
+
+
+
+</head>
+
+<body>
+    <div id="app" class="report app-container">
+        <el-row class="header">
+            <el-col :span="24" style="height:30px;line-height:30px;margin:10px 0px">
+                <div class="grid-content bg-purple-dark" style="font-size:18px;">数据质量查询</div>
+            </el-col>
+        </el-row>
+        <el-form class="app-form app-form-shadow checkitemtable" inline label-width="100px">
+            <el-row class="row-1 checkItemselect">
+                <el-col :span="8">
+                    <el-form-item label="发起区域：">
+                        
+                        <el-input v-model="Resourcestatus.name"
+                            class="el-date-editor filter-item el-input el-input--mini el-input--prefix el-input--suffix el-date-editor--datetime"
+                            @click.stop.native="Resourcechangetree" placeholder="请选择"
+                            v-clickoutside="ResourcehandleClose"></el-input>
+                        <el-tree :data="alarmarr" show-checkbox node-key="code" ref="tree" highlight-current
+                            :props="ResourcesdefaultProps" :default-checked-keys="Resourcestatuschecked"
+                            @check-change="ResourcegetCheckedNodes" v-show="Resourcegetshowhide">
+                        </el-tree>
+                    </el-form-item>
+                </el-col>
+                <el-col :span="6" style="text-align:right">
+                    <el-form-item label="">
+                        <el-button type="primary" plain @click="getData()"
+                            class="el-button el-button--primary el-button--mini" icon="el-icon-search">查询</el-button>
+                        <el-button type="primary" plain @click="getExport()"
+                            class="el-button el-button--primary el-button--mini">导出</el-button>
+                    </el-form-item>
+                </el-col>
+            </el-row>
+        </el-form>
+        <el-col :span="24" v-loading="loading" element-loading-text="拼命加载中" element-loading-spinner="el-icon-loading"
+            element-loading-background="rgba(255, 255, 255, 0.5)">
+            <div class="grid-content bg-purple-dark">
+                <el-tabs v-model="activeName" @tab-click="handleClick" type="border-card">
+                    <el-tab-pane label="数据质量查询" name="first">
+                        <el-row>
+                            <div class="grid-content bg-purple-dark">
+                                <el-table :data="tableData.slice((currentPage-1)*pageSize,currentPage*pageSize)" border
+                                    style="width: 100%;text-align:center" stripe border
+                                    header-cell-class-name="headercell" cell-class-name="cellclazz"
+                                    class="app-table el-table app-table el-table--fit el-table--striped el-table--border el-table--enable-row-hover el-table--enable-row-transition el-table--mini">
+                                    <el-table-column prop="linkid" label="链路编码" align="center">
+                                    </el-table-column>
+                                    <el-table-column prop="system" label="系统" align="center">
+                                    </el-table-column>
+                                    <el-table-column prop="sourcearea" label="发起区域" align="center">
+                                    </el-table-column>
+                                    <el-table-column prop="sourceip" label="发起IP" align="center">
+                                    </el-table-column>
+                                    <el-table-column prop="targetarea" label="目标区域" align="center">
+                                    </el-table-column>
+                                    <el-table-column prop="targetip" label="目标IP" align="center">
+                                    </el-table-column>
+                                    <el-table-column prop="linktype" label="链路类型" align="center">
+                                    </el-table-column>
+                                    <el-table-column prop="datetime" label="PING时间" align="center">
+                                    </el-table-column>
+                                    <el-table-column prop="losspkg" label="丢包率" align="center">
+                                    </el-table-column>
+                                    <el-table-column prop="delay" label="平均时延" align="center">
+                                    </el-table-column>
+                                    <el-table-column prop="state" label="数据质量" align="center">
+                                        <template slot-scope="scope">
+
+                                            <p v-if="scope.row.state=='数据正常'"
+                                                style="background:green;cursor:pointer;color:#fff;padding:5px;">
+                                                {{scope.row.state}}
+                                            </p>
+                                            <p v-else-if="scope.row.state=='数据异常'"
+                                                style="background:yellow;cursor:pointer;color:#fff;padding:5px;">
+                                                {{scope.row.state}}
+                                            </p>
+                                            <p v-else-if="scope.row.state=='数据延迟'"
+                                                style="background:blue;cursor:pointer;color:#fff;padding:5px;">
+                                                {{scope.row.state}}
+                                            </p>
+                                            <p v-else-if="scope.row.state=='数据缺失'"
+                                                style="background:red;cursor:pointer;color:#fff;padding:5px;">
+                                                {{scope.row.state}}</p>
+                                            <p v-else-if="scope.row.state=='未开通'"
+                                                style="background:#ccc;cursor:pointer;color:#fff;padding:5px;">
+                                                {{scope.row.state}}
+                                            </p>
+
+
+                                        </template>
+                                    </el-table-column>
+                                </el-table>
+                                <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange"
+                                    :current-page="currentPage" :page-sizes="[10,15,20]" :page-size="pageSize"
+                                    layout="total, sizes, prev, pager, next, jumper" :total="total"
+                                    class="el-row pagination-container-right">
+                                </el-pagination>
+                            </div>
+                        </el-row>
+                        
+                    </el-tab-pane>
+                    <el-tab-pane label="数据质量波动曲线" name="second">
+                        <el-form class="app-form app-form-shadow checkitemtable" inline label-width="100px">
+                            <el-row class="row-1 checkItemselect">
+                                <el-col :span="8">
+                                    <el-form-item label="选择时间范围：">
+                                        <el-select v-model="time.name" placeholder="请选择" @change="changetime(time)"
+                                            class="el-date-editor filter-item el-input el-input--mini el-input--prefix el-input--suffix el-date-editor--datetime">
+                                            <el-option v-for="item in timedata" :key="item.id" :label="item.name"
+                                                :value="item.name">
+                                            </el-option>
+                                        </el-select>
+                                    </el-form-item>
+                                </el-col>
+                            </el-row>
+                        </el-form>
+                        <el-row>
+                            <div id="echartsmath" style="width:1200px;height:300px;"></div>
+                        </el-row>
+                    </el-tab-pane>
+                </el-tabs>
+            </div>
+        </el-col>
+        <el-col :span="24" style="display:none">
+            <el-table :data="tableData" border style="width: 100%;text-align:center" stripe border
+                header-cell-class-name="headercell" cell-class-name="cellclazz" id="table1"
+                class="app-table el-table app-table el-table--fit el-table--striped el-table--border el-table--enable-row-hover el-table--enable-row-transition el-table--mini">
+                <el-table-column prop="linkid" label="链路编码" align="center">
+                </el-table-column>
+                <el-table-column prop="system" label="系统" align="center">
+                </el-table-column>
+                <el-table-column prop="sourcearea" label="发起区域" align="center">
+                </el-table-column>
+                <el-table-column prop="sourceip" label="发起IP" align="center">
+                </el-table-column>
+                <el-table-column prop="targetarea" label="目标区域" align="center">
+                </el-table-column>
+                <el-table-column prop="targetip" label="目标IP" align="center">
+                </el-table-column>
+                <el-table-column prop="linktype" label="链路类型" align="center">
+                </el-table-column>
+                <el-table-column prop="datetime" label="PING时间" align="center">
+                </el-table-column>
+                <el-table-column prop="losspkg" label="丢包率" align="center">
+                </el-table-column>
+                <el-table-column prop="delay" label="平均时延" align="center">
+                </el-table-column>
+                <el-table-column prop="state" label="数据质量" align="center">
+                    <template slot-scope="scope">
+                        <p v-if="scope.row.state=='数据正常'"
+                            style="background:green;cursor:pointer;color:#fff;padding:5px;">
+                            {{scope.row.state}}
+                        </p>
+                        <p v-else-if="scope.row.state=='数据异常'"
+                            style="background:yellow;cursor:pointer;color:#fff;padding:5px;">
+                            {{scope.row.state}}
+                        </p>
+                        <p v-else-if="scope.row.state=='数据延迟'"
+                            style="background:blue;cursor:pointer;color:#fff;padding:5px;">
+                            {{scope.row.state}}
+                        </p>
+                        <p v-else-if="scope.row.state=='数据缺失'"
+                            style="background:red;cursor:pointer;color:#fff;padding:5px;">
+                            {{scope.row.state}}</p>
+                        <p v-else-if="scope.row.state=='未开通'"
+                            style="background:#ccc;cursor:pointer;color:#fff;padding:5px;">
+                            {{scope.row.state}}
+                        </p>
+                    </template>
+                </el-table-column>
+            </el-table>
+        </el-col>
+
+    </div>
+    <script>
+        const clickoutside = {
+            // 初始化指令
+            bind(el, binding, vnode) {
+                function documentHandler(e) {
+                    // 这里判断点击的元素是否是本身，是本身，则返回
+                    if (el.contains(e.target)) {
+                        return false;
+                    }
+                    // 判断指令中是否绑定了函数
+                    if (binding.expression) {
+                        // 如果绑定了函数 则调用那个函数，此处binding.value就是handleClose方法
+                        binding.value(e);
+                    }
+                }
+                // 给当前元素绑定个私有变量，方便在unbind中可以解除事件监听
+                el.__vueClickOutside__ = documentHandler;
+                document.addEventListener('click', documentHandler);
+            },
+            update() { },
+            unbind(el, binding) {
+                // 解除事件监听
+                document.removeEventListener('click', el.__vueClickOutside__);
+                delete el.__vueClickOutside__;
+            },
+        };
+        new Vue({
+            el: '#app',
+            directives: { clickoutside },
+            components: {
+
+            },
+            data: function () {
+                return {
+                    //时间范围
+                    time: { id: 'D', 'name': '近24小时' },
+                    timedata: [
+                        { id: 'D', 'name': '近24小时' },
+                        { id: 'M', 'name': '近1月' },
+                        { id: 'Y', 'name': '近1年' },
+                    ],
+                    echartsdata: [],
+                    //节点
+                    activeName: 'first',
+                    nowColor: true,
+                    ResourcesdefaultProps: {
+                        children: 'children',
+                        label: 'name'
+                    },
+                    Resourcegetshowhide: false,
+                    Resourcestatus: { code: "E_NEW;E;U;F;S;", name: '数据缺失,数据延迟,数据异常,未开通,数据正常' },
+                    Resourcestatuschecked: ['E_NEW', 'E', 'U', 'F', 'S'],
+                    alarmarr: [
+                        { code: "E_NEW", name: "数据缺失", status: true },
+                        { code: "E", name: "数据延迟", status: true },
+                        { code: "U", name: "数据异常", status: true },
+                        { code: "F", name: "未开通", status: true },
+                        { code: "S", name: "数据正常", status: true },
+                    ],
+                    checkResult: 'E_NEW;E;U;F;S',
+                    checkResultArr: ['E_NEW', 'E', 'U', 'F', 'S'],
+                    checked: true,
+
+                    //表格
+                    tableData: [],
+                    currentPage: 1,
+                    pageSize: 10,
+                    total: 0,
+                    loading: false,
+
+                }
+            },
+            methods: {
+                formattertime(time) {
+                    var y = time.getFullYear()
+                    var m = (time.getMonth() + 1) <= 9 ? '0' + (time.getMonth() + 1) : time.getMonth() + 1
+                    var d = time.getDate() <= 9 ? '0' + time.getDate() : time.getDate()
+                    var h = time.getHours() <= 9 ? '0' + time.getHours() : time.getHours()
+                    var min = time.getMinutes() <= 9 ? '0' + time.getMinutes() : time.getMinutes()
+                    var s = time.getSeconds() <= 9 ? '0' + time.getSeconds() : time.getSeconds()
+                    return y + "" + m + "" + d + "" + h + "" + min
+                },
+                //获取表格数据
+                getData() {
+                    var that = this;
+                    this.loading = true;
+                    var states = []
+                    var arr = this.Resourcestatus.name.split(',')
+                    for (var i = 0; i < arr.length; i++) {
+                        states.push('"' + arr[i] + '"')
+                    }
+                    var data=[]
+
+
+                    that.loading = false
+                    if (data.length > 0) {
+                        that.currentPage = 1
+                        that.pageSize = 10
+                        that.total = data.length
+                        that.tableData.splice(data.length)
+                        for (var i = 0; i < data.length; i++) {
+                            var json = data[i]
+                            that.$set(that.tableData, i, json)
+                        }
+                    } else {
+                        that.currentPage = 1
+                        that.pageSize = 10
+                        that.total = data.length
+                        that.tableData.splice(data.length)
+
+                    }
+                    
+                },
+                handleClick(tab, event) {
+                    console.log(tab, event);
+                },
+                handleSizeChange(val) {
+                    this.pageSize = val
+                    console.log(`每页 ${val} 条`);
+                },
+                handleCurrentChange(val) {
+                    this.currentPage = val
+                    console.log(`当前页: ${val}`);
+                },
+                //导出
+                getExport() {
+                    var table1 = document.querySelector("#table1");
+                    var opt = { type: 'binary', cellDates: true }; //开头空4行
+                    var sheet = XLSX2.utils.table_to_sheet(table1, opt);
+                    for (var k in sheet) {
+                        sheet[k]['z'] = "yyyy/mm/dd hh:mm"
+                    }
+                    sheet["!cols"] = [{
+                        wpx: 150
+                    }, {
+                        wpx: 100
+                    }, {
+                        wpx: 100
+                    }, {
+                        wpx: 120
+                    }, {
+                        wpx: 120
+                    }, {
+                        wpx: 120
+                    }, {
+                        wpx: 120
+                    }, {
+                        wpx: 120
+                    }, {
+                        wpx: 120
+                    }, {
+                        wpx: 120
+                    }, {
+                        wpx: 120
+                    },]; //单元格列宽
+
+                    openDownloadDialog(sheet2blob(sheet), '数据质量.xlsx');
+                },
+                //曲线
+              
+                changetime(item) {
+                    console.log(item)
+                    //this.time.id = item.id
+                    this.time.name = item.name
+                    for (var i = 0; i < this.timedata.length; i++) {
+                        if (item.name === this.timedata[i]['name']) {
+                            this.time.id = this.timedata[i]['id']
+                        }
+                    }
+                   
+                },
+                //渲染曲线
+                renderecharts(data) {
+                    var xAxisdata = []
+                    for (var i = 0; i < data['categories'].length; i++) {
+                        var t = data['categories'][i], tt;
+                        if (this.time.id === 'D') {
+                            tt = t.substring(0, 4) + '-' + t.substring(4, 6) + '-' + t.substring(6, 8) + ' ' + t.substring(8, 10) + ':' + t.substring(10, 12) + ':' + t.substring(12, 14)
+                        } else if (this.time.id === 'M') {
+                            tt = t.substring(0, 4) + '-' + t.substring(4, 6) + '-' + t.substring(6, 8)
+                        } else if (this.time.id === 'Y') {
+                            tt = t.substring(0, 4) + '-' + t.substring(4, 6)
+                        }
+                        xAxisdata.push(tt)
+                    }
+                    let myChart = echarts.init(document.getElementById('echartsmath'))
+                    var option = {
+                        tooltip: {
+                            trigger: 'axis'
+                        },
+                        legend: {
+                            data: ['数据缺失', '数据延迟', '数据异常']
+                        },
+                        grid: {
+                            left: '3%',
+                            right: '4%',
+                            bottom: '3%',
+                            containLabel: true
+                        },
+
+                        xAxis: {
+                            type: 'category',
+                            boundaryGap: true,//坐标轴两边留白
+                            data: xAxisdata,
+                            axisLabel: { //坐标轴刻度标签的相关设置。
+                                interval: 10,//设置为 1，表示『隔一个标签显示一个标签』
+                                //	margin:15,
+                                textStyle: {
+                                    color: '#1B253A',
+                                    fontStyle: 'normal',
+                                    fontFamily: '微软雅黑',
+                                    fontSize: 12,
+                                },
+
+                            },
+                            axisTick: {//坐标轴刻度相关设置。
+                                show: false,
+                            },
+                            axisLine: {//坐标轴轴线相关设置
+                                lineStyle: {
+                                    color: '#E5E9ED',
+                                    // opacity:0.2
+                                }
+                            },
+                            splitLine: { //坐标轴在 grid 区域中的分隔线。
+                                show: false,
+                                lineStyle: {
+                                    color: '#E5E9ED',
+                                    // 	opacity:0.1
+                                }
+                            }
+                        },
+                        yAxis: [
+                            {
+                                type: 'value',
+                                splitNumber: 5,
+                                axisLabel: {
+                                    textStyle: {
+                                        color: '#a8aab0',
+                                        fontStyle: 'normal',
+                                        fontFamily: '微软雅黑',
+                                        fontSize: 12,
+                                    }
+                                },
+                                axisLine: {
+                                    show: false
+                                },
+                                axisTick: {
+                                    show: false
+                                },
+                                splitLine: {
+                                    show: true,
+                                    lineStyle: {
+                                        color: '#E5E9ED',
+                                        // 	opacity:0.1
+                                    }
+                                }
+
+                            }
+                        ],
+                        series: [
+                            {
+                                name: '数据缺失',
+                                type: 'line',
+                                symbol: 'none',
+                                itemStyle: {
+                                    normal: {
+                                        color: '#3A84FF',
+                                        lineStyle: {
+                                            color: "#3A84FF",
+                                            width: 1
+                                        },
+                                        areaStyle: {
+                                            color: 'rgba(58,132,255,0.5)',
+                                        }
+                                    }
+                                },
+                                data: data['数据缺失']
+                            },
+                            {
+                                name: '数据延迟',
+                                type: 'line',
+                                symbol: 'none',
+                                itemStyle: {
+                                    normal: {
+                                        color: 'rgba(255,80,124,1)',
+                                        lineStyle: {
+                                            color: "rgba(255,80,124,1)",
+                                            width: 1
+                                        },
+                                        areaStyle: {
+                                            color: 'rgba(255,80,124,0.5)',
+                                        }
+                                    }
+                                },
+                                data: data['数据延迟']
+                            },
+                            {
+                                name: '数据异常',
+                                type: 'line',
+                                symbol: 'none',
+                                itemStyle: {
+                                    normal: {
+                                        color: 'rgba(255,177,160,1)',
+                                        lineStyle: {
+                                            color: "rgba(255,177,160,1)",
+                                            width: 1
+                                        },
+                                        areaStyle: {
+                                            color: 'rgba(255,177,160,0.5)'
+                                        }
+                                    }
+                                },
+                                data: data['数据异常']
+                            }
+
+                        ]
+                    };
+
+                    myChart.setOption(option)
+                },
+                //多项选择
+                ResourcestatusFunc(name) {
+                },
+                ResourcehandleClose(e) {
+                    this.Resourcegetshowhide = false;
+                },
+                Resourcechangetree() {
+                    this.Resourcegetshowhide = true;
+                },
+                ResourcegetCheckedNodes() {
+                    let nods = this.ResourcegetgetSimpleCheckedNodes(this.$refs.tree.store);
+
+                    let temp = ''
+                    let temp2 = ''
+
+                    for (let i = 0; i < nods.length; i++) {
+                        temp += nods[i].name + ','
+                        temp2 += nods[i].code + ','
+                    }
+                    this.Resourcestatus.name = temp.slice(0, -1)
+                    this.Resourcestatus.code = temp2.slice(0, -1)
+                    this.checkResult = this.Resourcestatus.code
+                    return
+                },
+                ResourcegetgetSimpleCheckedNodes(store) {   //处理选中的节点问题
+                    const checkedNodes = [];
+                    const traverse = function (node) {
+                        const childNodes = node.root ? node.root.childNodes : node.childNodes;
+
+                        childNodes.forEach(child => {
+                            if (child.checked) {
+                                checkedNodes.push(child.data);
+                            }
+                            if (child.indeterminate) {
+                                traverse(child);
+                            }
+                        });
+                    };
+                    traverse(store)
+                    return checkedNodes;
+                },
+            },
+            mounted() {
+                this.getData()
+                 
+            },
+            created() {
+
+            }
+
+        })
+    </script>
+</body>
+<style>
+    .app-container .el-tree {
+        z-index: 22;
+        position: absolute;
+        width: 20%;
+        height: 300px;
+        overflow: auto;
+        left: 0px;
+        border: 1px solid #ddd;
+    }
+</style>
+
+</html>

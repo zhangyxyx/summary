@@ -1,0 +1,126 @@
+.datagrid-header td {
+  background-color: #ebecf1;
+}
+.datagrid-header td, .datagrid-body td, .datagrid-footer td {
+ 
+  border-top: 0 !important;
+  border-right: 0 !important;  
+  border-right: 0 !important;
+}
+.datagrid-toolbar, .datagrid-pager {
+  background-color: #ebecf1;
+
+}
+#table2 .panel-header,
+#table2 .panel-body {
+  border:0 !important
+}
+
+.datagrid-header .datagrid-header-inner {
+  width: 100% !important;
+}
+
+#table2 .datagrid-header .datagrid-header-inner .datagrid-htable {
+  width: 100% !important;
+}
+
+.datagrid-header .datagrid-cell span {
+  font-size: 13px;
+  font-weight: bold;
+  color: #666;
+}
+
+.datagrid-header .datagrid-cell span {
+  font-size: 12px;
+  font-weight: bold;
+  color: #666;
+}
+
+#userList .panel-header{
+  border-color: #ccc;
+}
+
+.datagrid-btable,
+.datagrid-ftable {
+  color: #444;
+  border-collapse: separate;
+}
+
+.weasyui-datagrid-body .datagrid-header td,
+.datagrid-body td,
+.datagrid-footer td {
+  height: 35px !important;
+  font-size: 12px !important;
+}
+
+.pagination-link .l-btn-text {
+  width: 30px;
+  text-align: center;
+  margin: 0;
+}
+
+.pagination span {
+  font-size: 12px;
+}
+
+.datagrid .datagrid-pager {
+
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.l-btn-plain-selected,
+.l-btn-plain-selected:hover {
+  background-image: linear-gradient(to bottom, #a9def9 0%, #a9def9 100%);
+}
+
+.l-btn-selected,
+.l-btn-selected:hover {
+  background-image: linear-gradient(to bottom, #a9def9 0%, #a9def9 100%);
+}
+
+.l-btn-icon-left .l-btn-icon {
+  left: 10px;
+}
+
+.pagination-info {
+  float: right;
+  height: 30px;
+  line-height: 30px;
+  font-size: 12px;
+  margin: 0px 6px 0px 0px;
+  padding: 0px;
+}
+
+.datagrid-htable,
+.datagrid-btable,
+.datagrid-ftable {
+  color: #000000;
+  border-collapse: separate;
+  width: 100%;
+}
+
+.datagrid-sort-icon {
+  padding: 0 !important;
+  width: 0 !important;
+  overflow: hidden;
+}
+
+a.itebtn11 {
+  display: inline-block;
+  margin-top: 10px;
+  position: relative;
+  left: 0px;
+}
+
+
+
+.datagrid-cell {
+  padding: 0 0 0 10px !important;
+}
+.datagrid-view{
+  width: 100% !important;
+}
+.datagrid-view2{
+  width: 100% !important;
+}

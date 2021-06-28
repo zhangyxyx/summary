@@ -1,0 +1,36 @@
+.monthbox-monthlycalendar-inner {
+  height: 180px;
+}
+.monthbox-button {
+  height: 18px;
+  padding: 2px 5px;
+  text-align: center;
+}
+.monthbox-button a {
+  font-size: 12px;
+  font-weight: bold;
+  text-decoration: none;
+  opacity: 0.6;
+  filter: alpha(opacity=60);
+}
+.monthbox-button a:hover {
+  opacity: 1.0;
+  filter: alpha(opacity=100);
+}
+.monthbox-current,
+.monthbox-close {
+  float: left;
+}
+.monthbox-close {
+  float: right;
+}
+.monthbox .combo-arrow {
+  background-image: url('images/datebox_arrow.png');
+  background-position: center center;
+}
+.monthbox-button {
+  background-color: #F4F4F4;
+}
+.monthbox-button a {
+  color: #444;
+}

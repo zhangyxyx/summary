@@ -1,0 +1,48 @@
+[
+    {
+        "SumInetNum": "11.11.1.100",
+        "StartFullIIp": "",
+        "EndFullIp": "",
+        "unfold": "Y",
+        "AddrDetailList": [
+            {
+                "IsPlanAddr": "1",
+                "Inetnumid": "a1",
+                "Inetnum": "11.11.1.0/100",
+                "StartFullIIp": "11.11.1.1",
+                "EndFullIp": "11.11.1.10",
+                "IsSearched": "Y",
+                "inetnumsum": "259",
+                "OriNodeCode": "上级组织编码",
+                "OriNodeName": "上级组织名称",
+                "OriIpType": "原地址类型编码",
+                "OriIpTypeName": "原地址类型名称",
+                "PlanNodeCode": "规划组织编码",
+                "PlanNodeName": "规划组织名称",
+                "PlanIpType": "规划地址类型编码",
+                "PlanIpTypeName": "规划地址类型名称",
+                "plantime": "规划日期",
+                "planman": "规划人"
+            },
+            {
+                "IsPlanAddr": "0",
+                "Inetnumid": "a1",
+                "Inetnum": "11.11.1.0/100",
+                "StartFullIIp": "11.11.1.1",
+                "EndFullIp": "11.11.1.10",
+                "IsSearched": "N",
+                "inetnumsum": "256",
+                "OriNodeCode": "上级组织编码",
+                "OriNodeName": "上级组织名称",
+                "OriIpType": "原地址类型编码",
+                "OriIpTypeName": "原地址类型名称",
+                "PlanNodeCode": "规划组织编码",
+                "PlanNodeName": "规划组织名称",
+                "PlanIpType": "规划地址类型编码",
+                "PlanIpTypeName": "规划地址类型名称",
+                "plantime": "规划日期",
+                "planman": "规划人"
+            }
+        ]
+    }
+]

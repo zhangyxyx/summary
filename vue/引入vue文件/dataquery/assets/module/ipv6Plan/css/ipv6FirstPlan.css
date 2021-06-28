@@ -1,0 +1,400 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+    font-family: "Microsoft YaHei";
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    min-width: 1175px;
+    padding: 10px;
+}
+
+.queryCondPanel {
+    padding: 10px 15px;
+    border: 1px solid #E4E4E4;
+    background-color: #fff;
+    box-shadow: 0 2px 10px 1px rgba(200, 200, 200, 0.1);
+}
+
+.layui-inline {
+    width: calc((100% - 20px)*0.3);
+}
+
+.btnBox {
+    width: calc((100% - 20px)*0.36) !important;
+}
+
+.layui-form-label {
+    width: 100px;
+    padding: 5px 15px;
+}
+
+.layui-input {
+    height: 30px;
+}
+
+.layui-input-inline {
+    width: 220px !important;
+}
+
+.btnItem {
+    border: 0;
+    background-color: #409CFC;
+    color: #fff;
+    padding: 5.5px 15px;
+    cursor: pointer;
+    outline: none;
+    border-radius: 3px;
+    font-size: 14px;
+    margin-right: 5px;
+}
+
+.btnItem:hover {
+    background-color: #5eacfd;
+}
+
+.textbox {
+    height: 30px !important;
+    border-color: #E6E6E6 !important;
+}
+
+.textbox-focused {
+    box-shadow: 0 0 1px 0 #95B8E7 !important;
+}
+
+.tablePanel {
+    width: 100%;
+    height: 418px;
+}
+
+.datagrid-row-selected {
+    background-color: #fff !important;
+}
+
+.datagrid-row,
+.datagrid-header-row {
+    height: 32px;
+}
+
+.panel-header,
+.panel-body {
+    border: 1px solid #E4E4E4;
+}
+
+
+/* .datagrid-row td{
+    background-color:#EBF0FD;
+} */
+
+.icon {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    color: #00A0DC;
+    margin-left: 5px;
+}
+
+.infoBox {
+    margin-top: 10px;
+    padding: 15px;
+    border: 1px solid #E4E4E4;
+    background-color: #fff;
+    box-shadow: 0 2px 10px 1px rgba(200, 200, 200, 0.1);
+}
+
+.pageBox {
+    margin-top: 8px;
+}
+
+.trAdd {
+    text-align: center;
+    height: 32px;
+}
+
+.operateBtn {
+    color: #409CFC;
+    cursor: pointer;
+}
+
+.operateBtn:hover {
+    color: #409CFC;
+    text-decoration: underline;
+}
+
+.importPanel {
+    padding: 15px;
+}
+
+.importBtn {
+    border: 0;
+    background-color: #409CFC;
+    color: #fff;
+    padding: 5.5px 15px;
+    cursor: pointer;
+    outline: none;
+    border-radius: 3px;
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+.importBtn:hover {
+    background-color: #5eacfd;
+}
+
+.importTablePanel {
+    width: 100%;
+    height: 256px;
+    margin-top: 10px;
+    display: none;
+}
+
+
+/* .messager-window{
+    z-index: 10000000001 !important;
+} */
+
+.layui-layer-shade {
+    z-index: 1 !important;
+}
+
+.layui-layer-page {
+    z-index: 2 !important;
+}
+
+.datagrid-header-row .datagrid-cell-c1-sumInetNum {
+    text-align: center !important;
+}
+
+.importTablePanel .datagrid-view {
+    width: auto !important;
+}
+
+.importTablePanel .datagrid-row td[field="addInetNum"] div {
+    padding-left: 24px !important;
+}
+
+.clearBtn {
+    position: absolute;
+    right: 25px;
+    top: 5px;
+    font-size: 14px;
+    color: #999;
+    cursor: pointer;
+    z-index: 10000;
+    display: none;
+}
+
+.datagrid-sort-icon {
+    padding: 0 !important;
+}
+
+.datagrid-view2 .datagrid-header-row :nth-last-child(1) div {
+    padding-right: 18px;
+}
+
+.datagrid-row :nth-last-child(1) div {
+    /*padding-right: 18px;*/
+}
+
+
+/* .datagrid-row :nth-child(1) div{
+    text-align: left !important;
+} */
+
+.layui-form {
+    font-size: 12px;
+}
+
+
+listrow .planItemBox {
+    width: 90%;
+    overflow: hidden;
+    text-align: center;
+    margin-left: 5%;
+}
+/* 已定义标识长度 */
+.listrow .itemWidth1{
+    width: calc((100% - 70px));
+}
+.listrow .itemWidth2{
+    width: calc((100% - 70px)*(1/2));
+}
+.listrow .itemWidth3{
+    width: calc((100% - 70px)*(1/3));
+}
+.listrow .itemWidth4{
+    width: calc((100% - 70px)*(1/4));
+}
+.listrow .itemWidth5{
+    width: calc((100% - 70px)*(1/5));
+}
+.listrow .itemWidth6{
+    width: calc((100% - 70px)*(1/6));
+}
+.listrow .itemWidth7{
+    width: calc((100% - 70px)*(1/7));
+}
+.listrow .itemWidth8{
+    width: calc((100% - 70px)*(1/8));
+}
+.listrow .itemWidth9{
+    width: calc((100% - 70px)*(1/9));
+}
+.listrow .itemWidth10{
+    width: calc((100% - 70px)*(1/10));
+}
+/* 没有子网 */
+.listrow .itemWidthDeal1{
+    width: calc((100% - 0));
+}
+.listrow .itemWidthDeal2{
+    width: calc((100% - 30px)*(1/2));
+}
+.listrow .itemWidthDeal3{
+    width: calc((100% - 30px)*(1/3));
+}
+.listrow .itemWidthDeal4{
+    width: calc((100% - 30px)*(1/4));
+}
+.listrow .itemWidthDeal5{
+    width: calc((100% - 30px)*(1/5));
+}
+.listrow .itemWidthDeal6{
+    width: calc((100% - 30px)*(1/6));
+}
+.listrow .itemWidthDeal7{
+    width: calc((100% - 30px)*(1/7));
+}
+.listrow .itemWidthDeal8{
+    width: calc((100% - 30px)*(1/8));
+}
+.listrow .itemWidthDeal9{
+    width: calc((100% - 30px)*(1/9));
+}
+.listrow .itemWidthDeal10{
+    width: calc((100% - 30px)*(1/10));
+}
+.listrow .schemeItem{
+    float: left;
+    padding: 2px 0px;
+    font-family: 'kaiti';
+    font-weight: bold;
+    color: #666;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.listrow .subnetSpace{
+    background-color: #f2edb5;
+    width: 30px;
+    border: 1px solid #F1F1F2;
+    padding: 2px 0px;
+}
+
+.listrow .interfaceAddr{
+    background-color: #b3c8f7;
+    width: 30px;
+}
+
+
+.relateContent{
+    text-align: left;
+}
+.relateContent .planItemBox {
+    width: 100%;
+    overflow: hidden;
+    text-align: center;
+}
+.relateContent .planItemBoxDetail {
+    width: 100%;
+    overflow: hidden;
+    text-align: center;
+}
+
+/* 已定义标识长度 */
+.relateContent .itemWidth1{
+    width: calc((100%));
+}
+.relateContent .itemWidth2{
+    width: calc((100%)*(1/2));
+}
+.relateContent .itemWidth3{
+    width: calc((100% )*(1/3));
+}
+.relateContent .itemWidth4{
+    width: calc((100% )*(1/4));
+}
+.relateContent .itemWidth5{
+    width: calc((100% )*(1/5));
+}
+.relateContent .itemWidth6{
+    width: calc((100% )*(1/6));
+}
+.relateContent .itemWidth7{
+    width: calc((100% )*(1/7));
+}
+.relateContent .itemWidth8{
+    width: calc((100% )*(1/8));
+}
+.relateContent .itemWidth9{
+    width: calc((100% )*(1/9));
+}
+.relateContent .itemWidth10{
+    width: calc((100% )*(1/10));
+}
+
+.relateContent .schemeItem{
+    float: left;
+    height: 32px;
+    line-height: 32px;
+    
+}
+.planItemBox .schemeItem{
+    font-family: 'kaiti';
+    font-weight: bold;
+    color: #666;
+}
+.relateContent .subnetSpace{
+    background-color: #f2edb5;
+    width: 150px;
+    /* border: 1px solid #F1F1F2; */
+    line-height: 32px;
+}
+.planItemBoxDetail .schemeItem{
+    height: 40px;
+    line-height: 20px;
+}
+.relateContent .interfaceAddr{
+    background-color: #b3c8f7;
+    width: 150px;
+}
+.relateContent{
+    box-sizing: border-box;
+    padding: 0 20px;
+}
+.relateContentTop{
+    margin:  10px 0 0;
+}
+.ipv6InfoBox{
+    padding: 5px 0;
+}
+.IPv6Addr{
+    display: inline-block;
+    width: 200px;
+}
+.conTitle {
+    border-bottom: 1px solid #EDEDEE;
+    line-height: 34px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #394859;
+}

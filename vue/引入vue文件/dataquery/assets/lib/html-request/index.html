@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Request</title>
+    </head>
+    <body>
+        <script type="text/javascript" src="../jquery/jquery-1.8.0.min.js"></script>
+        <script type="text/javascript" src="../html-request/html-request.js"></script>
+        <script type="text/javascript">
+            $(function(){
+                $("body").append("<p>"+location.search+"</p>");
+                $("body").append("<p>"+request.getParam("param")+"</p>");
+                $("body").append("<p>"+request.getParam("paramB")+"</p>");
+            });
+        </script>
+    </body>
+</html>

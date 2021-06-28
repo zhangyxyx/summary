@@ -1,0 +1,315 @@
+{
+    "code": "0000",
+    "msg": "查询成功!",
+    "tip": "查询成功!",
+    "data": [
+        {
+            "nodeLevel": "1",
+            "nodeCode": "NOD999",
+            "nodeFullCode": "NOD999",
+            "nodeName": "西藏电信",
+            "fatherNodeCode": "",
+            "isLeaf": "0",
+            "children": [
+                {
+                    "nodeLevel": "2",
+                    "nodeCode": "NOD0bp",
+                    "nodeFullCode": "NOD999.NOD0bp",
+                    "nodeName": "test",
+                    "fatherNodeCode": "NOD999",
+                    "isLeaf": "0",
+                    "children": [
+                        {
+                            "nodeLevel": "3",
+                            "nodeCode": "NOD0jy",
+                            "nodeFullCode": "NOD999.NOD0bp.NOD0jy",
+                            "nodeName": "test1",
+                            "fatherNodeCode": "NOD0bp",
+                            "isLeaf": "1",
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "nodeLevel": "2",
+                    "nodeCode": "NOD08k",
+                    "nodeFullCode": "NOD999.NOD08k",
+                    "nodeName": "阿里电信",
+                    "fatherNodeCode": "NOD999",
+                    "isLeaf": "1",
+                    "children": [
+                        {
+                            "nodeLevel": "3",
+                            "nodeCode": "D02ea9",
+                            "nodeFullCode": "NOD999.NOD08k.D02ea9",
+                            "nodeName": "XZ-AL-DX-SR-1.MAN.ACL7750",
+                            "fatherNodeCode": "NOD08k",
+                            "isLeaf": "2",
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "nodeLevel": "2",
+                    "nodeCode": "NOD08i",
+                    "nodeFullCode": "NOD999.NOD08i",
+                    "nodeName": "昌都电信",
+                    "fatherNodeCode": "NOD999",
+                    "isLeaf": "1",
+                    "children": [
+                        {
+                            "nodeLevel": "3",
+                            "nodeCode": "D02b23",
+                            "nodeFullCode": "NOD999.NOD08i.D02b23",
+                            "nodeName": "XZ-CD-DX-SR-2.MAN.AC7750",
+                            "fatherNodeCode": "NOD08i",
+                            "isLeaf": "2",
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "nodeLevel": "2",
+                    "nodeCode": "NOD08d",
+                    "nodeFullCode": "NOD999.NOD08d",
+                    "nodeName": "高保障",
+                    "fatherNodeCode": "NOD999",
+                    "isLeaf": "0",
+                    "children": [
+                        {
+                            "nodeLevel": "3",
+                            "nodeCode": "NOD0ct",
+                            "nodeFullCode": "NOD999.NOD08d.NOD0ct",
+                            "nodeName": "办公网私网地址段",
+                            "fatherNodeCode": "NOD08d",
+                            "isLeaf": "1",
+                            "children": []
+                        },
+                        {
+                            "nodeLevel": "3",
+                            "nodeCode": "NOD0a2",
+                            "nodeFullCode": "NOD999.NOD08d.NOD0a2",
+                            "nodeName": "数通业务支撑系统",
+                            "fatherNodeCode": "NOD08d",
+                            "isLeaf": "1",
+                            "children": []
+                        },
+                        {
+                            "nodeLevel": "3",
+                            "nodeCode": "NOD0a1",
+                            "nodeFullCode": "NOD999.NOD08d.NOD0a1",
+                            "nodeName": "业务平台支撑系统",
+                            "fatherNodeCode": "NOD08d",
+                            "isLeaf": "1",
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "nodeLevel": "2",
+                    "nodeCode": "NOD08l",
+                    "nodeFullCode": "NOD999.NOD08l",
+                    "nodeName": "互联网数据中心(IDC)",
+                    "fatherNodeCode": "NOD999",
+                    "isLeaf": "1",
+                    "children": []
+                },
+                {
+                    "nodeLevel": "2",
+                    "nodeCode": "NOD08e",
+                    "nodeFullCode": "NOD999.NOD08e",
+                    "nodeName": "拉萨电信",
+                    "fatherNodeCode": "NOD999",
+                    "isLeaf": "0",
+                    "children": [
+                        {
+                            "nodeLevel": "3",
+                            "nodeCode": "D02lkf",
+                            "nodeFullCode": "NOD999.NOD08e.D02lkf",
+                            "nodeName": "XZ-LS-BJ-SR-2.MAN.AC7750",
+                            "fatherNodeCode": "NOD08e",
+                            "isLeaf": "2",
+                            "children": []
+                        },
+                        {
+                            "nodeLevel": "3",
+                            "nodeCode": "D02lsr",
+                            "nodeFullCode": "NOD999.NOD08e.D02lsr",
+                            "nodeName": "XZ-LS-CSJ-SR-2.MAN.AC7750",
+                            "fatherNodeCode": "NOD08e",
+                            "isLeaf": "2",
+                            "children": []
+                        },
+                        {
+                            "nodeLevel": "3",
+                            "nodeCode": "D016h2",
+                            "nodeFullCode": "NOD999.NOD08e.D016h2",
+                            "nodeName": "XZ-LS-DJ-BAS-1.MAN.AC7750",
+                            "fatherNodeCode": "NOD08e",
+                            "isLeaf": "2",
+                            "children": []
+                        },
+                        {
+                            "nodeLevel": "3",
+                            "nodeCode": "NOD0df",
+                            "nodeFullCode": "NOD999.NOD08e.NOD0df",
+                            "nodeName": "XZ-LS-DJ-MSE-1.",
+                            "fatherNodeCode": "NOD08e",
+                            "isLeaf": "1",
+                            "children": []
+                        },
+                        {
+                            "nodeLevel": "3",
+                            "nodeCode": "D0001p",
+                            "nodeFullCode": "NOD999.NOD08e.D0001p",
+                            "nodeName": "XZ-LS-XJ-BAS-1.MAN.AC7750",
+                            "fatherNodeCode": "NOD08e",
+                            "isLeaf": "2",
+                            "children": []
+                        },
+                        {
+                            "nodeLevel": "3",
+                            "nodeCode": "NOD0de",
+                            "nodeFullCode": "NOD999.NOD08e.NOD0de",
+                            "nodeName": "XZ-LS-XJ-MSE-1.",
+                            "fatherNodeCode": "NOD08e",
+                            "isLeaf": "1",
+                            "children": []
+                        },
+                        {
+                            "nodeLevel": "3",
+                            "nodeCode": "D02m1n",
+                            "nodeFullCode": "NOD999.NOD08e.D02m1n",
+                            "nodeName": "XZ-LS-XJ-SR-2.MAN.AC7750",
+                            "fatherNodeCode": "NOD08e",
+                            "isLeaf": "2",
+                            "children": []
+                        },
+                        {
+                            "nodeLevel": "3",
+                            "nodeCode": "D02ljv",
+                            "nodeFullCode": "NOD999.NOD08e.D02ljv",
+                            "nodeName": "拉萨东郊SR-1.MAN",
+                            "fatherNodeCode": "NOD08e",
+                            "isLeaf": "2",
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "nodeLevel": "2",
+                    "nodeCode": "NOD08h",
+                    "nodeFullCode": "NOD999.NOD08h",
+                    "nodeName": "林芝电信",
+                    "fatherNodeCode": "NOD999",
+                    "isLeaf": "1",
+                    "children": [
+                        {
+                            "nodeLevel": "3",
+                            "nodeCode": "D02e93",
+                            "nodeFullCode": "NOD999.NOD08h.D02e93",
+                            "nodeName": "XZ-LZ-XJ-SR-1.MAN.AC7750",
+                            "fatherNodeCode": "NOD08h",
+                            "isLeaf": "2",
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "nodeLevel": "2",
+                    "nodeCode": "NOD08j",
+                    "nodeFullCode": "NOD999.NOD08j",
+                    "nodeName": "那曲电信",
+                    "fatherNodeCode": "NOD999",
+                    "isLeaf": "1",
+                    "children": [
+                        {
+                            "nodeLevel": "3",
+                            "nodeCode": "D02ea8",
+                            "nodeFullCode": "NOD999.NOD08j.D02ea8",
+                            "nodeName": "XZ-NQ-DX-SR-1.MAN.ACL7750",
+                            "fatherNodeCode": "NOD08j",
+                            "isLeaf": "2",
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "nodeLevel": "2",
+                    "nodeCode": "NOD0al",
+                    "nodeFullCode": "NOD999.NOD0al",
+                    "nodeName": "企信部",
+                    "fatherNodeCode": "NOD999",
+                    "isLeaf": "1",
+                    "children": []
+                },
+                {
+                    "nodeLevel": "2",
+                    "nodeCode": "NOD08f",
+                    "nodeFullCode": "NOD999.NOD08f",
+                    "nodeName": "日喀则电信",
+                    "fatherNodeCode": "NOD999",
+                    "isLeaf": "1",
+                    "children": [
+                        {
+                            "nodeLevel": "3",
+                            "nodeCode": "D000r9",
+                            "nodeFullCode": "NOD999.NOD08f.D000r9",
+                            "nodeName": "XZ-RKZ-DX-BAS-1.MAN.AC7750",
+                            "fatherNodeCode": "NOD08f",
+                            "isLeaf": "2",
+                            "children": []
+                        },
+                        {
+                            "nodeLevel": "3",
+                            "nodeCode": "D02ea7",
+                            "nodeFullCode": "NOD999.NOD08f.D02ea7",
+                            "nodeName": "XZ-RKZ-DX-SR-1.MAN.ACL7750",
+                            "fatherNodeCode": "NOD08f",
+                            "isLeaf": "2",
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "nodeLevel": "2",
+                    "nodeCode": "NOD08g",
+                    "nodeFullCode": "NOD999.NOD08g",
+                    "nodeName": "山南电信",
+                    "fatherNodeCode": "NOD999",
+                    "isLeaf": "1",
+                    "children": [
+                        {
+                            "nodeLevel": "3",
+                            "nodeCode": "D015gb",
+                            "nodeFullCode": "NOD999.NOD08g.D015gb",
+                            "nodeName": "XZ-SN-DX-SR-2.MAN.AC7750",
+                            "fatherNodeCode": "NOD08g",
+                            "isLeaf": "2",
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "nodeLevel": "2",
+                    "nodeCode": "NOD0c9",
+                    "nodeFullCode": "NOD999.NOD0c9",
+                    "nodeName": "天翼云资源池",
+                    "fatherNodeCode": "NOD999",
+                    "isLeaf": "0",
+                    "children": [
+                        {
+                            "nodeLevel": "3",
+                            "nodeCode": "NOD0jd",
+                            "nodeFullCode": "NOD999.NOD0c9.NOD0jd",
+                            "nodeName": "test123",
+                            "fatherNodeCode": "NOD0c9",
+                            "isLeaf": "1",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

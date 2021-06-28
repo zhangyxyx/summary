@@ -1,0 +1,320 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body{
+    width:100%;
+    height:100%;
+    font-size:14px;
+    font-family: "Microsoft YaHei";
+}
+
+.container{
+    width: 100%;
+    height: 100%;
+    min-width: 1175px;
+    padding: 10px;
+    min-width: 1230px;
+}
+
+.queryCondPanel{
+    padding: 10px 15px;
+    border: 1px solid #E4E4E4;
+    background-color: #fff;
+    box-shadow: 0 2px 10px 1px rgba(200,200,200, 0.1);
+    overflow: hidden;
+}
+
+.deviceAlloInfo{
+    border: 1px solid #E4E4E4;
+    background-color: #fff;
+    box-shadow: 0 2px 10px 1px rgba(200,200,200, 0.1);
+    margin: 10px 0 ;
+    height: 260px;
+}
+
+
+.layui-inline{
+    width: calc((100% - 20px));
+}
+
+.btnBox{
+    width: calc((100% - 20px)*0.2) !important;
+}
+
+.btnBox1{
+    width: calc((100% - 20px)*0.46) !important;
+}
+
+.layui-form-label{
+    width: 105px;
+    padding: 5px 15px ;
+}
+
+.layui-input{
+    height: 30px;
+}
+
+.layui-input-inline{
+    width: 220px !important;
+}
+
+.btnItem{
+    border: 0;
+    background-color: #409CFC;
+    color: #fff;
+    padding: 5.5px 15px;
+    cursor: pointer;
+    outline: none;
+    border-radius: 3px;
+    font-size: 14px;
+    margin-right: 5px;
+}
+
+.btnItem:hover{
+    background-color: #5eacfd;
+}
+
+.textbox{
+    height: 30px !important;
+    border-color: #E6E6E6 !important;
+}
+
+.textbox-focused{
+    box-shadow: 0 0 1px 0 #95B8E7 !important;
+}
+
+.tablePanel{
+    width: 100%;
+    height: 140px;
+}
+
+.datagrid-row-selected{
+    background-color: #fff !important;
+}
+
+.datagrid-row,.datagrid-header-row{
+    height: 32px;
+}
+
+.panel-header, .panel-body{
+    border: 1px solid #E4E4E4;
+}
+
+/* .datagrid-row td{
+    background-color:#EBF0FD;
+} */
+
+.icon{
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    color: #00A0DC;
+    margin-left: 5px;
+}
+
+.infoBox{
+    margin-top: 10px;
+    padding:0 15px;
+    /* border: 1px solid #E4E4E4; */
+    background-color: #fff;
+    /* box-shadow: 0 2px 10px 1px rgba(200,200,200, 0.1); */
+}
+
+.pageBox{
+    margin-top: 8px;
+}
+
+.ipInfoBox{
+    margin-top: 10px;
+    padding:0 15px;
+    background-color: #fff;
+}
+.ipTablePanel{
+    width: 100%;
+    height: 154px;
+}
+
+
+.trAdd{
+    text-align: center;
+    height: 32px;
+}
+
+.operateBtn{
+    color:#409CFC;
+    cursor: pointer;
+}
+
+.operateBtn:hover{
+    color:#409CFC;
+    text-decoration: underline;
+}
+
+.importPanel{
+    padding: 15px;
+}
+
+ .importBtn{
+    border: 0;
+    background-color: #409CFC;
+    color: #fff;
+    padding: 5.5px 15px;
+    cursor: pointer;
+    outline: none;
+    border-radius: 3px;
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+.importBtn:hover{
+    background-color: #5eacfd;
+}
+
+.importTablePanel{
+    width: 100%;
+    height: 256px;
+    margin-top: 10px;
+    display:none;
+}
+
+
+/* .messager-window{
+    z-index: 10000000001 !important;
+} */
+
+.layui-layer-shade{
+    z-index: 1 !important;
+}
+
+.layui-layer-page{
+    z-index: 2 !important;
+}
+
+.datagrid-header-row .datagrid-cell-c1-sumInetNum{
+    text-align: center !important;
+}
+
+
+/* .importTablePanel .datagrid-view{
+    width: auto !important;
+} */
+
+.importTablePanel .datagrid-row td[field="addInetNum"] div{
+    padding-left: 24px !important;
+}
+
+.clearBtn{
+    position: absolute;
+    right: 25px;
+    top: 5px;
+    font-size: 14px;
+    color: #999;
+    cursor: pointer;
+    z-index: 10000;
+    display: none;
+}
+.clearBtnOrg{
+    position: absolute;
+    right: 25px;
+    top: 5px;
+    font-size: 14px;
+    color: #999;
+    cursor: pointer;
+    z-index: 10000;
+    display: none;
+}
+
+
+.datagrid-sort-icon {
+    padding: 0 !important;
+}
+
+.datagrid-view2 .datagrid-header-row :nth-last-child(1) div{
+    padding-right: 18px;
+}
+
+.datagrid-row :nth-last-child(1) div{
+    padding-right: 18px;
+}
+
+/* .datagrid-row :nth-child(1) div{
+    text-align: left !important;
+} */
+
+.layui-form{
+    font-size: 12px;
+}
+/*layui*/
+.selfselect .layui-form-select dl {
+ 
+    top: 32px !important;
+}
+.selfselect  .layui-form-select dl dd, .layui-form-select dl dt {
+ 
+    line-height: 26px !important;
+}
+
+.layui-inline1{
+    width: calc((100% - 20px)*0.45);
+}
+.easyui-validatebox{
+    border-color: #e6e6e6;
+    padding: 10px;
+}
+.deviceInfo{
+    width: 33%;
+    float: left;
+    border-right:1px solid #E4E4E4 ;
+}
+.ipInfo{
+    width: 67%;
+    float: left;
+}
+.layui-form-item .layui-inline {
+    margin-bottom: 8px;
+}
+
+.conTitle {
+    border-bottom: 1px solid #EDEDEE;
+    line-height: 34px;
+    font-size: 14px;
+    font-weight: bold;
+    padding-left: 20px;
+    color: #394859;
+}
+.buttonBox{
+    padding: 10px 20px;
+}
+.labelVal{
+    height: 30px;
+    line-height: 30px;
+}
+
+.editBtnBox{
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+.closeBtn{
+    border: 0;
+    background-color: #F04134;
+    color: #fff;
+    padding: 5.5px 15px;
+    cursor: pointer;
+    outline: none;
+    border-radius: 3px;
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+.closeBtn:hover{
+    background-color: #F76458;
+}
+.textEllipsis{
+    overflow: hidden;/*不允许滚动条*/
+    white-space: nowrap;/*不允许文本换行*/
+    text-overflow: ellipsis;/*文本超长显示省略号*/
+}

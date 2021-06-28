@@ -1,0 +1,347 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body{
+    width:100%;
+    height:100%;
+    font-size:12px;
+    font-family: "Microsoft YaHei";
+}
+
+.container{
+    width: 100%;
+    height: 100%;
+    min-width: 1175px;
+    padding: 0 10px 10px;
+    background-color: #ECEDF4;
+}
+
+/*查询条件*/
+.layui-inline{
+    width: calc((100%)*0.32);
+}
+
+.btnPanel{
+    width:50% !important;
+}
+
+.layui-form-label{
+    width: 108px;
+    padding: 5px 15px ;
+}
+
+.layui-input{
+    height: 30px;
+}
+
+.layui-form{
+    background: #fff;
+    padding: 20px;
+    /* border: 1px solid #e0e1e7; */
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.layui-form-item{
+    margin-bottom: 5px !important;
+}
+
+.layui-input-inline{
+    width: calc(100% - 108px) !important;
+    margin-right: 0px !important;
+}
+
+/*按钮*/
+.btnItem{
+    border: 0;
+    background-color: #409CFC;
+    color: #fff;
+    padding: 5.5px 15px;
+    cursor: pointer;
+    outline: none;
+    border-radius: 3px;
+    font-size: 14px;
+    margin-right: 5px;
+}
+
+.btnItem:hover{
+    background-color: #5eacfd;
+}
+
+.infoBox{
+    margin-top: 10px;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 3px;
+    height: calc(100% - 90px);
+
+}
+
+.tablePanel{
+    width: 100%;
+    height: 418px;
+}
+
+/*表格样式修改*/
+.datagrid-sort-icon {
+    padding: 0 !important;
+    width: 0 !important;
+    overflow: hidden;
+}
+  
+.datagrid-view{
+    width: 100% !important;
+}
+
+/* .datagrid-row td{
+    background-color: #fff;
+} */
+
+.datagrid-row,.datagrid-header-row{
+    height: 32px;
+}
+
+.panel-header, .panel-body{
+    border: 1px solid #E4E4E4;
+}
+
+.datagrid-row-selected{
+    background-color: #fff !important;
+}
+
+.datagrid-view2{
+    width: 100% !important;
+  }
+
+  /*表格操作按钮*/
+.operateBtn{
+    color:#409CFC;
+    cursor: pointer;
+}
+
+.operateBtn:hover{
+    color:#409CFC;
+    text-decoration: underline;
+}
+
+.operateBtnBox{
+    overflow: hidden;
+    display: flex;
+    justify-content: center;/*水平居中*/
+}
+
+.operateItem{
+    width: 40px;
+    float: left;
+}
+
+
+/*新增修改*/
+.layui-required::before{
+    content:"*";
+    color:red;
+}
+
+.editItem{
+    width:100% !important;
+}
+
+.editColorItem{
+    width:calc(100% - 30px) !important;
+}
+
+.editColorFrom{
+    width:30px !important;
+    margin-left: -11px;
+    margin-right: 0px !important;
+}
+
+.layui-colorpicker.layui-colorpicker-lg{
+    width: 30px !important;
+    height: 30px !important;
+    line-height: 20px !important;
+}
+
+#colorForm{
+    width: 100% !important;
+    margin-bottom: 0px !important;
+}
+
+.editBtnBox{
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+.delCodeBtn{
+    border: 0;
+    background-color: #F04134;
+    color: #fff;
+    padding: 5.5px 15px;
+    cursor: pointer;
+    outline: none;
+    border-radius: 3px;
+    font-size: 14px;
+}
+
+.delCodeBtn:hover{
+    background-color: #F76458;
+}
+
+/*层级关系*/
+.layui-layer-shade{
+    z-index: 100 !important;
+}
+
+.layui-layer-page{
+    z-index: 200 !important;
+}
+
+.delLabelCodeBox{
+    text-align: right;
+    padding-top: 8px;
+}
+
+/*改变表格复选框样式*/
+.datagrid-header-check input, .datagrid-cell-check input{
+    box-sizing: border-box;
+    outline: none;
+    position: relative;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    -webkit-appearance: none;
+    border: 1px solid #ccc;
+    background-color: #fff;
+}
+
+.datagrid-header-check input:checked::before, .datagrid-cell-check input:checked::before{
+    position: absolute;
+    display: table;
+    top: 20%;
+    left: 10%;
+    width: 11.6px;
+    height: 4px;
+    border-radius: 0;
+    border: 3px solid #3489FE;
+    border-top: 0;
+    border-right: 0;
+    transition: opacity .05s ease-in-out;
+    transform: rotate(-45deg);
+    content: ' ';
+    opacity: 1;
+}
+
+.closeBtn{
+    border: 0;
+    background-color: #F04134;
+    color: #fff;
+    padding: 5.5px 15px;
+    cursor: pointer;
+    outline: none;
+    border-radius: 3px;
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+.closeBtn:hover{
+    background-color: #F76458;
+}
+
+.textbox{
+    height: 30px !important;
+    border-color: #E6E6E6 !important;
+    border-radius: 3px !important;
+}
+
+.textbox-focused{
+    box-shadow: 0 0 1px 0 #95B8E7 !important;
+}
+
+.pageBox{
+    background-color: #F4F4F4;
+}
+
+.freeCountyInquireBtn{
+    border: 0;
+    background-color: #409CFC;
+    color: #fff;
+    padding: 5.5px 15px;
+    cursor: pointer;
+    outline: none;
+    border-radius: 3px;
+    font-size: 14px;
+    float: right;
+}
+
+.freeCountyInquireBtn:hover{
+    background-color: #5eacfd;
+}
+
+#editHexadecimalCode{
+    width: calc(100% - 100px) !important;
+    display: inline !important;
+}
+
+/* 导入 */
+.importPanel{
+    padding: 15px;
+}
+
+ .importBtn{
+    border: 0;
+    background-color: #409CFC;
+    color: #fff;
+    padding: 5.5px 15px;
+    cursor: pointer;
+    outline: none;
+    border-radius: 3px;
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+.importBtn:hover{
+    background-color: #5eacfd;
+}
+
+.importCloseBtn{
+    background-color: #F04134 !important;
+}
+
+.importCloseBtn:hover{
+    background-color: #F76458 !important;
+}
+
+.freeItem{
+    width: 48% !important;
+}
+
+.freeTable{
+    width: 100%;
+}
+
+.freeCodeItem td{
+    text-align: center;
+    padding: 8px 0;
+}
+
+.freeCodeItem td:nth-child(even){
+    background-color: #E8E8E8;
+}
+
+.freeCodeItem td:nth-child(odd){
+    background-color: #A0E8FA;
+}
+
+
+.freeCodeBox{
+    padding: 0 10px 10px 10px;
+}
+
+.overFlow{
+    overflow-y: scroll;
+    max-height: 320px;
+}
+

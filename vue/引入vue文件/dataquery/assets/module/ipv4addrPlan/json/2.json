@@ -1,0 +1,24 @@
+{
+    "pagesize": 53,
+    "page": "\t<ul class='pagination pagination-relative'>\n\t<li><a>共<font color=red>53</font>条</a></li>\n\t<li><input type=\"number\" value=\"\" id=\"toGoPage\" min=\"1\" max=\"4\" style=\"width:50px;text-align:center;float:left\" placeholder=\"页码\"/></li>\n\t<li style=\"cursor:pointer;\"><a onclick=\"toTZ();\"  class=\"btn btn-mini btn-success\">跳转</a></li>\n\t<li><a>首页</a></li>\n\t<li><a>上页</a></li>\n<li><a><font color='#808080'>1</font></a></li>\n\t<li style=\"cursor:pointer;\"><a onclick=\"nextPage(2)\">2</a></li>\n\t<li style=\"cursor:pointer;\"><a onclick=\"nextPage(3)\">3</a></li>\n\t<li style=\"cursor:pointer;\"><a onclick=\"nextPage(4)\">4</a></li>\n\t<li style=\"cursor:pointer;\"><a onclick=\"nextPage(2)\">下页</a></li>\n\t<li style=\"cursor:pointer;\"><a onclick=\"nextPage(4)\">尾页</a></li>\n\t<li><a>第1页</a></li>\n\t<li><a>共4页</a></li>\n\t<li><select title='显示条数' style=\"width:55px;float:left;\" class=\"pagenation_select\" onchange=\"changeCount(this.value)\">\n\t<option value='15'>15</option>\n\t<option value='10'>10</option>\n\t<option value='20'>20</option>\n\t<option value='40'>40</option>\n\t<option value='60'>60</option>\n\t<option value='80'>80</option>\n\t<option value='99'>99</option>\n\t<option value='100'>100</option>\n\t<option value='150'>150</option>\n\t<option value='200'>200</option>\n\t<option value='300'>300</option>\n\t<option value='400'>400</option>\n\t<option value='500'>500</option>\n\t</select>\n\t</li>\n</ul>\n<script type=\"text/javascript\">\nfunction nextPage(page){ \tif(true && document.forms[0]){\n\t\tvar url = document.forms[0].getAttribute(\"action\");\n\t\tif(url.indexOf('?')>-1){url += \"&currentPage=\";}\n\t\telse{url += \"?currentPage=\";}\n\t\turl = url + page + \"&showCount=\" + $('ul.pagination li:last :checked').val();\n\t\tqueryForm(url);\n\t}else{\n\t\tvar url = document.location+'';\n\t\tif(url.indexOf('?')>-1){\n\t\t\tif(url.indexOf('currentPage')>-1){\n\t\t\t\tvar reg = /currentPage=\\d*/g;\n\t\t\t\turl = url.replace(reg,'currentPage=');\n\t\t\t}else{\n\t\t\t\turl += \"&currentPage=\";\n\t\t\t}\n\t\t}else{url += \"?currentPage=\";}\n\t\turl = url + page + \"&showCount=\" + $('ul.pagination li:last :checked').val();\n\t\tqueryForm(url);\n\t}\n}\nfunction changeCount(value){\tif(true && document.forms[0]){\n\t\tvar url = document.forms[0].getAttribute(\"action\");\n\t\tif(url.indexOf('?')>-1){url += \"&currentPage=\";}\n\t\telse{url += \"?currentPage=\";}\n\t\turl = url + \"1&showCount=\"+value;\n\t\tqueryForm(url);\n\t}else{\n\t\tvar url = document.location+'';\n\t\tif(url.indexOf('?')>-1){\n\t\t\tif(url.indexOf('currentPage')>-1){\n\t\t\t\tvar reg = /currentPage=\\d*/g;\n\t\t\t\turl = url.replace(reg,'currentPage=');\n\t\t\t}else{\n\t\t\t\turl += \"1&currentPage=\";\n\t\t\t}\n\t\t}else{url += \"?currentPage=\";}\n\t\turl = url + \"&showCount=\"+value;\n\t\tqueryForm(url);\n\t}\n}\nfunction toTZ(){var toPaggeVlue = document.getElementById(\"toGoPage\").value;if(toPaggeVlue == ''){document.getElementById(\"toGoPage\").value=1;return;}if(isNaN(Number(toPaggeVlue))){document.getElementById(\"toGoPage\").value=1;return;}nextPage(toPaggeVlue);}\n</script>\n",
+    "varList": [
+        {
+            "OLTDOWNPORT": "1-1-7-6",
+            "STARTIP": "10.76.32.1",
+            "OLTDEVICENAME": "隆林电信",
+            "USERACCOUNT": "10.76.32.1",
+            "ENDIP": "10.76.32.1",
+            "BRASSRID": "dev0aflt",
+            "OLTUPPORT": "1-1-20-1",
+            "NODENAME": "百色",
+            "BASDEVICENAME": "M-BS-隆林-M-中兴M6000S-01",
+            "VPNINSTANCE": "CTVPN20004-IPTV",
+            "GATEWAY": "10.76.32.1",
+            "CITYCODE": "GX-BS",
+            "BASLOOPADDRESS": "222.217.179.39",
+            "OLTLOOPADDRESS": "10.106.59.22",
+            "ROW_ID": 14,
+            "ACCOUNTTYPE": "static"
+        }
+    ]
+}

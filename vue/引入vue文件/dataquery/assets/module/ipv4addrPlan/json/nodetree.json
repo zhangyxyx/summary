@@ -1,0 +1,70 @@
+[
+    {
+        "nodelevel": "1",
+        "nodecode": "NOD999",
+        "nodefullcode": "NOD999",
+        "nodename": "西藏",
+        "fathernodecode": "",
+        "isleaf": "0",
+        "unfold":"N",
+       
+        "children": [
+            {
+                "nodelevel": "2",
+                "nodecode": "NOD08d",
+                "nodefullcode": "NOD999.NOD08d",
+                "fathernodecode": "NOD999",
+                "nodename": "区级NOC",
+                "isleaf": "0",
+                "IsSearched":"N",
+                "IsPlanAddr":"1"
+
+                
+            },
+            {
+                "nodelevel": "2",
+                "nodecode": "NOD08e",
+                "nodefullcode": "NOD999.NOD08e",
+                "fathernodecode": "NOD999",
+                "nodename": "拉萨电信",
+                "isleaf": "1",
+                "IsSearched":"N",
+                "IsPlanAddr":"0"
+               
+            }
+        ]
+    },
+    {
+        "nodelevel": "1",
+        "nodecode": "NOD999",
+        "nodefullcode": "NOD999",
+        "nodename": "广东",
+        "fathernodecode": "",
+        "unfold":"Y",
+        "isleaf": "0",
+        "children": [
+            {
+                "nodelevel": "2",
+                "nodecode": "NOD08dd",
+                "nodefullcode": "NOD999.NOD08d",
+                "fathernodecode": "NOD999",
+                "nodename": "区级NOC",
+                "isleaf": "0",
+                "IsSearched":"Y",
+                "checked":true,
+                "IsPlanAddr":"1"
+                
+            },
+            {
+                "nodelevel": "2",
+                "nodecode": "NOD08e",
+                "nodefullcode": "NOD999.NOD08e",
+                "fathernodecode": "NOD999",
+                "nodename": "拉萨电信",
+                "isleaf": "1",
+                "IsSearched":"N",
+                "IsPlanAddr":"1"
+            }
+        ]
+    }
+]

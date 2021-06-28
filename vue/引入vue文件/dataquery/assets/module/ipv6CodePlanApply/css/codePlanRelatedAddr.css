@@ -1,0 +1,144 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body{
+    width:100%;
+    height:100%;
+    font-size:12px;
+    font-family: "Microsoft YaHei";
+}
+
+.container{
+    width: 100%;
+    height: 100%;
+    min-width: 1000px;
+    /* padding: 0 10px 10px; */
+    background-color: #ECEDF4;
+}
+
+.relatedTablePanel .planItemBox {
+    width: 90%;
+    overflow: hidden;
+    text-align: center;
+}
+/* 已定义标识长度 */
+.relatedTablePanel .itemWidth1{
+    width: calc((100% - 40px));
+}
+.relatedTablePanel .itemWidth2{
+    width: calc((100% - 40px)*(1/2));
+}
+.relatedTablePanel .itemWidth3{
+    width: calc((100% - 40px)*(1/3));
+}
+.relatedTablePanel .itemWidth4{
+    width: calc((100% - 40px)*(1/4));
+}
+.relatedTablePanel .itemWidth5{
+    width: calc((100% - 40px)*(1/5));
+}
+.relatedTablePanel .itemWidth6{
+    width: calc((100% - 40px)*(1/6));
+}
+.relatedTablePanel .itemWidth7{
+    width: calc((100% - 40px)*(1/7));
+}
+.relatedTablePanel .itemWidth8{
+    width: calc((100% - 40px)*(1/8));
+}
+.relatedTablePanel .schemeItem{
+    float: left;
+    padding: 2px 0px;
+}
+.relatedTablePanel .subnetSpace{
+    background-color: #fff;
+    width: 20px;
+    border: 1px solid #F1F1F2;
+    padding: 2px 0px;
+}
+
+.relatedTablePanel .interfaceAddr{
+    background-color: #ccc;
+    width: 20px;
+}
+
+
+
+.relateContent .planItemBox {
+    width: 100%;
+    overflow: hidden;
+    text-align: center;
+}
+.relateContent .planItemBoxDetail {
+    width: 100%;
+    overflow: hidden;
+    text-align: center;
+}
+
+/* 已定义标识长度 */
+.relateContent .itemWidth1{
+    width: calc((100% - 300px));
+}
+.relateContent .itemWidth2{
+    width: calc((100% - 300px)*(1/2));
+}
+.relateContent .itemWidth3{
+    width: calc((100% - 300px)*(1/3));
+}
+.relateContent .itemWidth4{
+    width: calc((100% - 300px)*(1/4));
+}
+.relateContent .itemWidth5{
+    width: calc((100% - 300px)*(1/5));
+}
+.relateContent .itemWidth6{
+    width: calc((100% - 300px)*(1/6));
+}
+.relateContent .itemWidth7{
+    width: calc((100% - 300px)*(1/7));
+}
+.relateContent .itemWidth8{
+    width: calc((100% - 300px)*(1/8));
+}
+
+.relateContent .schemeItem{
+    float: left;
+    height: 32px;
+    line-height: 32px;
+}
+
+.relateContent .subnetSpace{
+    background-color: #fff;
+    width: 150px;
+    /* border: 1px solid #F1F1F2; */
+    line-height: 32px;
+}
+
+.relateContent .interfaceAddr{
+    background-color: #ccc;
+    width: 150px;
+}
+.relateContent{
+    box-sizing: border-box;
+    padding: 0 20px;
+}
+.relateContentTop{
+    margin:  10px 0 0;
+}
+.ipv6InfoBox{
+    padding: 5px 0;
+}
+.IPv6Addr{
+    display: inline-block;
+    width: 200px;
+}
+.conTitle {
+    border-bottom: 1px solid #EDEDEE;
+    line-height: 34px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #394859;
+}

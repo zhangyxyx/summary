@@ -1,0 +1,601 @@
+* {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+  }
+  
+  label {
+    font-weight: normal;
+  }
+  
+  html, body {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+  }
+  
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
+  
+  * {
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    -webkit-padding-start: 0;
+    margin:0px;
+    padding:0px;
+  }
+  
+  .no-padding {
+    padding: 0px !important;
+  }
+  
+  .padding-content {
+    padding: 4px 0;
+  }
+  
+  a:focus,
+  a:active {
+    outline: none;
+  }
+  
+  a,
+  a:focus,
+  a:hover {
+    cursor: pointer;
+    color: inherit;
+    text-decoration: none;
+  }
+  
+  div:focus {
+    outline: none;
+  }
+  
+.el-dialog {
+    transform: none;
+    left: 0;
+    position: relative;
+    margin: 0 auto;
+  }
+  
+  .el-dialog__title {
+    font-size: 14px !important;
+    color: #3c3e4a !important;
+  }
+  
+  .el-dialog__body {
+    padding: 20px !important;
+  }
+  
+  .el-dropdown {
+    font-size: 12px !important;
+  }
+  
+  .el-dropdown-menu__item {
+    font-size: 12px !important;
+    line-height: 28px !important;
+  }
+  
+  .el-dialog__headerbtn {
+    top: 15px !important;
+  }
+  
+  .el-dialog__header {
+    padding-top: 10px !important;
+  }
+  
+  .el-tree {
+    background: #f5f7fa !important;
+    min-height: 440px;
+    height: auto;
+  }
+  
+  .el-tree .el-tree-node__label {
+    font-size: 12px;
+  }
+  
+  .app-container {
+    padding: 15px;
+  }
+  
+  .app-container .el-form.app-form.el-form--inline {
+    background-color: #fff;
+  }
+  
+  .app-container .el-form.app-form.el-form--inline.app-form-shadow {
+    padding: 15px 15px 0;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+  }
+  
+  .app-container .el-form.app-form.el-form--inline .row-3 .el-form-item,
+  .app-container .el-form.app-form.el-form--inline .row-1 .el-form-item,
+  .app-container .el-form.app-form.el-form--inline .row-2 .el-form-item,
+  .app-container .el-form.app-form.el-form--inline .row-4 .el-form-item,
+  .app-container .el-form.app-form.el-form--inline .row-3-2-1 .el-form-item,
+  .app-container .el-form.app-form.el-form--inline .row-3-1-2 .el-form-item,
+  .app-container .el-form.app-form.el-form--inline .row-4-2-1-1 .el-form-item,
+  .app-container .el-form.app-form.el-form--inline .row-4-1-1-2 .el-form-item {
+    margin-bottom: 15px;
+    margin-right: 0;
+  }
+  
+  .app-container .el-form.app-form.el-form--inline .row-3 .el-form-item .el-form-item__label,
+  .app-container .el-form.app-form.el-form--inline .row-1 .el-form-item .el-form-item__label,
+  .app-container .el-form.app-form.el-form--inline .row-2 .el-form-item .el-form-item__label,
+  .app-container .el-form.app-form.el-form--inline .row-4 .el-form-item .el-form-item__label,
+  .app-container .el-form.app-form.el-form--inline .row-3-2-1 .el-form-item .el-form-item__label,
+  .app-container .el-form.app-form.el-form--inline .row-3-1-2 .el-form-item .el-form-item__label,
+  .app-container .el-form.app-form.el-form--inline .row-4-2-1-1 .el-form-item .el-form-item__label,
+  .app-container .el-form.app-form.el-form--inline .row-4-1-1-2 .el-form-item .el-form-item__label {
+    font-size: 12px;
+    width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: unset;
+    white-space: nowrap;
+  }
+  
+  .app-container .el-form.app-form.el-form--inline .row-3 .el-form-item .el-form-item__content,
+  .app-container .el-form.app-form.el-form--inline .row-1 .el-form-item .el-form-item__content,
+  .app-container .el-form.app-form.el-form--inline .row-2 .el-form-item .el-form-item__content,
+  .app-container .el-form.app-form.el-form--inline .row-4 .el-form-item .el-form-item__content,
+  .app-container .el-form.app-form.el-form--inline .row-3-2-1 .el-form-item .el-form-item__content,
+  .app-container .el-form.app-form.el-form--inline .row-3-1-2 .el-form-item .el-form-item__content,
+  .app-container .el-form.app-form.el-form--inline .row-4-2-1-1 .el-form-item .el-form-item__content,
+  .app-container .el-form.app-form.el-form--inline .row-4-1-1-2 .el-form-item .el-form-item__content {
+    width: calc(100% - 100px);
+    font-size: 12px;
+  }
+  
+  .app-container .el-form.app-form.el-form--inline .row-3 .el-form-item .el-form-item__content > div,
+  .app-container .el-form.app-form.el-form--inline .row-1 .el-form-item .el-form-item__content > div,
+  .app-container .el-form.app-form.el-form--inline .row-2 .el-form-item .el-form-item__content > div,
+  .app-container .el-form.app-form.el-form--inline .row-4 .el-form-item .el-form-item__content > div,
+  .app-container .el-form.app-form.el-form--inline .row-3-2-1 .el-form-item .el-form-item__content > div,
+  .app-container .el-form.app-form.el-form--inline .row-3-1-2 .el-form-item .el-form-item__content > div,
+  .app-container .el-form.app-form.el-form--inline .row-4-2-1-1 .el-form-item .el-form-item__content > div,
+  .app-container .el-form.app-form.el-form--inline .row-4-1-1-2 .el-form-item .el-form-item__content > div {
+    width: 96%;
+  }
+  
+  .app-container .el-form.app-form.el-form--inline .row-3 .el-form-item .el-form-item__content input,
+  .app-container .el-form.app-form.el-form--inline .row-3 .el-form-item .el-form-item__content textarea,
+  .app-container .el-form.app-form.el-form--inline .row-1 .el-form-item .el-form-item__content input,
+  .app-container .el-form.app-form.el-form--inline .row-1 .el-form-item .el-form-item__content textarea,
+  .app-container .el-form.app-form.el-form--inline .row-2 .el-form-item .el-form-item__content input,
+  .app-container .el-form.app-form.el-form--inline .row-2 .el-form-item .el-form-item__content textarea,
+  .app-container .el-form.app-form.el-form--inline .row-4 .el-form-item .el-form-item__content input,
+  .app-container .el-form.app-form.el-form--inline .row-4 .el-form-item .el-form-item__content textarea,
+  .app-container .el-form.app-form.el-form--inline .row-3-2-1 .el-form-item .el-form-item__content input,
+  .app-container .el-form.app-form.el-form--inline .row-3-2-1 .el-form-item .el-form-item__content textarea,
+  .app-container .el-form.app-form.el-form--inline .row-3-1-2 .el-form-item .el-form-item__content input,
+  .app-container .el-form.app-form.el-form--inline .row-3-1-2 .el-form-item .el-form-item__content textarea,
+  .app-container .el-form.app-form.el-form--inline .row-4-2-1-1 .el-form-item .el-form-item__content input,
+  .app-container .el-form.app-form.el-form--inline .row-4-2-1-1 .el-form-item .el-form-item__content textarea,
+  .app-container .el-form.app-form.el-form--inline .row-4-1-1-2 .el-form-item .el-form-item__content input,
+  .app-container .el-form.app-form.el-form--inline .row-4-1-1-2 .el-form-item .el-form-item__content textarea {
+    font-size: 12px;
+  }
+  
+  .app-container .el-form.app-form.el-form--inline .row-3 .el-form-item {
+    width: 33%;
+  }
+  
+  .app-container .el-form.app-form.el-form--inline .row-2 .el-form-item {
+    width: 49.5%;
+  }
+  
+  .app-container .el-form.app-form.el-form--inline .row-2 .el-form-item .el-form-item__content > div {
+    width: 98%;
+  }
+  
+  .app-container .el-form.app-form.el-form--inline .row-1 .el-form-item {
+    width: 100%;
+  }
+  
+  .app-container .el-form.app-form.el-form--inline .row-1 .el-form-item .el-form-item__content > div {
+    width: 98%;
+  }
+  
+  .app-container .el-form.app-form.el-form--inline .row-4 .el-form-item {
+    width: 24.7%;
+  }
+  
+  .app-container .el-form.app-form.el-form--inline .row-3-1-2 .el-form-item:first-child {
+    width: 33%;
+  }
+  
+  .app-container .el-form.app-form.el-form--inline .row-3-1-2 .el-form-item:nth-child(2) {
+    width: 66%;
+  }
+  
+  .app-container .el-form.app-form.el-form--inline .row-3-1-2 .el-form-item:nth-child(2) .el-form-item__content > div {
+    width: 98%;
+  }
+  
+  .app-container .el-form.app-form.el-form--inline .row-3-2-1 .el-form-item:first-child {
+    width: 66%;
+  }
+  
+  .app-container .el-form.app-form.el-form--inline .row-3-2-1 .el-form-item:first-child .el-form-item__content > div {
+    width: 98%;
+  }
+  
+  .app-container .el-form.app-form.el-form--inline .row-3-2-1 .el-form-item:nth-child(2) {
+    width: 33%;
+  }
+  
+  .app-container .el-form.app-form.el-form--inline .row-4-2-1-1 .el-form-item:first-child {
+    width: 49.4%;
+  }
+  
+  .app-container .el-form.app-form.el-form--inline .row-4-2-1-1 .el-form-item:first-child .el-form-item__content > div {
+    width: 98%;
+  }
+  
+  .app-container .el-form.app-form.el-form--inline .row-4-2-1-1 .el-form-item:nth-child(2),
+  .app-container .el-form.app-form.el-form--inline .row-4-2-1-1 .el-form-item:nth-child(3) {
+    width: 24.7%;
+  }
+  
+  .app-container .el-form.app-form.el-form--inline .row-4-1-1-2 .el-form-item:last-child {
+    width: 49.4%;
+  }
+  
+  .app-container .el-form.app-form.el-form--inline .row-4-1-1-2 .el-form-item:last-child .el-form-item__content > div {
+    width: 98%;
+  }
+  
+  .app-container .el-form.app-form.el-form--inline .row-4-1-1-2 .el-form-item:nth-child(1),
+  .app-container .el-form.app-form.el-form--inline .row-4-1-1-2 .el-form-item:nth-child(2) {
+    width: 24.7%;
+  }
+  
+  .app-container .el-form.app-form.el-form--inline .app-form-item-button {
+    width: 98% !important;
+    text-align: right;
+  }
+  
+  .app-container .el-form.app-form.el-form--inline .el-radio__label {
+    font-size: 12px;
+  }
+  
+  .app-container .el-form.app-form.el-form--inline .el-checkbox__label {
+    font-size: 12px;
+  }
+  
+  .app-container .el-form.app-form.el-form--inline .el-checkbox + .el-checkbox {
+    margin-left: 0;
+  }
+  
+  .app-container .el-form.app-form.el-form--inline .el-checkbox {
+    margin-right: 30px;
+  }
+  
+  .app-container .el-form.app-form.el-form--inline .el-radio + .el-radio {
+    margin-left: 0;
+  }
+  
+  .app-container .el-form.app-form.el-form--inline .el-radio {
+    margin-right: 30px;
+  }
+  
+  .app-container .el-form.app-form.el-form--inline .vue-treeselect {
+    height: 28px;
+  }
+  
+  .app-container .el-form.app-form.el-form--inline .vue-treeselect__menu-container {
+    font-size: 12px;
+    font-weight: 200;
+  }
+  
+  .app-container .el-form.app-form.el-form--inline .vue-treeselect__menu {
+    overflow-x: auto;
+  }
+  
+  .app-container .el-form.app-form.el-form--inline .vue-treeselect__label {
+    text-overflow: inherit;
+    overflow: inherit;
+  }
+  
+  .app-container .el-form.app-form.el-form--inline .vue-treeselect__tip-text {
+    text-overflow: inherit;
+    overflow: inherit;
+  }
+  
+  .app-container .el-form.app-form.el-form--inline .vue-treeselect__control {
+    font-size: 12px;
+    height: 26px;
+    line-height: 26px;
+    border-radius: 3px;
+    border-color: #e5e5e5;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  
+  .app-container .el-form.app-form.el-form--inline .vue-treeselect__value-container {
+    padding: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    height: 26px;
+    line-height: 26px;
+  }
+  
+  .app-container .el-form.app-form.el-form--inline .vue-treeselect__input {
+    padding: 0;
+    line-height: 26px;
+    height: 26px;
+  }
+  
+  .app-container .el-form.app-form.el-form--inline .vue-treeselect__single-value,
+  .app-container .el-form.app-form.el-form--inline .vue-treeselect__placeholder {
+    height: 26px;
+    line-height: 26px;
+    font-size: 12px;
+  }
+  
+  .app-container .el-form.app-form.el-form--inline .vue-treeselect__placeholder {
+    color: #cccccc;
+  }
+  
+  .app-container .el-form.app-form.el-form--inline .vue-treeselect__multi-value-item-container {
+    padding-top: 0;
+    height: 26px;
+  }
+  
+  .app-container .el-form.app-form.el-form--inline .vue-treeselect--has-value .vue-treeselect__multi-value {
+    margin-bottom: 0;
+  }
+  
+  .app-container .el-form.app-form.el-form--inline .vue-treeselect__icon.vue-treeselect__value-remove {
+    display: none;
+  }
+  
+  .app-container .el-form.app-form.el-form--inline .vue-treeselect__multi-value {
+    height: 26px;
+    line-height: 26px;
+    vertical-align: top;
+  }
+  
+  .app-container .el-form.app-form.el-form--inline .vue-treeselect__multi-value-item {
+    height: 18px;
+    line-height: 18px;
+    padding: 0;
+    margin-top: 4px;
+    border: none;
+  }
+  
+  .app-container .el-form.app-form.el-form--inline .vue-treeselect__input-container {
+    padding-top: 0;
+    line-height: 26px;
+    height: 26px;
+  }
+  
+  .app-container .el-form.app-form.el-form--inline .vue-treeselect__x-container:hover {
+    color: #f56c6c;
+  }
+  
+  .app-container .el-form.app-form.el-form--inline .vue-treeselect__menu-container .vue-treeselect__menu {
+    margin-top: 3px;
+    border: 1px solid #e5e5e5;
+  }
+  
+  .app-container .el-tree__empty-text {
+    font-size: 14px;
+  }
+  
+  .app-container .app-table {
+    margin: 15px auto;
+  }
+  
+  .app-container .app-table .headercell {
+    background: #f8f9f9;
+    color: #3c3e4a;
+    font-size: 12px;
+    border-bottom: none;
+    text-align: center;
+    padding: 9px 0;
+  }
+  
+  .app-container .app-table .headercell .cell {
+    line-height: 14px;
+    text-align: center;
+    white-space: nowrap;
+    word-break: unset;
+  }
+  
+  .app-container .app-table .headercell .cell .el-checkbox {
+    margin-right: 0;
+  }
+  
+  .app-container .app-table .cellclazz {
+    padding: 9px 0;
+    text-align: center;
+  }
+  
+  .app-container .app-table .cellclazz .cell {
+    line-height: 14px;
+    white-space: nowrap;
+    word-break: unset;
+    padding: 0;
+  }
+  
+  .app-container .app-table .cellclazz .cell .el-checkbox {
+    margin-right: 0;
+  }
+  
+  .app-container .app-table .cellclazz .cell .table-cell-radio .el-radio__label {
+    display: none;
+  }
+  
+  .app-container .app-table .cellclazz .cell .el-button--text {
+    padding: 0;
+  }
+  
+  .app-container .pagination-container-left .pagination-container-button {
+    float: right;
+    text-align: right;
+    width: 40%;
+    height: 32px;
+    line-height: 32px;
+  }
+  
+  .app-container .pagination-container-left .pagination-container-button .el-button + .el-button {
+    margin-left: 0;
+  }
+  
+  .app-container .pagination-container-left .pagination-container-button .el-button {
+    margin-right: 10px;
+  }
+  
+  .app-container .pagination-container-left .el-pagination {
+    width: 60%;
+    text-align: left;
+    float: left;
+  }
+  
+  .app-container .pagination-container-right .pagination-container-button {
+    float: left;
+    text-align: left;
+    width: 40%;
+    height: 32px;
+    line-height: 32px;
+  }
+  
+  .app-container .pagination-container-right .pagination-container-button .el-button + .el-button {
+    margin-left: 0;
+  }
+  
+  .app-container .pagination-container-right .pagination-container-button .el-button {
+    margin-right: 10px;
+  }
+  
+  .app-container .pagination-container-right .el-pagination {
+    width: 60%;
+    text-align: right;
+    float: right;
+  }
+  
+  .el-tree--highlight-current .el-tree-node.is-current > .el-tree-node__content {
+    background: #eaf5ff;
+  }
+  
+  #nprogress .bar {
+    background: #2c9cfa !important;
+  }
+  
+  #nprogress .spinner-icon {
+    border-left-color: #2c9cfa !important;
+    border-top-color: #2c9cfa !important;
+  }
+  
+  .el-message-box__title {
+    font-size: 16px !important;
+  }
+  
+  .el-select-dropdown__item {
+    height: 28px;
+    line-height: 28px;
+    font-size: 12px;
+  }
+  
+  .el-select-dropdown__item span {
+    line-height: 28px !important;
+  }
+  
+  .el-form-item__label {
+    font-size: 12px;
+  }
+  
+  .el-select-dropdown__item {
+    font-size: 12px !important;
+    height: 28px !important;
+    line-height: 28px !important;
+    padding: 0 15px !important;
+  }
+  
+  .el-select-dropdown__empty {
+    font-size: 12px !important;
+  }
+  
+  .el-input--mini .el-input__inner {
+    font-size: 12px;
+  }
+  
+  .vue-treeselect__checkbox--indeterminate {
+    border-color: #2c9cfa;
+    background: #2c9cfa;
+  }
+  
+  .vue-treeselect__label-container:hover
+  .vue-treeselect__checkbox--indeterminate {
+    border-color: #2c9cfa;
+    background: #2c9cfa;
+  }
+  
+  .vue-treeselect__checkbox--checked {
+    border-color: #2c9cfa;
+    background: #2c9cfa;
+  }
+  
+  .vue-treeselect__label-container:hover .vue-treeselect__checkbox--checked {
+    border-color: #2c9cfa;
+    background: #2c9cfa;
+  }
+  
+  .vue-treeselect__error-tip .vue-treeselect__retry {
+    color: #2c9cfa;
+  }
+  
+  .vue-treeselect__icon-loader::before {
+    background: #2c9cfa;
+  }
+  
+  .vue-treeselect--focused:not(.vue-treeselect--open) .vue-treeselect__control {
+    border-color: #2c9cfa;
+    box-shadow: none;
+  }
+  
+  .vue-treeselect__multi-value-item {
+    color: #2c9cfa;
+    background-color: #e9f5fe;
+  }
+  
+  .vue-treeselect:not(.vue-treeselect--disabled)
+  .vue-treeselect__multi-value-item:not(.vue-treeselect__multi-value-item-disabled):hover
+  .vue-treeselect__multi-value-item:not(.vue-treeselect__multi-value-item-new)
+  .vue-treeselect__multi-value-item:not(.vue-treeselect__multi-value-item-new):hover {
+    color: #2c9cfa;
+  }
+  
+  .vue-treeselect__value-remove {
+    color: #2c9cfa;
+  }
+  
+  .vue-treeselect__label-container:hover .vue-treeselect__checkbox--unchecked {
+    border-color: #2c9cfa;
+  }
+  
+  .vue-treeselect__option--highlight {
+    background: #e9f5fe;
+  }
+  
+  .el-select .el-input .el-select__caret {
+    font-size: 12px !important;
+  }
+  
+  .el-dialog__header {
+    border-bottom: 1px solid #e5e5e5;
+  }
+  
+  .el-dialog__footer {
+    border-top: 1px solid #e5e5e5;
+  }
+  
+  .el-dialog__headerbtn .el-icon-close {
+    display: none;
+  }
+  

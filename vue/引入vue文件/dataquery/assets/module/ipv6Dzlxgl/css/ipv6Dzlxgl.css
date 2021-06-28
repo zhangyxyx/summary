@@ -1,0 +1,313 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    font-size: 12px;
+    font-family: "微软雅黑";
+}
+
+
+/* 主页面 */
+
+.header {
+    width: 98%;
+    height: 32px;
+    margin: 10px auto 0;
+}
+
+.header h2 {
+    width: 120px;
+    height: 30px;
+    background: #009dd9;
+    font-size: 15px;
+    color: #fff;
+    line-height: 30px;
+    text-align: center;
+}
+
+.header div {
+    width: 100%;
+    height: 2px;
+    background: #009dd9;
+}
+
+.mainDiv {
+    overflow: hidden;
+    width: 98%;
+    /* min-height:300px;
+	max-height:500px; */
+    margin: 10px auto 0;
+    overflow-y: auto;
+}
+
+.mainDiv>div {
+    float: left;
+    width: 50%;
+    /* height:500px;
+	min-height:500px; */
+}
+
+.mainLeftDiv h3,
+.mainRightDiv h3 {
+    width: 100%;
+    height: 30px;
+    font-size: 13px;
+    line-height: 30px;
+}
+
+.mainLeftDiv ul {
+    min-width: 150px;
+    max-width: 200px;
+    height: calc(100% - 30px);
+}
+
+.mainRightDiv ul {
+    width: 100%;
+    height: 125px;
+}
+
+.mainRightDiv ul li {
+    width: 100%;
+    height: 25px;
+    color: #8c83b3;
+    line-height: 25px;
+}
+
+.mainRightDiv ul li:nth-child(3) i {
+    font-size: 14px;
+    color: #0f0;
+}
+
+.mainRightDiv ul li:nth-child(4) i {
+    font-size: 14px;
+    color: #0ff;
+}
+
+.mainRightDiv ul li:nth-child(5) i {
+    font-size: 14px;
+    color: #f00;
+}
+
+.combo {
+    width: calc(100% - 115px)!important;
+    height: 30px!important;
+}
+
+.textbox {
+    border-radius: 0!important;
+}
+
+.textbox input.textbox-text {
+    width: 100%!important;
+    padding: 0!important;
+}
+
+
+/* 新增和修改地址类型 */
+
+.xzipdzDiv,
+.xgipdzDiv {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 300;
+    width: 600px;
+    height: 180;
+    margin: -90px 0 0 -300px;
+    background: #fff;
+}
+
+.xzHeader,
+.xgHeader {
+    width: 98%;
+    height: 30px;
+    margin: 10px auto 0;
+}
+
+.xzHeader h3,
+.xgHeader h3 {
+    width: 160px;
+    height: 28px;
+    background: #009dd9;
+    font-size: 14px;
+    color: #fff;
+    line-height: 28px;
+    text-align: center;
+}
+
+.xzHeader div,
+.xgHeader div {
+    width: 100%;
+    height: 2px;
+    background: #009dd9;
+}
+
+.xzCheck,
+.xgCheck {
+    width: 98%;
+    margin: 10px auto 0;
+}
+
+.xzCheck ul,
+.xgCheck ul {
+    overflow: hidden;
+    width: 100%;
+}
+
+.xzCheck ul li,
+.xgCheck ul li {
+    float: left;
+    width: 48%;
+    height: 30px;
+    margin-top: 10px;
+    line-height: 30px;
+}
+
+.xzCheck ul li span:first-child,
+.xgCheck ul li span:first-child {
+    display: inline-block;
+    width: 75px;
+    height: 30px;
+    font-size: 12px;
+    color: #333;
+    text-align: right;
+    line-height: 30px;
+}
+
+.xzCheck ul li span:last-child,
+.xgCheck ul li span:last-child {
+    color: #f00;
+}
+
+.xzCheck ul li input,
+.xgCheck ul li input {
+    width: calc(100% - 90px);
+    height: 28px;
+    outline: none;
+    border: none;
+    border: 1px solid #B1D2EC;
+}
+
+.xzCheck .combo,
+.xgCheck .combo {
+    width: calc(100% - 90px)!important;
+    height: 28px!important;
+    margin-bottom: 2px;
+}
+
+.xzBtnDiv,
+.xgBtnDiv {
+    width: 130px;
+    height: 30px;
+    margin: 10px auto;
+}
+
+.xzBtnDiv ul,
+.xgBtnDiv ul {
+    overflow: hidden;
+    width: 100%;
+    height: 30px;
+}
+
+.xzBtnDiv ul li,
+.xgBtnDiv ul li {
+    float: left;
+    width: 60px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.xzBtnDiv ul li:last-child,
+.xgBtnDiv ul li:last-child {
+    margin-right: 0;
+}
+
+.xzBtnDiv ul li input,
+.xgBtnDiv ul li input {
+    width: 60px;
+    height: 30px;
+    background: #009dd9;
+    color: #fff;
+}
+
+.xzBtnDiv ul li input:hover,
+.xgBtnDiv ul li input:hover {
+    background: #ff0;
+    color: #000;
+    cursor: pointer;
+}
+
+
+/* 工具框 */
+
+.tooptip {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 200;
+    height: 25px;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizng: border-box;
+}
+
+.tooptip ul {
+    overflow: hidden;
+    width: 100%;
+    height: 25px;
+}
+
+.tooptip ul li {
+    float: left;
+    width: 25px;
+    height: 25px;
+    font-size: 16px;
+    line-height: 25px;
+    text-align: center;
+}
+
+.tooptip ul li:hover {
+    cursor: pointer;
+}
+
+.tooptip ul li:nth-child(1) i {
+    font-size: 16px;
+    color: #0f0;
+}
+
+.tooptip ul li:nth-child(2) i {
+    font-size: 16px;
+    color: #0ff;
+}
+
+.tooptip ul li:nth-child(3) i {
+    font-size: 16px;
+    color: #f00;
+}
+
+.tooptip ul li.tooptipHide {
+    display: none;
+}
+
+.bgDiv {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 200;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.textbox-icon {
+    height: 30px;
+}
+
+.combobox-item {
+    height: 18px;
+}
