@@ -88,6 +88,8 @@ getcheckOrglistid(data){
 },
 ```
 
+4. 引入vue文件
+
 
 ## vue样式
 
