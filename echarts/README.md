@@ -9,4 +9,4 @@
     myChart.setOption(option);
 ```
 ## 知识点
-1. 
+1.引入图片的方法
