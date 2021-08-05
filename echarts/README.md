@@ -31,6 +31,13 @@ itemStyle: {
 },
 ```
 2. 提示框跑出图表之外
+```javascript
+tooltip : {
+    confine: true
+}
+```
+
 
 3. 折线图可以实现断点
 在数据中用''代替
+
