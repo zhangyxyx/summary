@@ -215,4 +215,19 @@ getcheckOrglistid(data){
 }
 ```
 
-
+4. vue
+```javascript
+ computed: {
+    nowAreaFunc () {
+      console.log(3333333)
+      return this.$store.state.nowArea
+    }
+  },
+  watch:{
+    nowAreaFunc:function(val1,val2){
+      console.log(555555)
+      console.log(val1)
+      console.log(val2)
+    }
+  },
+```
