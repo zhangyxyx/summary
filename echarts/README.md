@@ -45,5 +45,7 @@ tooltip : {
 
 5. 注册地图
 
+6. 渲染图表的时候myecharts.setOption(option,true)
+
 
 
