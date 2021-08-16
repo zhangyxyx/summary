@@ -47,7 +47,7 @@ tooltip : {
 
 6. 渲染图表的时候myecharts.setOption(option,true)
 
-7. 
+7. geo
 
 
 
