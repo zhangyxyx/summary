@@ -47,7 +47,29 @@ tooltip : {
 
 6. 渲染图表的时候myecharts.setOption(option,true)
 
-7. geo
+7. 循环切换
+timer=setInterval(function(){
+    oo=oo+1
+    if(oo>=10){
+        oo=1
+    }
+    // option.series[3]['lineStyle']['opacity']=oo
+    // option.legend.data[3]['itemStyle']['opacity']=oo
+    // myChart.setOption(option,true);
+    // 如果要高亮系列：
+    if(oo%2){
+        myChart.dispatchAction({
+            type: 'highlight',
+            seriesIndex:3,
+        });
+    }else{
+        myChart.dispatchAction({
+            type: 'downplay',
+            seriesIndex:3,
+        });
+    }
+    
+},1000)
 
 
 
