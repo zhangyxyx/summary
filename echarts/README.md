@@ -48,6 +48,7 @@ tooltip : {
 6. 渲染图表的时候myecharts.setOption(option,true)
 
 7. 循环切换
+```javascript
 timer=setInterval(function(){
     oo=oo+1
     if(oo>=10){
@@ -70,6 +71,8 @@ timer=setInterval(function(){
     }
     
 },1000)
+```
+
 
 
 
