@@ -44,6 +44,7 @@ tooltip : {
 4. 使用GL
 
 5. 注册地图
+register
 
 6. 渲染图表的时候
 ```javascript
