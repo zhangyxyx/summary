@@ -41,16 +41,15 @@ tooltip : {
 3. 折线图可以实现断点
 在数据中用''代替
 
-4. 使用GL
 
-5. 注册地图
+4. 注册地图
 register
 
-6. 渲染图表的时候
+5. 渲染图表的时候
 ```javascript
     myecharts.setOption(option,true)
 ```
-7. 使用dispatchAction进行切换（提示框定时更换）
+6. 使用dispatchAction进行切换（提示框定时更换）
 ```javascript
 timer=setInterval(function(){
     oo=oo+1
