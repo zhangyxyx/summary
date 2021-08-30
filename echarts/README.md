@@ -71,6 +71,13 @@ timer=setInterval(function(){
 },1000)
 ```
 
+7. 提示框限制在图表框中
+```javascript
+tooltip: {    
+    confine: true
+}
+```
+
 
 
 
