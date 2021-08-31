@@ -67,7 +67,6 @@ timer=setInterval(function(){
             seriesIndex:3,
         });
     }
-    
 },1000)
 ```
 
