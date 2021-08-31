@@ -231,3 +231,38 @@ getcheckOrglistid(data){
     }
   },
 ```
+
+5. iframe中调用vue的函数
+```javascript
+var test= $("#test1").val();
+      var ifrm=$("iframe[name='ifrm'][src*='fatherTest.jsp']",window.parent.document);
+      if(ifrm.is("iframe")){//tab方式打开
+          var cont=ifrm[0].contentWindow;
+          var set=ifrm.contents().find("#settest3");
+          if(set.is("a")){
+              set.click();
+          }
+          if(cont&&$.isFunction(cont.settest1)){
+              cont.settest1(test);
+          }
+          if(cont&&$.isFunction(cont.settest2)){
+              cont.settest2();
+          }
+      }else{//新窗口打开
+         var cont= window.opener;
+          if(cont&&!cont.closed){
+              var set=$("#settest3",cont.document);
+              if(set.is("a")){
+                  set.click();
+              }
+              if($.isFunction(cont.settest1)){
+                  cont.settest1(test);
+              }
+              if($.isFunction(cont.settest2)){
+                  cont.settest2();
+              }
+          }     
+      }
+```
+
+
