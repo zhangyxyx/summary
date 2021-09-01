@@ -265,4 +265,7 @@ var test= $("#test1").val();
       }
 ```
 
+5. 在html中引入vue组件
+httpVueRouter
+
 
