@@ -267,5 +267,25 @@ var test= $("#test1").val();
 
 5. 在html中引入vue组件
 httpVueRouter
+```javascript
+引入<script type="text/javascript" src="assets/lib/vue/js/httpVueLoader.js"></script>
+使用<ipv4net mode="123" v-on:iserrshow="parentclick"></ipv4net> 
+父组件： 
+Vue.use(httpVueLoader) 
+new Vue({ 
+el: '#app', 
+components: { 
+'ipv4net': httpVueLoader('/ipmanage/ipaddrmodule/views/jsp/Ipv4Assigned/Ipv4AssignedCG/Ipv4AssignedAddNet.vue') 
+}, 
+directives: {clickoutside}, 
+data: function () {}, 
+},
+methods:{
+parentclick(data){
+console.log(1)
+}
+},
+) 
+```
 
 
