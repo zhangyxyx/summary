@@ -273,17 +273,17 @@ httpVueRouter
 父组件： 
 Vue.use(httpVueLoader) 
 new Vue({ 
-el: '#app', 
-components: { 
-'ipv4net': httpVueLoader('/ipmanage/ipaddrmodule/views/jsp/Ipv4Assigned/Ipv4AssignedCG/Ipv4AssignedAddNet.vue') 
-}, 
-directives: {clickoutside}, 
-data: function () {}, 
+  el: '#app', 
+  components: { 
+  'ipv4net': httpVueLoader('/ipmanage/ipaddrmodule/views/jsp/Ipv4Assigned/Ipv4AssignedCG/Ipv4AssignedAddNet.vue') 
+  }, 
+  directives: {clickoutside}, 
+  data: function () {}, 
 },
 methods:{
-parentclick(data){
-console.log(1)
-}
+  parentclick(data){
+    console.log(1)
+  }
 },
 ) 
 ```
