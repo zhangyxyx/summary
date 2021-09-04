@@ -286,6 +286,32 @@ methods:{
   }
 },
 ) 
+子组件：Ipv4AssignedAddNet.vue 
+<template> 
+<div class="report app-container">
+{{mode}}
+        子组件
+        <el-button size="small" type="primary" @click="clickFunc">点击</el-button>
+</div> 
+</template> 
+<script> 
+module.exports = { 
+props:{
+node:String
+},
+data: function() { 
+return { 
+who: 'world' 
+} 
+} ，
+Methods:{
+clickFunc(){
+            console.log(11111)
+            this.$emit('iserrshow',"1")  
+        }
+}
+} 
+</script>
 ```
 
 
