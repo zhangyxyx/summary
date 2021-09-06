@@ -269,7 +269,7 @@ var test= $("#test1").val();
 httpVueRouter
 ```javascript
 引入<script type="text/javascript" src="assets/lib/vue/js/httpVueLoader.js"></script>
-使用<ipv4net mode="123" v-on:iserrshow="parentclick"></ipv4net> 
+使用<ipv4net mode="123" v-on:iserrshow="parentclick"></ipv4net> 注意用小写的比较好
 父组件： 
 Vue.use(httpVueLoader) 
 new Vue({ 
