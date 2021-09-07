@@ -5,6 +5,7 @@
 2. treecheck多选框
 3. Addandmodify 可以对表格添加一行，并且在给某一行修改
 4. Shuttlebox 穿梭框 选中左边多选框 点击添加到右侧表格中
+5. 用element布局的话如果修改公共样式，可以在element-ui.css和element.css两个文件中修改
 
 ## 功能
 1. 表格多选   
