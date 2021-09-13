@@ -7,7 +7,7 @@
 4. Shuttlebox 穿梭框 选中左边多选框 点击添加到右侧表格中
 5. 用element布局的话如果修改公共样式，可以在element-ui.css和element.css两个文件中修改
 6. html可以单独引用vue和elementUI
-7. 
+7. check复选框
 
 ## 功能
 1. 表格多选   
@@ -93,6 +93,14 @@ getcheckOrglistid(data){
 
 4. 引入vue文件
 
+5. checkbox复选框
+```javascript
+<el-table-column
+    :selectable="checkshow"
+    type="selection"
+    width="55">
+</el-table-column>
+```
 
 ## vue样式
 
