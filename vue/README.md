@@ -8,7 +8,7 @@
 5. 用element布局的话如果修改公共样式，可以在element-ui.css和element.css两个文件中修改
 6. html可以单独引用vue和elementUI
 7. check复选框
-8. html中引入组件
+8. html中引入组件 组件传值
 
 ## 功能
 1. 表格多选   
