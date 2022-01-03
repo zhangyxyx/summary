@@ -9,7 +9,7 @@
 6. html可以单独引用vue和elementUI
 7. check复选框
 8. html中引入组件 组件传值 httpLoader
-9. eventBus this.$vue.$on this.$vue.$emit
+9. eventBus this.$vue.$on('函数名'，function(){}) this.$vue.$emit('函数名'，‘’)
 
 ## 功能
 1. 表格多选   
