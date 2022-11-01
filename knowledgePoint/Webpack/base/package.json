@@ -5,7 +5,7 @@
   "main": "webpack.config.js",
   "dependencies": {
     "babel": "^6.23.0",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.2",
     "gulp-concat": "^2.6.1",
     "gulp-react": "^3.1.0",
     "webpack": "^3.5.5"
