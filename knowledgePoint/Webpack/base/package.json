@@ -18,7 +18,7 @@
     "clean-webpack-plugin": "^0.1.16",
     "css-loader": "^0.28.7",
     "extract-text-webpack-plugin": "^2.1.2",
-    "html-webpack-plugin": "^2.30.1",
+    "html-webpack-plugin": "^5.5.0",
     "style-loader": "^0.18.2",
     "url-loader": "^0.5.9",
     "webpack-dev-server": "^2.7.1"
